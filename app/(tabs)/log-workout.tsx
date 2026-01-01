@@ -1,22 +1,26 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+import { Text, View, StyleSheet } from 'react-native';
 
 export default function LogWorkout() {
     return (
-         <ParallaxScrollView
+         <View
                headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-               headerImage={
-                 <Image
-                   source={require('@/assets/images/partial-react-logo.png')}
-
-                 />
-               }>
-           </ParallaxScrollView>
+               >
+               <Text style={styles.titleText}>Log your workout</Text>
+           </View>
         )
     }
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  baseText: {
+    fontFamily: 'Cochin',
+  },
+  titleText: {
+    fontSize: 20,
+    color: 'white',
+    fontWeight: 'bold',
+  },
+});
