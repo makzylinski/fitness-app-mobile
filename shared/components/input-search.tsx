@@ -14,6 +14,7 @@ export default function InputSearch() {
 }
 
 const styles = StyleSheet.create({
+  // TODO: move this to separate file
   input: {
     height: 40,
     width: 220,
