@@ -16,8 +16,9 @@ export default function InputSearch() {
 const styles = StyleSheet.create({
   input: {
     height: 40,
-    width: 120,
-    margin: 12,
+    width: 220,
+    margin: 20,
+    alignSelf: "center",
     borderWidth: 1,
     padding: 10,
     borderColor: "white",

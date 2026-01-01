@@ -12,7 +12,9 @@ export default function LogWorkout() {
 
 const styles = StyleSheet.create({
   container: {
+    margin: 90,
     flex: 1,
+    textAlign: "center",
   },
   baseText: {
     fontFamily: "Cochin",
