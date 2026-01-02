@@ -1,5 +1,6 @@
+import { ThemedInput } from "@/components/themed-input";
 import { useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 export default function InputSearch() {
   const [searchText, setSearchText] = useState("");
@@ -18,7 +19,13 @@ export default function InputSearch() {
 
   return (
     <View>
-      <TextInput
+      {/* <TextInput
+        style={styles.input}
+        placeholder="Search exercise..."
+        onChangeText={(text) => setSearchText(text)}
+      /> */}
+
+      <ThemedInput
         style={styles.input}
         placeholder="Search exercise..."
         onChangeText={(text) => setSearchText(text)}
@@ -43,8 +50,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     borderWidth: 1,
     padding: 10,
-    borderColor: "white",
-    color: "white",
   },
   listItem: {
     width: 250,
