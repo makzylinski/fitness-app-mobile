@@ -17,6 +17,7 @@ export default function Exercises() {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 20,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",

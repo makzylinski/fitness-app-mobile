@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
     fontWeight: 700,
     marginBottom: 0,
     fontSize: 10,
-    marginLeft: 25,
     alignSelf: "flex-start",
   },
   inputWrapper: {

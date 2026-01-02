@@ -47,17 +47,14 @@ export default function Notes({
 const styles = StyleSheet.create({
   textInput: {
     borderRadius: 10,
-    marginLeft: 20,
     padding: 10,
-    margin: 12,
-    width: 315,
+    width: 334,
     marginTop: 0,
   },
   label: {
     fontWeight: 700,
     marginBottom: 0,
     fontSize: 10,
-    marginLeft: 25,
     alignSelf: "flex-start",
   },
 });
