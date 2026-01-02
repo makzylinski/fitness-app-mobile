@@ -5,6 +5,7 @@ import { IconSymbol } from "@/components/ui/icon-symbol";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import Datepicker from "@/shared/components/datepicker";
 import InputSearch from "@/shared/components/input-search";
+import Notes from "@/shared/components/notes";
 import Timepicker from "@/shared/components/timepicker";
 import dayjs from "dayjs";
 import { useState } from "react";
@@ -17,6 +18,8 @@ export default function LogWorkout() {
 
   const [isTimepickerOpen, setIsTimepickerOpen] = useState(false);
   const [selectedTime, setSelectedTime] = useState<DateType>();
+
+  const [notes, setNotes] = useState("");
 
   const iconColor = useThemeColor({}, "icon");
 
@@ -79,6 +82,13 @@ export default function LogWorkout() {
           onClose={() => setIsTimepickerOpen(false)}
         />
       )}
+
+      <Notes
+        notes={notes}
+        setNotes={setNotes}
+        label="Notes"
+        placeholder="How are you feeling today?"
+      />
     </ThemedView>
   );
 }
