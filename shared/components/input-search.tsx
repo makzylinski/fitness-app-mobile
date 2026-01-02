@@ -1,9 +1,12 @@
 import { ThemedInput } from "@/components/themed-input";
+import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
+import { useThemeColor } from "@/hooks/use-theme-color";
 import { useState } from "react";
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet } from "react-native";
 
 export default function InputSearch() {
+  const backgroundColor = useThemeColor({}, "inputBackground");
   const [searchText, setSearchText] = useState("");
   const exercises: string[] = [
     //TODO: this is only testing data, will fetch it from server later
@@ -29,9 +32,12 @@ export default function InputSearch() {
 
       {searchText.length > 0 &&
         filteredExercises.map((exercise, index) => (
-          <Text key={index} style={styles.listItem}>
+          <ThemedText
+            key={index}
+            style={[styles.listItem, { backgroundColor }]}
+          >
             {exercise}
-          </Text>
+          </ThemedText>
         ))}
     </ThemedView>
   );
@@ -49,10 +55,9 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   listItem: {
-    width: 250,
+    width: 300,
     color: "white",
     borderWidth: 1,
-    borderColor: "white",
     alignSelf: "center",
     padding: 10,
   },
