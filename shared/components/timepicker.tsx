@@ -52,7 +52,7 @@ export default function Timepicker({
 const styles = StyleSheet.create({
   button: {
     padding: 12,
-    borderRadius: 8,
+    borderRadius: 10,
     alignItems: "center",
     marginTop: 16,
   },

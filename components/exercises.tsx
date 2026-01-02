@@ -15,7 +15,7 @@ export default function Exercises() {
     },
     {
       id: 2,
-      name: "Dumbbell curl",
+      name: "Dumbbell Curl",
       description: "lay down on the floor and cry a lil bit, idk",
     },
   ]); // TODO: refactor this to separate type
