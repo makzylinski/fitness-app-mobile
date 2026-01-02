@@ -34,7 +34,7 @@ export default function Notes({
         multiline
         placeholder={placeholder}
         placeholderTextColor={placeholderColor}
-        numberOfLines={4}
+        numberOfLines={3}
         maxLength={140}
         onChangeText={(text) => setNotes(text)}
         value={notes}
