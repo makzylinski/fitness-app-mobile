@@ -5,6 +5,7 @@ import { IconSymbol } from "@/components/ui/icon-symbol";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import Datepicker from "@/shared/components/datepicker";
 import InputSearch from "@/shared/components/input-search";
+import Timepicker from "@/shared/components/timepicker";
 import dayjs from "dayjs";
 import { useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
@@ -14,11 +15,18 @@ export default function LogWorkout() {
   const [isDatepickerOpen, setIsDatepickerOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState<DateType>();
 
+  const [isTimepickerOpen, setIsTimepickerOpen] = useState(false);
+  const [selectedTime, setSelectedTime] = useState<DateType>();
+
   const iconColor = useThemeColor({}, "icon");
 
   const handleSelectedDate = (date: DateType) => {
     setSelectedDate(date);
     setIsDatepickerOpen(false);
+  };
+
+  const handleSelectedTime = (time: DateType) => {
+    setSelectedTime(time);
   };
 
   return (
@@ -45,6 +53,30 @@ export default function LogWorkout() {
         <Datepicker
           selectedDate={selectedDate}
           onDateSelect={handleSelectedDate}
+        />
+      )}
+
+      <ThemedInput
+        style={styles.input}
+        placeholder="HH:mm"
+        value={selectedTime ? dayjs(selectedTime).format("HH:mm") : ""}
+        label="Start time"
+        editable={false}
+        rightIcon={
+          <Pressable onPress={() => setIsTimepickerOpen(!isTimepickerOpen)}>
+            <IconSymbol
+              size={24}
+              name="calendar.badge.clock"
+              color={iconColor}
+            />
+          </Pressable>
+        }
+      />
+      {isTimepickerOpen && (
+        <Timepicker
+          selectedTime={selectedTime}
+          onTimeSelect={handleSelectedTime}
+          onClose={() => setIsTimepickerOpen(false)}
         />
       )}
     </ThemedView>
