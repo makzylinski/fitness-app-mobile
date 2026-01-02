@@ -1,3 +1,4 @@
+import { ThemedInput } from "@/components/themed-input";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import { IconSymbol } from "@/components/ui/icon-symbol";
@@ -24,11 +25,22 @@ export default function LogWorkout() {
     <ThemedView style={styles.container}>
       <ThemedText style={styles.titleText}>Log your workout</ThemedText>
       <InputSearch />
-      {!isDatepickerOpen && (
-        <Pressable onPress={() => setIsDatepickerOpen(true)}>
-          <IconSymbol size={28} name="house.fill" color={iconColor} />
-        </Pressable>
-      )}
+      <ThemedInput
+        style={styles.input}
+        placeholder="DD/MM/YYYY"
+        value={selectedDate ? dayjs(selectedDate).format("DD/MM/YYYY") : ""}
+        label="Date"
+        editable={false}
+        rightIcon={
+          <Pressable onPress={() => setIsDatepickerOpen(true)}>
+            <IconSymbol
+              size={24}
+              name="calendar.badge.clock"
+              color={iconColor}
+            />
+          </Pressable>
+        }
+      />
       {isDatepickerOpen && (
         <Datepicker
           selectedDate={selectedDate}
@@ -53,5 +65,14 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: 20,
     fontWeight: "bold",
+  },
+  input: {
+    height: 40,
+    width: 150,
+    marginLeft: 20,
+    borderRadius: 10,
+    padding: 10,
+    fontWeight: 600,
+    fontSize: 12,
   },
 });
