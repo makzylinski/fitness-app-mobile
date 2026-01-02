@@ -4,7 +4,7 @@ import { ThemedText } from "./themed-text";
 import { ThemedView } from "./themed-view";
 
 export default function Exercises() {
-  const [exercisesCount, setExercisesCount] = useState(0);
+  const [exercisesCount, setExercisesCount] = useState(1);
   return (
     <ThemedView style={styles.container}>
       <ThemedText style={styles.header}>Exercises</ThemedText>
@@ -27,5 +27,6 @@ const styles = StyleSheet.create({
   },
   counter: {
     fontSize: 10,
+    color: "#B0B0B0",
   },
 });
