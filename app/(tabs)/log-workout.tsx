@@ -47,11 +47,6 @@ export default function LogWorkout() {
           onDateSelect={handleSelectedDate}
         />
       )}
-      {selectedDate && (
-        <ThemedText>
-          Selected: {dayjs(selectedDate).format("DD/MM/YYYY")}
-        </ThemedText>
-      )}
     </ThemedView>
   );
 }
