@@ -24,7 +24,7 @@ export default function InputSearch() {
         style={styles.input}
         placeholder="Search exercise..."
         onChangeText={(text: string) => setSearchText(text)}
-        label="test"
+        label="Workout name"
       />
 
       {searchText.length > 0 &&
@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     fontWeight: 600,
+    fontSize: 12,
   },
   listItem: {
     width: 250,

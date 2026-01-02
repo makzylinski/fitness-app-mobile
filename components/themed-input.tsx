@@ -11,11 +11,14 @@ export function ThemedInput({ label, ...props }: ThemedInputProps) {
   const backgroundColor = useThemeColor({}, "inputBackground");
   const textColor = useThemeColor({}, "text");
   const placeholderColor = useThemeColor({}, "icon");
+  const inputLabelColor = useThemeColor({}, "inputLabel");
 
   return (
     <ThemedView style={styles.container}>
       {label && (
-        <ThemedText style={styles.label}>{label.toUpperCase()}</ThemedText>
+        <ThemedText style={[{ color: inputLabelColor }, styles.label]}>
+          {label.toUpperCase()}
+        </ThemedText>
       )}
       <TextInput
         {...props}
@@ -31,9 +34,9 @@ const styles = StyleSheet.create({
     width: 500,
   },
   label: {
-    marginBottom: 8,
-    fontSize: 14,
-    marginLeft: 20,
+    marginBottom: 0,
+    fontSize: 10,
+    marginLeft: 25,
     alignSelf: "flex-start",
   },
 });
