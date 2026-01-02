@@ -40,11 +40,12 @@ const styles = StyleSheet.create({
   // TODO: move this to separate file
   input: {
     height: 40,
-    width: 250,
+    width: 300,
     margin: 20,
     alignSelf: "center",
     borderRadius: 10,
     padding: 10,
+    fontWeight: 600,
   },
   listItem: {
     width: 250,
