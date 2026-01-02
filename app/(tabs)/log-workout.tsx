@@ -1,3 +1,4 @@
+import Exercises from "@/components/exercises";
 import { ThemedInput } from "@/components/themed-input";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
@@ -89,6 +90,8 @@ export default function LogWorkout() {
         label="Notes"
         placeholder="How are you feeling today?"
       />
+
+      <Exercises></Exercises>
     </ThemedView>
   );
 }
