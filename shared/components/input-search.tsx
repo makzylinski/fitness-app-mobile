@@ -23,7 +23,8 @@ export default function InputSearch() {
       <ThemedInput
         style={styles.input}
         placeholder="Search exercise..."
-        onChangeText={(text) => setSearchText(text)}
+        onChangeText={(text: string) => setSearchText(text)}
+        label="test"
       />
 
       {searchText.length > 0 &&
@@ -41,8 +42,7 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     width: 300,
-    margin: 20,
-    alignSelf: "center",
+    marginLeft: 20,
     borderRadius: 10,
     padding: 10,
     fontWeight: 600,
