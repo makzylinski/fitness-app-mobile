@@ -1,0 +1,62 @@
+import { ThemedText } from "@/components/themed-text";
+import { ThemedView } from "@/components/themed-view";
+import { useThemeColor } from "@/hooks/use-theme-color";
+import { StyleSheet, TextInput } from "react-native";
+
+type NotesProps = {
+  notes: string;
+  setNotes: (text: string) => void;
+  label?: string;
+  placeholder?: string;
+};
+
+export default function Notes({
+  notes,
+  setNotes,
+  label,
+  placeholder,
+}: NotesProps) {
+  const backgroundColor = useThemeColor({}, "inputBackground");
+  const inputLabelColor = useThemeColor({}, "inputLabel");
+  const textColor = useThemeColor({}, "text");
+  const placeholderColor = useThemeColor({}, "icon");
+
+  console.log(backgroundColor);
+  return (
+    <ThemedView>
+      {label && (
+        <ThemedText style={[{ color: inputLabelColor }, styles.label]}>
+          {label.toUpperCase()}
+        </ThemedText>
+      )}
+      <TextInput
+        editable
+        multiline
+        placeholder={placeholder}
+        placeholderTextColor={placeholderColor}
+        numberOfLines={4}
+        maxLength={140}
+        onChangeText={(text) => setNotes(text)}
+        value={notes}
+        style={[{ backgroundColor, color: textColor }, styles.textInput]}
+      />
+    </ThemedView>
+  );
+}
+
+const styles = StyleSheet.create({
+  textInput: {
+    borderRadius: 10,
+    marginLeft: 20,
+    padding: 10,
+    margin: 12,
+    width: 315,
+    marginTop: 0,
+  },
+  label: {
+    marginBottom: 0,
+    fontSize: 10,
+    marginLeft: 25,
+    alignSelf: "flex-start",
+  },
+});
