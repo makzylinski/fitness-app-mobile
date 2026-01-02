@@ -1,6 +1,7 @@
 import { ThemedInput } from "@/components/themed-input";
+import { ThemedView } from "@/components/themed-view";
 import { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text } from "react-native";
 
 export default function InputSearch() {
   const [searchText, setSearchText] = useState("");
@@ -18,13 +19,7 @@ export default function InputSearch() {
   );
 
   return (
-    <View>
-      {/* <TextInput
-        style={styles.input}
-        placeholder="Search exercise..."
-        onChangeText={(text) => setSearchText(text)}
-      /> */}
-
+    <ThemedView>
       <ThemedInput
         style={styles.input}
         placeholder="Search exercise..."
@@ -37,7 +32,7 @@ export default function InputSearch() {
             {exercise}
           </Text>
         ))}
-    </View>
+    </ThemedView>
   );
 }
 
