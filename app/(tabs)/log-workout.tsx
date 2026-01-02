@@ -5,7 +5,6 @@ import { ThemedView } from "@/components/themed-view";
 import { IconSymbol } from "@/components/ui/icon-symbol";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import Datepicker from "@/shared/components/datepicker";
-import InputSearch from "@/shared/components/input-search";
 import Notes from "@/shared/components/notes";
 import Timepicker from "@/shared/components/timepicker";
 import dayjs from "dayjs";
@@ -22,6 +21,8 @@ export default function LogWorkout() {
 
   const [notes, setNotes] = useState("");
 
+  const [workoutName, setWorkoutName] = useState("");
+
   const iconColor = useThemeColor({}, "icon");
 
   const handleSelectedDate = (date: DateType) => {
@@ -36,7 +37,16 @@ export default function LogWorkout() {
   return (
     <ThemedView style={styles.container}>
       <ThemedText style={styles.titleText}>Log your workout</ThemedText>
-      <InputSearch />
+      {/* <InputSearch /> 
+        TODO: this is the search workout input that shall be used in Exercises section
+      */}
+      <ThemedInput
+        style={styles.input}
+        placeholder="Upper Body Workout"
+        value={workoutName}
+        label="Workout name"
+        onChangeText={(name) => setWorkoutName(name)}
+      />
       <ThemedInput
         style={styles.input}
         placeholder="DD/MM/YYYY"
@@ -46,7 +56,7 @@ export default function LogWorkout() {
         rightIcon={
           <Pressable onPress={() => setIsDatepickerOpen(!isDatepickerOpen)}>
             <IconSymbol
-              size={24}
+              size={12}
               name="calendar.badge.clock"
               color={iconColor}
             />
@@ -69,7 +79,7 @@ export default function LogWorkout() {
         rightIcon={
           <Pressable onPress={() => setIsTimepickerOpen(!isTimepickerOpen)}>
             <IconSymbol
-              size={24}
+              size={12}
               name="calendar.badge.clock"
               color={iconColor}
             />
