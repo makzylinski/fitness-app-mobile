@@ -12,6 +12,10 @@ export default function InputSearch() {
     "Leg Curls",
   ];
 
+  const filteredExercises = exercises.filter((exercise) =>
+    exercise.toLowerCase().includes(searchText.toLowerCase())
+  );
+
   return (
     <View>
       <TextInput
@@ -20,8 +24,8 @@ export default function InputSearch() {
         onChangeText={(text) => setSearchText(text)}
       />
 
-      {searchText.length &&
-        exercises.map((exercise, index) => (
+      {searchText.length > 0 &&
+        filteredExercises.map((exercise, index) => (
           <Text key={index} style={styles.listItem}>
             {exercise}
           </Text>
