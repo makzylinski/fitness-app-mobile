@@ -2,7 +2,7 @@ import { useThemeColor } from "@/hooks/use-theme-color";
 import { TextInput, TextInputProps } from "react-native";
 
 export function ThemedInput(props: TextInputProps) {
-  const backgroundColor = useThemeColor({}, "background");
+  const backgroundColor = useThemeColor({}, "inputBackground");
   const textColor = useThemeColor({}, "text");
   const borderColor = useThemeColor({}, "icon");
   const placeholderColor = useThemeColor({}, "icon");

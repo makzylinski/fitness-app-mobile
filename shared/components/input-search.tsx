@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     width: 250,
     margin: 20,
     alignSelf: "center",
-    borderWidth: 1,
+    borderRadius: 10,
     padding: 10,
   },
   listItem: {

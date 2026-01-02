@@ -17,12 +17,8 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: "center",
   },
-  baseText: {
-    fontFamily: "Cochin",
-  },
   titleText: {
     fontSize: 20,
-    color: "white",
     fontWeight: "bold",
   },
 });
