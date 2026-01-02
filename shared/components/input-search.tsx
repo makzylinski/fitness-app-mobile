@@ -3,7 +3,14 @@ import { StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function InputSearch() {
   const [searchText, setSearchText] = useState("");
-  const exerciseItems = ["te", "we"];
+  const exercises: string[] = [
+    //TODO: this is only testing data, will fetch it from server later
+    "Bench Press",
+    "Romanian Dead Lift",
+    "Squats",
+    "Dead Lift",
+    "Leg Curls",
+  ];
 
   return (
     <View>
@@ -13,11 +20,12 @@ export default function InputSearch() {
         onChangeText={(text) => setSearchText(text)}
       />
 
-      {exerciseItems.map((exercise, index) => (
-        <Text key={index} style={styles.listItem}>
-          {exercise}
-        </Text>
-      ))}
+      {searchText.length &&
+        exercises.map((exercise, index) => (
+          <Text key={index} style={styles.listItem}>
+            {exercise}
+          </Text>
+        ))}
     </View>
   );
 }
