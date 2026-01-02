@@ -32,7 +32,7 @@ export default function LogWorkout() {
         label="Date"
         editable={false}
         rightIcon={
-          <Pressable onPress={() => setIsDatepickerOpen(true)}>
+          <Pressable onPress={() => setIsDatepickerOpen(!isDatepickerOpen)}>
             <IconSymbol
               size={24}
               name="calendar.badge.clock"
