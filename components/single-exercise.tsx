@@ -26,14 +26,41 @@ export default function SingleExercise({ exercise }: ExerciseProps) {
         </ThemedText>
 
         <ThemedView style={[{ backgroundColor }, styles.exerciseDetails]}>
-          <ThemedText style={styles.number}>
-            {exercise.exercises.length}
-          </ThemedText>
-          <ThemedText style={styles.type}>Sets</ThemedText>
-        </ThemedView>
+          <ThemedView style={[{ backgroundColor }, styles.detailItem]}>
+            <ThemedText style={styles.number}>
+              {exercise.exercises.length}
+            </ThemedText>
+            <ThemedText style={[{ color: inputLabelColor }, styles.type]}>
+              Sets
+            </ThemedText>
+          </ThemedView>
 
-        <ThemedText>{exercise.exercises.length} Reps</ThemedText>
-        <ThemedText>{exercise.exercises.length} kg</ThemedText>
+          <ThemedText style={[{ color: placeholderColor }, styles.separator]}>
+            •
+          </ThemedText>
+
+          <ThemedView style={[{ backgroundColor }, styles.detailItem]}>
+            <ThemedText style={styles.number}>
+              {exercise.exercises.length}
+            </ThemedText>
+            <ThemedText style={[{ color: inputLabelColor }, styles.type]}>
+              Reps
+            </ThemedText>
+          </ThemedView>
+
+          <ThemedText style={[{ color: placeholderColor }, styles.separator]}>
+            •
+          </ThemedText>
+
+          <ThemedView style={[{ backgroundColor }, styles.detailItem]}>
+            <ThemedText style={styles.number}>
+              {exercise.exercises.length}
+            </ThemedText>
+            <ThemedText style={[{ color: inputLabelColor }, styles.type]}>
+              kg
+            </ThemedText>
+          </ThemedView>
+        </ThemedView>
       </ThemedView>
     </ThemedView>
   );
@@ -52,7 +79,13 @@ const styles = StyleSheet.create({
   exerciseDetails: {
     flexDirection: "row",
     alignItems: "center",
+    gap: 10,
+  },
+  detailItem: {
+    flexDirection: "row",
+    alignItems: "center",
     gap: 5,
+    borderRadius: 8,
   },
   name: {
     fontWeight: 700,
@@ -60,9 +93,15 @@ const styles = StyleSheet.create({
   },
   number: {
     fontWeight: 700,
-    fontSize: 10,
+    fontSize: 12,
   },
   type: {
-    fontSize: 10,
+    fontSize: 12,
+    fontWeight: 600,
+  },
+  separator: {
+    fontSize: 16,
+    fontWeight: "bold",
+    alignSelf: "center",
   },
 });
