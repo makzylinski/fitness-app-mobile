@@ -35,7 +35,7 @@ export default function SingleExercise({ exercise }: ExerciseProps) {
             </ThemedText>
           </ThemedView>
 
-          <ThemedText style={[{ color: placeholderColor }, styles.separator]}>
+          <ThemedText style={[{ color: inputLabelColor }, styles.separator]}>
             •
           </ThemedText>
 
@@ -48,7 +48,7 @@ export default function SingleExercise({ exercise }: ExerciseProps) {
             </ThemedText>
           </ThemedView>
 
-          <ThemedText style={[{ color: placeholderColor }, styles.separator]}>
+          <ThemedText style={[{ color: inputLabelColor }, styles.separator]}>
             •
           </ThemedText>
 
