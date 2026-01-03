@@ -34,7 +34,7 @@ export default function Notes({
         placeholder={placeholder}
         placeholderTextColor={placeholderColor}
         numberOfLines={3}
-        maxLength={140}
+        maxLength={200}
         onChangeText={(text) => setNotes(text)}
         value={notes}
         style={[{ backgroundColor, color: textColor }, styles.textInput]}
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   textInput: {
     borderRadius: 10,
     padding: 10,
-    width: 334,
+    width: 355,
     marginTop: 0,
   },
   label: {
