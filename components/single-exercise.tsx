@@ -1,8 +1,8 @@
 import { useThemeColor } from "@/hooks/use-theme-color";
-import { Ionicons } from "@expo/vector-icons";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet } from "react-native";
 import { ThemedText } from "./themed-text";
 import { ThemedView } from "./themed-view";
+import { IconSymbol } from "./ui/icon-symbol";
 
 type ExerciseProps = {
   exercise: {
@@ -75,17 +75,27 @@ export default function SingleExercise({ exercise }: ExerciseProps) {
             </ThemedView>
           </ThemedView>
 
-          <ThemedView style={styles.actions}>
-            <TouchableOpacity style={styles.iconButton}>
-              <Ionicons name="pencil" size={20} color={inputLabelColor} />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.iconButton}>
-              <Ionicons
-                name="trash-outline"
-                size={20}
-                color={inputLabelColor}
-              />
-            </TouchableOpacity>
+          <ThemedView style={[{ backgroundColor }]}>
+            <IconSymbol
+              size={24}
+              name="calendar.badge.clock"
+              color={inputLabelColor}
+              style={styles.iconEdit}
+            />
+
+            <IconSymbol
+              size={24}
+              name="calendar.badge.clock"
+              color={inputLabelColor}
+              style={styles.iconDelete}
+            />
+
+            {/* <IconSymbol
+              style={[{ backgroundColor }]}
+              size={28}
+              name="house.fill"
+              color={inputLabelColor}
+            /> */}
           </ThemedView>
         </ThemedView>
       </ThemedView>
@@ -108,16 +118,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   leftContent: {
+    position: "relative",
     flex: 1,
   },
-  actions: {
-    flexDirection: "row",
-    gap: 8,
-    marginLeft: 10,
+  iconEdit: {
+    position: "absolute",
+    right: 45,
   },
-  iconButton: {
-    padding: 4,
-  },
+  iconDelete: { position: "absolute", right: 10 },
   nameContainer: {
     flexDirection: "row",
     alignItems: "center",
