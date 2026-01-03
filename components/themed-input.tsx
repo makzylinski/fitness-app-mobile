@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   inputWithIcon: {
-    paddingRight: 40,
+    paddingRight: 20,
   },
   iconContainer: {
     position: "absolute",

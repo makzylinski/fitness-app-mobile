@@ -47,22 +47,47 @@ export default function LogWorkout() {
         label="Workout name"
         onChangeText={(name) => setWorkoutName(name)}
       />
-      <ThemedInput
-        style={styles.input}
-        placeholder="DD/MM/YYYY"
-        value={selectedDate ? dayjs(selectedDate).format("DD/MM/YYYY") : ""}
-        label="Date"
-        editable={false}
-        rightIcon={
-          <Pressable onPress={() => setIsDatepickerOpen(!isDatepickerOpen)}>
-            <IconSymbol
-              size={12}
-              name="calendar.badge.clock"
-              color={iconColor}
-            />
-          </Pressable>
-        }
-      />
+
+      <ThemedView style={styles.dateTimeContainer}>
+        <ThemedView style={styles.dateTimeInputWrapper}>
+          <ThemedInput
+            style={styles.dateTimeInput}
+            placeholder="DD/MM/YYYY"
+            value={selectedDate ? dayjs(selectedDate).format("DD/MM/YYYY") : ""}
+            label="Date"
+            editable={false}
+            rightIcon={
+              <Pressable onPress={() => setIsDatepickerOpen(!isDatepickerOpen)}>
+                <IconSymbol
+                  size={12}
+                  name="calendar.badge.clock"
+                  color={iconColor}
+                />
+              </Pressable>
+            }
+          />
+        </ThemedView>
+
+        <ThemedView style={styles.dateTimeInputWrapper}>
+          <ThemedInput
+            style={styles.dateTimeInput}
+            placeholder="HH:mm"
+            value={selectedTime ? dayjs(selectedTime).format("HH:mm") : ""}
+            label="Start time"
+            editable={false}
+            rightIcon={
+              <Pressable onPress={() => setIsTimepickerOpen(!isTimepickerOpen)}>
+                <IconSymbol
+                  size={12}
+                  name="calendar.badge.clock"
+                  color={iconColor}
+                />
+              </Pressable>
+            }
+          />
+        </ThemedView>
+      </ThemedView>
+
       {isDatepickerOpen && (
         <Datepicker
           selectedDate={selectedDate}
@@ -70,22 +95,6 @@ export default function LogWorkout() {
         />
       )}
 
-      <ThemedInput
-        style={styles.input}
-        placeholder="HH:mm"
-        value={selectedTime ? dayjs(selectedTime).format("HH:mm") : ""}
-        label="Start time"
-        editable={false}
-        rightIcon={
-          <Pressable onPress={() => setIsTimepickerOpen(!isTimepickerOpen)}>
-            <IconSymbol
-              size={12}
-              name="calendar.badge.clock"
-              color={iconColor}
-            />
-          </Pressable>
-        }
-      />
       {isTimepickerOpen && (
         <Timepicker
           selectedTime={selectedTime}
@@ -117,9 +126,23 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
   },
+  dateTimeContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  dateTimeInputWrapper: {
+    width: "48%",
+  },
   input: {
     height: 40,
     width: 150,
+    borderRadius: 10,
+    padding: 10,
+    fontWeight: 600,
+    fontSize: 12,
+  },
+  dateTimeInput: {
+    height: 40,
     borderRadius: 10,
     padding: 10,
     fontWeight: 600,
