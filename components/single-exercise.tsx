@@ -77,15 +77,15 @@ export default function SingleExercise({ exercise }: ExerciseProps) {
 
           <ThemedView style={[{ backgroundColor }]}>
             <IconSymbol
-              size={24}
-              name="calendar.badge.clock"
+              size={18}
+              name="pencil"
               color={inputLabelColor}
               style={styles.iconEdit}
             />
 
             <IconSymbol
-              size={24}
-              name="calendar.badge.clock"
+              size={18}
+              name="trash"
               color={inputLabelColor}
               style={styles.iconDelete}
             />
@@ -117,8 +117,13 @@ const styles = StyleSheet.create({
   iconEdit: {
     position: "absolute",
     right: 45,
+    top: -10,
   },
-  iconDelete: { position: "absolute", right: 10 },
+  iconDelete: {
+    position: "absolute",
+    right: 10,
+    top: -10,
+  },
   nameContainer: {
     flexDirection: "row",
     alignItems: "center",
