@@ -89,13 +89,6 @@ export default function SingleExercise({ exercise }: ExerciseProps) {
               color={inputLabelColor}
               style={styles.iconDelete}
             />
-
-            {/* <IconSymbol
-              style={[{ backgroundColor }]}
-              size={28}
-              name="house.fill"
-              color={inputLabelColor}
-            /> */}
           </ThemedView>
         </ThemedView>
       </ThemedView>
