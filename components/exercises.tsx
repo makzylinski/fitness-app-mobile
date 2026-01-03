@@ -6,17 +6,41 @@ import { ThemedView } from "./themed-view";
 
 export default function Exercises() {
   const [exercisesList, setExercisesList] = useState<
-    { id: number; name: string; description: string }[]
+    {
+      id: number;
+      name: string;
+      description: string;
+      exercises: { weight: number; weightUnit: string; reps: number }[];
+    }[]
   >([
     {
       id: 1,
       name: "Bench Press",
       description: "Just lay down and press the bench",
+      exercises: [
+        {
+          weight: 100,
+          weightUnit: "kg",
+          reps: 8,
+        },
+        {
+          weight: 80,
+          weightUnit: "kg",
+          reps: 12,
+        },
+      ],
     },
     {
       id: 2,
       name: "Dumbbell Curl",
       description: "lay down on the floor and cry a lil bit, idk",
+      exercises: [
+        {
+          weight: 20,
+          weightUnit: "kg",
+          reps: 12,
+        },
+      ],
     },
   ]); // TODO: refactor this to separate type
   return (
