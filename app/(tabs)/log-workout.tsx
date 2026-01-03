@@ -96,6 +96,7 @@ export default function LogWorkout() {
 const styles = StyleSheet.create({
   container: {
     margin: 20,
+    marginTop: 80,
     flex: 1,
     textAlign: "center",
   },
