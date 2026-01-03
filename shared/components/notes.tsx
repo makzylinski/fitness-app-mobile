@@ -21,7 +21,6 @@ export default function Notes({
   const textColor = useThemeColor({}, "text");
   const placeholderColor = useThemeColor({}, "icon");
 
-  console.log(backgroundColor);
   return (
     <ThemedView>
       {label && (
