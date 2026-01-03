@@ -16,14 +16,17 @@ export default function SingleExercise({ exercise }: ExerciseProps) {
   const backgroundColor = useThemeColor({}, "inputBackground");
   const inputLabelColor = useThemeColor({}, "inputLabel");
   const textColor = useThemeColor({}, "text");
-  const placeholderColor = useThemeColor({}, "icon");
+  const accent = useThemeColor({}, "accent");
 
   return (
     <ThemedView style={styles.container}>
       <ThemedView style={[{ backgroundColor }, styles.item]}>
-        <ThemedText style={[{ color: textColor }, styles.name]}>
-          {exercise.name}
-        </ThemedText>
+        <ThemedView style={[{ backgroundColor }, styles.nameContainer]}>
+          <ThemedView style={styles.orangeBar} />
+          <ThemedText style={[{ color: textColor }, styles.name]}>
+            {exercise.name}
+          </ThemedText>
+        </ThemedView>
 
         <ThemedView style={[{ backgroundColor }, styles.exerciseDetails]}>
           <ThemedView style={[{ backgroundColor }, styles.detailItem]}>
@@ -76,6 +79,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 10,
   },
+  nameContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  orangeBar: {
+    width: 4,
+    height: 20,
+    backgroundColor: "#ff8c42",
+    borderRadius: 2,
+  },
   exerciseDetails: {
     flexDirection: "row",
     alignItems: "center",
@@ -89,7 +103,7 @@ const styles = StyleSheet.create({
   },
   name: {
     fontWeight: 700,
-    fontSize: 12,
+    fontSize: 14,
   },
   number: {
     fontWeight: 700,
