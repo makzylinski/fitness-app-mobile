@@ -36,6 +36,7 @@ export default function LogWorkout() {
 
   return (
     <ThemedView style={styles.container}>
+      {/* <Trening></Trening> */}
       <ThemedText style={styles.titleText}>Log your workout</ThemedText>
       {/* <InputSearch /> 
         TODO: this is the search workout input that shall be used in Exercises section
@@ -118,7 +119,7 @@ export default function LogWorkout() {
 const styles = StyleSheet.create({
   container: {
     margin: 20,
-    marginTop: 80,
+    marginTop: 20,
     flex: 1,
     textAlign: "center",
   },
