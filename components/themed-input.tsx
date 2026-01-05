@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   label: {
     fontWeight: 700,
     marginBottom: 0,
-    fontSize: 10,
+    fontSize: 12,
     alignSelf: "flex-start",
   },
   inputWrapper: {
