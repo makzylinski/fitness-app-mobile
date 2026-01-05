@@ -1,6 +1,5 @@
 import Exercises from "@/components/exercises";
 import { ThemedInput } from "@/components/themed-input";
-import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import { IconSymbol } from "@/components/ui/icon-symbol";
 import { useThemeColor } from "@/hooks/use-theme-color";
@@ -36,8 +35,6 @@ export default function LogWorkout() {
 
   return (
     <ThemedView style={styles.container}>
-      {/* <Trening></Trening> */}
-      <ThemedText style={styles.titleText}>Log your workout</ThemedText>
       {/* <InputSearch /> 
         TODO: this is the search workout input that shall be used in Exercises section
       */}
