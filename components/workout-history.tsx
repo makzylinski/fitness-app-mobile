@@ -60,7 +60,6 @@ export default function WorkoutHistory() {
   const primaryColor = useThemeColor({}, "primaryColor");
   const accentColor = useThemeColor({}, "accent");
   const inputBackground = useThemeColor({}, "inputBackground");
-  const textColor = useThemeColor({}, "text");
   const secondaryText = useThemeColor({}, "inputLabel");
 
   const getTotalSets = (exercises: any[]) => {
@@ -101,6 +100,7 @@ export default function WorkoutHistory() {
               />
             </View>
             <ThemedText style={styles.workoutName}>{workout.name}</ThemedText>
+            <ThemedView style={styles.divider}></ThemedView>
             <View style={styles.statsRow}>
               <View style={styles.statItem}>
                 <Ionicons
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   },
   dateHeader: {
     fontSize: 12,
-    fontWeight: "600",
+    fontWeight: 700,
     letterSpacing: 1,
     marginBottom: 12,
   },
@@ -159,7 +159,6 @@ const styles = StyleSheet.create({
     borderRadius: 16,
   },
   badgeText: {
-    color: "#fff",
     fontSize: 12,
     fontWeight: "600",
   },
@@ -170,6 +169,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "600",
     marginBottom: 12,
+  },
+  divider: {
+    height: 1,
+    backgroundColor: "#333",
+    marginVertical: 8,
   },
   statsRow: {
     flexDirection: "row",
