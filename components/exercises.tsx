@@ -11,11 +11,12 @@ export type Exercise = {
   name: string;
   description: string;
   exercises: { weight: number; weightUnit: string; reps: number }[];
-}[];
+};
 
 export default function Exercises() {
-  const [exercisesList, setExercisesList] = useState<Exercise>([
+  const [exercisesList, setExercisesList] = useState<Exercise[]>([
     {
+      // ← Brakuje tego nawiasu
       id: 1,
       name: "Bench Press",
       description: "Just lay down and press the bench",

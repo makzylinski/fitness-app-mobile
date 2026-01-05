@@ -8,15 +8,13 @@ import { ThemedView } from "./themed-view";
 
 export default function WorkoutHistory() {
   const [historyWorkouts, setHistoryWorkouts] = useState<
-    [
-      {
-        date: Date;
-        name: string;
-        timeOfDay: string;
-        time: string;
-        exercises: Exercise;
-      }
-    ]
+    {
+      date: Date;
+      name: string;
+      timeOfDay: string;
+      time: string;
+      exercises: Exercise[];
+    }[]
   >([
     {
       date: new Date(),
@@ -50,6 +48,48 @@ export default function WorkoutHistory() {
               weight: 20,
               weightUnit: "kg",
               reps: 12,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      date: new Date(2026, 0, 3), // 3 stycznia 2026
+      name: "Lower Body Strength",
+      timeOfDay: "Evening",
+      time: "18:30",
+      exercises: [
+        {
+          id: 3,
+          name: "Squat",
+          description: "Deep squats for leg power",
+          exercises: [
+            {
+              weight: 120,
+              weightUnit: "kg",
+              reps: 10,
+            },
+            {
+              weight: 100,
+              weightUnit: "kg",
+              reps: 15,
+            },
+          ],
+        },
+        {
+          id: 4,
+          name: "Leg Press",
+          description: "Press those legs",
+          exercises: [
+            {
+              weight: 200,
+              weightUnit: "kg",
+              reps: 12,
+            },
+            {
+              weight: 180,
+              weightUnit: "kg",
+              reps: 15,
             },
           ],
         },
