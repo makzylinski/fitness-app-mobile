@@ -34,6 +34,7 @@ export default function Trening() {
       style={{
         backgroundColor: colors.background,
         marginTop: 80,
+        marginHorizontal: 20,
       }}
       activeColor={colors.text}
       inactiveColor={colors.icon}

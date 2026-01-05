@@ -6,15 +6,15 @@ import SingleExercise from "./single-exercise";
 import { ThemedText } from "./themed-text";
 import { ThemedView } from "./themed-view";
 
+export type Exercise = {
+  id: number;
+  name: string;
+  description: string;
+  exercises: { weight: number; weightUnit: string; reps: number }[];
+}[];
+
 export default function Exercises() {
-  const [exercisesList, setExercisesList] = useState<
-    {
-      id: number;
-      name: string;
-      description: string;
-      exercises: { weight: number; weightUnit: string; reps: number }[];
-    }[]
-  >([
+  const [exercisesList, setExercisesList] = useState<Exercise>([
     {
       id: 1,
       name: "Bench Press",
