@@ -1,9 +1,9 @@
-import LogWorkout from "@/components/log-workout";
+import LogWorkout from "@/components/workout/log-workout";
 import { Colors } from "@/constants/theme";
 import { useState } from "react";
 import { useColorScheme, useWindowDimensions } from "react-native";
 import { TabBar, TabView } from "react-native-tab-view";
-import WorkoutHistory from "../../components/workout-history";
+import WorkoutHistory from "../../components/workout/workout-history";
 
 export default function Trening() {
   const layout = useWindowDimensions();

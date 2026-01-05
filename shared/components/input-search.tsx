@@ -1,6 +1,6 @@
-import { ThemedInput } from "@/components/themed-input";
-import { ThemedText } from "@/components/themed-text";
-import { ThemedView } from "@/components/themed-view";
+import { ThemedInput } from "@/components/ui/themed-input";
+import { ThemedText } from "@/components/ui/themed-text";
+import { ThemedView } from "@/components/ui/themed-view";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { useState } from "react";
 import { StyleSheet } from "react-native";

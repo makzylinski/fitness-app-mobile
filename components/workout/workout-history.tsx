@@ -2,9 +2,9 @@ import { useThemeColor } from "@/hooks/use-theme-color";
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { ThemedText } from "../ui/themed-text";
+import { ThemedView } from "../ui/themed-view";
 import { Exercise } from "./exercises";
-import { ThemedText } from "./themed-text";
-import { ThemedView } from "./themed-view";
 
 export default function WorkoutHistory() {
   const [historyWorkouts, setHistoryWorkouts] = useState<

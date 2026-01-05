@@ -1,7 +1,7 @@
-import Exercises from "@/components/exercises";
-import { ThemedInput } from "@/components/themed-input";
-import { ThemedView } from "@/components/themed-view";
 import { IconSymbol } from "@/components/ui/icon-symbol";
+import { ThemedInput } from "@/components/ui/themed-input";
+import { ThemedView } from "@/components/ui/themed-view";
+import Exercises from "@/components/workout/exercises";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import Datepicker from "@/shared/components/datepicker";
 import Notes from "@/shared/components/notes";
