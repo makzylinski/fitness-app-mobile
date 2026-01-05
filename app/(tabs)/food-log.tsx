@@ -1,10 +1,10 @@
-import { ThemedText } from "@/components/ui/themed-text";
+import FoodCalendar from "@/components/food-log/food-calendar";
 import { ThemedView } from "@/components/ui/themed-view";
 
 export default function FoodDiary() {
   return (
     <ThemedView>
-      <ThemedText>Test</ThemedText>
+      <FoodCalendar></FoodCalendar>
     </ThemedView>
   );
 }
