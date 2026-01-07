@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
   },
   dayOfWeek: {
     textAlign: "center",
+    fontSize: 12,
   },
   dayOfWeekActive: {
     color: "#2EC4B6",
