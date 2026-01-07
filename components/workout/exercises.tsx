@@ -2,9 +2,9 @@ import { useThemeColor } from "@/hooks/use-theme-color";
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
+import { ThemedText } from "../ui/themed-text";
+import { ThemedView } from "../ui/themed-view";
 import SingleExercise from "./single-exercise";
-import { ThemedText } from "./themed-text";
-import { ThemedView } from "./themed-view";
 
 export type Exercise = {
   id: number;

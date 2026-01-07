@@ -1,8 +1,8 @@
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { StyleSheet } from "react-native";
-import { ThemedText } from "./themed-text";
-import { ThemedView } from "./themed-view";
-import { IconSymbol } from "./ui/icon-symbol";
+import { IconSymbol } from "../ui/icon-symbol";
+import { ThemedText } from "../ui/themed-text";
+import { ThemedView } from "../ui/themed-view";
 
 type ExerciseProps = {
   exercise: {
