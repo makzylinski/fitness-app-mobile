@@ -1,3 +1,4 @@
+import CaloriesCounter from "@/components/food-log/calories-counter";
 import FoodCalendar from "@/components/food-log/food-calendar";
 import Meal from "@/components/food-log/meal";
 import { ThemedView } from "@/components/ui/themed-view";
@@ -8,6 +9,7 @@ export default function FoodDiary() {
     <ThemedView style={styles.container}>
       <FoodCalendar></FoodCalendar>
       <Meal></Meal>
+      <CaloriesCounter></CaloriesCounter>
     </ThemedView>
   );
 }
@@ -15,5 +17,7 @@ export default function FoodDiary() {
 const styles = StyleSheet.create({
   container: {
     marginTop: 50,
+    flex: 1,
+    position: "relative",
   },
 });
