@@ -5,17 +5,18 @@ import { ThemedView } from "../ui/themed-view";
 
 export default function Meal() {
   const backgroundColor = useThemeColor({}, "inputBackground");
+  const fontColor = useThemeColor({}, "inputBorder");
   return (
     <ThemedView style={styles.container}>
       <ThemedView style={[{ backgroundColor }, styles.card]}>
         <ThemedView style={[styles.info]}>
           <ThemedView style={[{ backgroundColor }, styles.mealInfo]}>
             <ThemedText style={styles.mealName}>Breakfast</ThemedText>
-            <ThemedText>8:30</ThemedText>
+            <ThemedText style={[{ color: fontColor }]}>8:30</ThemedText>
           </ThemedView>
 
           <ThemedView style={[{ backgroundColor }]}>
-            <ThemedText style={styles.kalories}>560</ThemedText>
+            <ThemedText style={styles.kalories}>560 kcal</ThemedText>
             <ThemedText style={styles.macros}>P: 24g F: 17g C: 68g</ThemedText>
           </ThemedView>
         </ThemedView>
@@ -43,6 +44,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   action: {},
-  kalories: {},
+  kalories: {
+    color: "#2EC4B6",
+    fontWeight: 700,
+  },
   macros: {},
 });
