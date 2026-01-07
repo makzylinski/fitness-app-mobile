@@ -13,7 +13,10 @@ type MealProps = {
 };
 
 export default function Meal({ meal }: MealProps) {
-  const [isMealDetailsOpen, setIsMealDetailsOpen] = useState<boolean>(false);
+  const [isMealDetailsOpen, setIsMealDetailsOpen] = useState<{
+    index: number;
+    isOpen: boolean;
+  }>();
 
   const backgroundColor = useThemeColor({}, "inputBackground");
   const lighterColorFont = useThemeColor({}, "inputLabel");
@@ -29,7 +32,14 @@ export default function Meal({ meal }: MealProps) {
           style={[{ backgroundColor }, styles.card]}
           key={mealDetail.id}
         >
-          <Pressable onPress={() => setIsMealDetailsOpen(!isMealDetailsOpen)}>
+          <Pressable
+            onPress={() =>
+              setIsMealDetailsOpen({
+                index,
+                isOpen: !isMealDetailsOpen?.isOpen,
+              })
+            }
+          >
             <ThemedView style={styles.info}>
               <ThemedView style={[{ backgroundColor }, styles.header]}>
                 <ThemedText style={styles.mealName}>
@@ -77,7 +87,14 @@ export default function Meal({ meal }: MealProps) {
               <Ionicons name="add-circle" size={32} color={primaryColor} />
             </Pressable>
 
-            <Pressable onPress={() => setIsMealDetailsOpen(!isMealDetailsOpen)}>
+            <Pressable
+              onPress={() =>
+                setIsMealDetailsOpen({
+                  index,
+                  isOpen: !isMealDetailsOpen?.isOpen,
+                })
+              }
+            >
               <Ionicons name="chevron-up" size={28} color={lighterColorFont} />
             </Pressable>
           </ThemedView>
