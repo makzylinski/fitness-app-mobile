@@ -6,6 +6,7 @@ import { ThemedView } from "../ui/themed-view";
 export default function Meal() {
   const backgroundColor = useThemeColor({}, "inputBackground");
   const fontColor = useThemeColor({}, "inputBorder");
+  const lighterColorFont = useThemeColor({}, "inputLabel");
   return (
     <ThemedView style={styles.container}>
       <ThemedView style={[{ backgroundColor }, styles.card]}>
@@ -15,9 +16,19 @@ export default function Meal() {
             <ThemedText style={[{ color: fontColor }]}>8:30</ThemedText>
           </ThemedView>
 
-          <ThemedView style={[{ backgroundColor }]}>
+          <ThemedView style={[{ backgroundColor }, styles.mealInfo]}>
             <ThemedText style={styles.kalories}>560 kcal</ThemedText>
-            <ThemedText style={styles.macros}>P: 24g F: 17g C: 68g</ThemedText>
+            {/* <ThemedText style={[{ color: lighterColorFont }, styles.macros]}> */}
+            <ThemedText style={[{ color: lighterColorFont }, styles.macros]}>
+              P: 24g
+            </ThemedText>
+            <ThemedText style={[{ color: lighterColorFont }, styles.macros]}>
+              F: 17g
+            </ThemedText>
+            <ThemedText style={[{ color: lighterColorFont }, styles.macros]}>
+              C: 68g
+            </ThemedText>
+            {/* </ThemedText> */}
           </ThemedView>
         </ThemedView>
         <ThemedView style={styles.action}></ThemedView>
@@ -48,5 +59,7 @@ const styles = StyleSheet.create({
     color: "#2EC4B6",
     fontWeight: 700,
   },
-  macros: {},
+  macros: {
+    fontSize: 14,
+  },
 });
