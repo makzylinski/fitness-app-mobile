@@ -10,7 +10,7 @@ export default function Meal() {
       <ThemedView style={[{ backgroundColor }, styles.card]}>
         <ThemedView style={[styles.info]}>
           <ThemedView style={[{ backgroundColor }]}>
-            <ThemedText>Breakfast</ThemedText>
+            <ThemedText style={styles.mealName}>Breakfast</ThemedText>
             <ThemedText>8:30</ThemedText>
           </ThemedView>
 
@@ -34,6 +34,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   info: {},
+  mealName: {
+    fontWeight: 700,
+    fontSize: 18,
+  },
   action: {},
   kalories: {},
   macros: {},
