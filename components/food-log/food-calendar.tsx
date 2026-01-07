@@ -1,3 +1,4 @@
+import { useThemeColor } from "@/hooks/use-theme-color";
 import { useState } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { ThemedText } from "../ui/themed-text";
@@ -26,6 +27,8 @@ export default function FoodCalendar() {
     return days;
   };
 
+  const primaryColor = useThemeColor({}, "primaryColor");
+
   console.log(displayAllDaysInMonth(month, year));
 
   return (
@@ -36,16 +39,23 @@ export default function FoodCalendar() {
             key={index}
             onPress={() => setSelectedDate(el.getDate())}
           >
-            <ThemedView
-              style={[
-                styles.fullDate,
-                selectedDate === el.getDate() && styles.active,
-              ]}
-            >
-              <ThemedText>
+            <ThemedView style={styles.fullDate}>
+              <ThemedText
+                style={[
+                  styles.dayOfWeek,
+                  selectedDate === el.getDate() && styles.dayOfWeekActive,
+                ]}
+              >
                 {el.toLocaleDateString("en-EN", { weekday: "short" })}
               </ThemedText>
-              <ThemedText style={styles.date}>{el.getDate()}</ThemedText>
+              <ThemedText
+                style={[
+                  styles.date,
+                  selectedDate === el.getDate() && styles.active,
+                ]}
+              >
+                {el.getDate()}
+              </ThemedText>
             </ThemedView>
           </TouchableOpacity>
         ))}
@@ -59,20 +69,29 @@ const styles = StyleSheet.create({
     margin: 20,
   },
   active: {
-    backgroundColor: "red",
-    borderColor: "white",
+    backgroundColor: "#2EC4B6",
+    borderRadius: 25,
+    width: 30,
+    height: 30,
+    justifyContent: "center",
+    alignItems: "center",
   },
   datesContainer: {
     flexDirection: "row",
     overflowX: "scroll",
   },
   fullDate: {
-    borderWidth: 1,
-    borderColor: "red",
-    margin: 10,
+    margin: 20,
+    alignItems: "center",
+  },
+  dayOfWeek: {
+    textAlign: "center",
+  },
+  dayOfWeekActive: {
+    color: "#2EC4B6",
   },
   date: {
     color: "white",
-    alignSelf: "center",
+    textAlign: "center",
   },
 });
