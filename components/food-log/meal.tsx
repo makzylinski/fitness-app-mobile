@@ -28,65 +28,11 @@ export default function Meal({ meal }: MealProps) {
   return (
     <ThemedView style={styles.container}>
       {meal.map((mealDetail, index) => (
-        <ThemedView
-          style={[{ backgroundColor }, styles.card]}
-          key={mealDetail.id}
-        >
-          <Pressable
-            onPress={() =>
-              setIsMealDetailsOpen({
-                index,
-                isOpen: !isMealDetailsOpen?.isOpen,
-              })
-            }
+        <>
+          <ThemedView
+            style={[{ backgroundColor }, styles.card]}
+            key={mealDetail.id}
           >
-            <ThemedView style={styles.info}>
-              <ThemedView style={[{ backgroundColor }, styles.header]}>
-                <ThemedText style={styles.mealName}>
-                  {mealDetail.mealName}
-                </ThemedText>
-                <ThemedText style={[{ color: lighterColorFont }, styles.dot]}>
-                  •
-                </ThemedText>
-                <ThemedText style={[{ color: lighterColorFont }, styles.time]}>
-                  08:30 AM
-                </ThemedText>
-              </ThemedView>
-
-              <ThemedView style={[{ backgroundColor }, styles.macrosContainer]}>
-                <ThemedText style={styles.kalories}>560 kcal</ThemedText>
-                <ThemedText
-                  style={[{ color: lighterColorFont }, styles.macros]}
-                >
-                  P: 24g
-                </ThemedText>
-                <ThemedText
-                  style={[{ color: lighterColorFont }, styles.macros]}
-                >
-                  F: 18g
-                </ThemedText>
-                <ThemedText
-                  style={[{ color: lighterColorFont }, styles.macros]}
-                >
-                  C: 68g
-                </ThemedText>
-              </ThemedView>
-            </ThemedView>
-          </Pressable>
-
-          <ThemedView style={[{ backgroundColor }, styles.action]}>
-            <Pressable onPress={onOpenScanner}>
-              <Ionicons
-                name="barcode-outline"
-                size={28}
-                color={lighterColorFont}
-              />
-            </Pressable>
-
-            <Pressable onPress={onAddMeal}>
-              <Ionicons name="add-circle" size={32} color={primaryColor} />
-            </Pressable>
-
             <Pressable
               onPress={() =>
                 setIsMealDetailsOpen({
@@ -95,10 +41,79 @@ export default function Meal({ meal }: MealProps) {
                 })
               }
             >
-              <Ionicons name="chevron-up" size={28} color={lighterColorFont} />
+              <ThemedView style={styles.info}>
+                <ThemedView style={[{ backgroundColor }, styles.header]}>
+                  <ThemedText style={styles.mealName}>
+                    {mealDetail.mealName}
+                  </ThemedText>
+                  <ThemedText style={[{ color: lighterColorFont }, styles.dot]}>
+                    •
+                  </ThemedText>
+                  <ThemedText
+                    style={[{ color: lighterColorFont }, styles.time]}
+                  >
+                    08:30 AM
+                  </ThemedText>
+                </ThemedView>
+
+                <ThemedView
+                  style={[{ backgroundColor }, styles.macrosContainer]}
+                >
+                  <ThemedText style={styles.kalories}>560 kcal</ThemedText>
+                  <ThemedText
+                    style={[{ color: lighterColorFont }, styles.macros]}
+                  >
+                    P: 24g
+                  </ThemedText>
+                  <ThemedText
+                    style={[{ color: lighterColorFont }, styles.macros]}
+                  >
+                    F: 18g
+                  </ThemedText>
+                  <ThemedText
+                    style={[{ color: lighterColorFont }, styles.macros]}
+                  >
+                    C: 68g
+                  </ThemedText>
+                </ThemedView>
+              </ThemedView>
             </Pressable>
+
+            <ThemedView style={[{ backgroundColor }, styles.action]}>
+              <Pressable onPress={onOpenScanner}>
+                <Ionicons
+                  name="barcode-outline"
+                  size={28}
+                  color={lighterColorFont}
+                />
+              </Pressable>
+
+              <Pressable onPress={onAddMeal}>
+                <Ionicons name="add-circle" size={32} color={primaryColor} />
+              </Pressable>
+
+              <Pressable
+                onPress={() =>
+                  setIsMealDetailsOpen({
+                    index,
+                    isOpen: !isMealDetailsOpen?.isOpen,
+                  })
+                }
+              >
+                <Ionicons
+                  name="chevron-up"
+                  size={28}
+                  color={lighterColorFont}
+                />
+              </Pressable>
+            </ThemedView>
           </ThemedView>
-        </ThemedView>
+          {isMealDetailsOpen?.index === index && isMealDetailsOpen.isOpen && (
+            <ThemedView>
+              <ThemedText>elo</ThemedText>
+            </ThemedView>
+          )}
+        </>
       ))}
     </ThemedView>
   );
