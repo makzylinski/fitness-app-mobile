@@ -1,6 +1,6 @@
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { Ionicons } from "@expo/vector-icons";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
@@ -13,10 +13,7 @@ type MealProps = {
 };
 
 export default function Meal({ meal }: MealProps) {
-  const [isMealDetailsOpen, setIsMealDetailsOpen] = useState<{
-    index: number;
-    isOpen: boolean;
-  }>();
+  const [openMealIndexes, setOpenMealIndexes] = useState<number[]>([]);
 
   const backgroundColor = useThemeColor({}, "inputBackground");
   const lighterColorFont = useThemeColor({}, "inputLabel");
@@ -25,22 +22,22 @@ export default function Meal({ meal }: MealProps) {
   const onOpenScanner = () => console.log("open phone camera");
   const onAddMeal = () => console.log("on Add Meal");
 
+  const toggleMeal = (index: number) => {
+    if (openMealIndexes.includes(index)) {
+      setOpenMealIndexes(openMealIndexes.filter((i) => i !== index));
+    } else {
+      setOpenMealIndexes([...openMealIndexes, index]);
+    }
+  };
+
   return (
     <ThemedView style={styles.container}>
       {meal.map((mealDetail, index) => (
-        <>
+        <Fragment key={mealDetail.id}>
           <ThemedView
             style={[{ backgroundColor }, styles.card]}
-            key={mealDetail.id}
           >
-            <Pressable
-              onPress={() =>
-                setIsMealDetailsOpen({
-                  index,
-                  isOpen: !isMealDetailsOpen?.isOpen,
-                })
-              }
-            >
+            <Pressable onPress={() => toggleMeal(index)}>
               <ThemedView style={styles.info}>
                 <ThemedView style={[{ backgroundColor }, styles.header]}>
                   <ThemedText style={styles.mealName}>
@@ -92,14 +89,7 @@ export default function Meal({ meal }: MealProps) {
                 <Ionicons name="add-circle" size={32} color={primaryColor} />
               </Pressable>
 
-              <Pressable
-                onPress={() =>
-                  setIsMealDetailsOpen({
-                    index,
-                    isOpen: !isMealDetailsOpen?.isOpen,
-                  })
-                }
-              >
+              <Pressable onPress={() => toggleMeal(index)}>
                 <Ionicons
                   name="chevron-up"
                   size={28}
@@ -108,12 +98,12 @@ export default function Meal({ meal }: MealProps) {
               </Pressable>
             </ThemedView>
           </ThemedView>
-          {isMealDetailsOpen?.index === index && isMealDetailsOpen.isOpen && (
+          {openMealIndexes.includes(index) && (
             <ThemedView>
               <ThemedText>elo</ThemedText>
             </ThemedView>
           )}
-        </>
+        </Fragment>
       ))}
     </ThemedView>
   );
