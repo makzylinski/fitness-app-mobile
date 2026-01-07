@@ -1,4 +1,5 @@
-import { StyleSheet } from "react-native";
+import { useState } from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
 
@@ -7,6 +8,7 @@ export default function FoodCalendar() {
   const day = dateToday.getDate();
   const month = dateToday.getMonth();
   const year = dateToday.getFullYear();
+  const [selectedDate, setSelectedDate] = useState<number | null>(day);
 
   const formattedDate = `${day}/${month}/${year}`;
   console.log(formattedDate);
@@ -30,13 +32,22 @@ export default function FoodCalendar() {
     <ThemedView style={styles.container}>
       <ThemedView style={styles.datesContainer}>
         {displayAllDaysInMonth(month, year).map((el, index) => (
-          <ThemedView style={styles.fullDate} key={index}>
-            {" "}
-            <ThemedText>
-              {el.toLocaleDateString("en-EN", { weekday: "short" })}
-            </ThemedText>
-            <ThemedText style={styles.date}>{el.getDate()}</ThemedText>
-          </ThemedView>
+          <TouchableOpacity
+            key={index}
+            onPress={() => setSelectedDate(el.getDate())}
+          >
+            <ThemedView
+              style={[
+                styles.fullDate,
+                selectedDate === el.getDate() && styles.active,
+              ]}
+            >
+              <ThemedText>
+                {el.toLocaleDateString("en-EN", { weekday: "short" })}
+              </ThemedText>
+              <ThemedText style={styles.date}>{el.getDate()}</ThemedText>
+            </ThemedView>
+          </TouchableOpacity>
         ))}
       </ThemedView>
     </ThemedView>
@@ -46,6 +57,10 @@ export default function FoodCalendar() {
 const styles = StyleSheet.create({
   container: {
     margin: 20,
+  },
+  active: {
+    backgroundColor: "red",
+    borderColor: "white",
   },
   datesContainer: {
     flexDirection: "row",
