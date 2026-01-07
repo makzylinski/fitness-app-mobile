@@ -1,6 +1,6 @@
 import { useThemeColor } from "@/hooks/use-theme-color";
+import { Ionicons } from "@expo/vector-icons";
 import { StyleSheet } from "react-native";
-import { IconSymbol } from "../ui/icon-symbol";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
 
@@ -8,22 +8,29 @@ export default function Meal() {
   const backgroundColor = useThemeColor({}, "inputBackground");
   const fontColor = useThemeColor({}, "inputBorder");
   const lighterColorFont = useThemeColor({}, "inputLabel");
+  const primaryColor = useThemeColor({}, "primaryColor");
+
   return (
     <ThemedView style={styles.container}>
       <ThemedView style={[{ backgroundColor }, styles.card]}>
-        <ThemedView style={[styles.info]}>
-          <ThemedView style={[{ backgroundColor }, styles.mealInfo]}>
+        <ThemedView style={styles.info}>
+          <ThemedView style={[{ backgroundColor }, styles.header]}>
             <ThemedText style={styles.mealName}>Breakfast</ThemedText>
-            <ThemedText style={[{ color: fontColor }]}>8:30</ThemedText>
+            <ThemedText style={[{ color: lighterColorFont }, styles.dot]}>
+              •
+            </ThemedText>
+            <ThemedText style={[{ color: lighterColorFont }, styles.time]}>
+              08:30 AM
+            </ThemedText>
           </ThemedView>
 
-          <ThemedView style={[{ backgroundColor }, styles.mealInfo]}>
+          <ThemedView style={[{ backgroundColor }, styles.macrosContainer]}>
             <ThemedText style={styles.kalories}>560 kcal</ThemedText>
             <ThemedText style={[{ color: lighterColorFont }, styles.macros]}>
               P: 24g
             </ThemedText>
             <ThemedText style={[{ color: lighterColorFont }, styles.macros]}>
-              F: 17g
+              F: 18g
             </ThemedText>
             <ThemedText style={[{ color: lighterColorFont }, styles.macros]}>
               C: 68g
@@ -31,9 +38,9 @@ export default function Meal() {
           </ThemedView>
         </ThemedView>
         <ThemedView style={[{ backgroundColor }, styles.action]}>
-          <IconSymbol size={28} name="house.fill" color={lighterColorFont} />
-          <IconSymbol size={28} name="house.fill" color={lighterColorFont} />
-          <IconSymbol size={28} name="house.fill" color={lighterColorFont} />
+          <Ionicons name="barcode-outline" size={28} color={lighterColorFont} />
+          <Ionicons name="add-circle" size={32} color={primaryColor} />
+          <Ionicons name="chevron-up" size={28} color={lighterColorFont} />
         </ThemedView>
       </ThemedView>
     </ThemedView>
@@ -42,29 +49,47 @@ export default function Meal() {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 20,
+    marginHorizontal: 20,
   },
   card: {
     padding: 20,
     borderRadius: 10,
     flexDirection: "row",
-    gap: 40,
+    justifyContent: "space-between",
+    alignItems: "center",
   },
-  info: {},
-  mealInfo: {
+  info: {
+    flex: 1,
+  },
+  header: {
     flexDirection: "row",
-    gap: 10,
+    alignItems: "center",
+    gap: 8,
   },
   mealName: {
-    fontWeight: 700,
+    fontWeight: "700",
     fontSize: 18,
+  },
+  dot: {
+    fontSize: 16,
+  },
+  time: {
+    fontSize: 14,
+  },
+  macrosContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
   },
   action: {
     flexDirection: "row",
+    alignItems: "center",
+    gap: 16,
   },
   kalories: {
     color: "#2EC4B6",
-    fontWeight: 700,
+    fontWeight: "700",
+    fontSize: 16,
   },
   macros: {
     fontSize: 14,
