@@ -19,6 +19,9 @@ export default function Meal({ meal }: MealProps) {
   const lighterColorFont = useThemeColor({}, "inputLabel");
   const primaryColor = useThemeColor({}, "primaryColor");
 
+  const onOpenScanner = () => console.log("open phone camera");
+  const onAddMeal = () => console.log("on Add Meal");
+
   return (
     <ThemedView style={styles.container}>
       {meal.map((mealDetail, index) => (
@@ -62,13 +65,21 @@ export default function Meal({ meal }: MealProps) {
           </Pressable>
 
           <ThemedView style={[{ backgroundColor }, styles.action]}>
-            <Ionicons
-              name="barcode-outline"
-              size={28}
-              color={lighterColorFont}
-            />
-            <Ionicons name="add-circle" size={32} color={primaryColor} />
-            <Ionicons name="chevron-up" size={28} color={lighterColorFont} />
+            <Pressable onPress={onOpenScanner}>
+              <Ionicons
+                name="barcode-outline"
+                size={28}
+                color={lighterColorFont}
+              />
+            </Pressable>
+
+            <Pressable onPress={onAddMeal}>
+              <Ionicons name="add-circle" size={32} color={primaryColor} />
+            </Pressable>
+
+            <Pressable onPress={() => setIsMealDetailsOpen(!isMealDetailsOpen)}>
+              <Ionicons name="chevron-up" size={28} color={lighterColorFont} />
+            </Pressable>
           </ThemedView>
         </ThemedView>
       ))}
