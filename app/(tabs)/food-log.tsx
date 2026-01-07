@@ -5,10 +5,20 @@ import { ThemedView } from "@/components/ui/themed-view";
 import { StyleSheet } from "react-native";
 
 export default function FoodDiary() {
+  const meals = [
+    {
+      id: 0,
+      mealName: "Breakfast",
+    },
+    {
+      id: 1,
+      mealName: "Dinner",
+    },
+  ];
   return (
     <ThemedView style={styles.container}>
       <FoodCalendar></FoodCalendar>
-      <Meal></Meal>
+      <Meal meal={meals}></Meal>
       <CaloriesCounter></CaloriesCounter>
     </ThemedView>
   );
