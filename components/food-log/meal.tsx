@@ -34,9 +34,7 @@ export default function Meal({ meal }: MealProps) {
     <ThemedView style={styles.container}>
       {meal.map((mealDetail, index) => (
         <Fragment key={mealDetail.id}>
-          <ThemedView
-            style={[{ backgroundColor }, styles.card]}
-          >
+          <ThemedView style={[{ backgroundColor }, styles.card]}>
             <Pressable onPress={() => toggleMeal(index)}>
               <ThemedView style={styles.info}>
                 <ThemedView style={[{ backgroundColor }, styles.header]}>
@@ -91,7 +89,11 @@ export default function Meal({ meal }: MealProps) {
 
               <Pressable onPress={() => toggleMeal(index)}>
                 <Ionicons
-                  name="chevron-up"
+                  name={
+                    openMealIndexes.includes(index)
+                      ? "chevron-up"
+                      : "chevron-down"
+                  }
                   size={28}
                   color={lighterColorFont}
                 />
