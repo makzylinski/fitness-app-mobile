@@ -4,6 +4,7 @@ import { Fragment, useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
+import MealDetails from "./meal-details";
 
 type MealProps = {
   meal: {
@@ -100,11 +101,7 @@ export default function Meal({ meal }: MealProps) {
               </Pressable>
             </ThemedView>
           </ThemedView>
-          {openMealIndexes.includes(index) && (
-            <ThemedView>
-              <ThemedText>elo</ThemedText>
-            </ThemedView>
-          )}
+          {openMealIndexes.includes(index) && <MealDetails></MealDetails>}
         </Fragment>
       ))}
     </ThemedView>
