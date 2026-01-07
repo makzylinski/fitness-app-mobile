@@ -9,20 +9,20 @@ export default function FoodCalendar() {
   const formattedDate = `${day}/${month}/${year}`;
   console.log(formattedDate);
 
-  const displayAllDaysInMonth = () => {
-    const date = dateToday;
+  const displayAllDaysInMonth = (
+    selectedMonth: number,
+    selectedYear: number
+  ) => {
+    const date = new Date(selectedYear, selectedMonth, 1);
     const days = [];
-    const currentMonth = dateToday.getMonth();
-
-    while (dateToday.getMonth() === currentMonth) {
+    while (date.getMonth() === selectedMonth) {
       days.push(new Date(date));
       date.setDate(date.getDate() + 1);
     }
-
     return days;
   };
 
-  console.log(displayAllDaysInMonth());
+  console.log(displayAllDaysInMonth(1, 2026));
 
   return (
     <ThemedView>
