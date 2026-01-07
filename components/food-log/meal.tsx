@@ -1,5 +1,6 @@
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { StyleSheet } from "react-native";
+import { IconSymbol } from "../ui/icon-symbol";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
 
@@ -18,7 +19,6 @@ export default function Meal() {
 
           <ThemedView style={[{ backgroundColor }, styles.mealInfo]}>
             <ThemedText style={styles.kalories}>560 kcal</ThemedText>
-            {/* <ThemedText style={[{ color: lighterColorFont }, styles.macros]}> */}
             <ThemedText style={[{ color: lighterColorFont }, styles.macros]}>
               P: 24g
             </ThemedText>
@@ -28,10 +28,13 @@ export default function Meal() {
             <ThemedText style={[{ color: lighterColorFont }, styles.macros]}>
               C: 68g
             </ThemedText>
-            {/* </ThemedText> */}
           </ThemedView>
         </ThemedView>
-        <ThemedView style={styles.action}></ThemedView>
+        <ThemedView style={[{ backgroundColor }, styles.action]}>
+          <IconSymbol size={28} name="house.fill" color={lighterColorFont} />
+          <IconSymbol size={28} name="house.fill" color={lighterColorFont} />
+          <IconSymbol size={28} name="house.fill" color={lighterColorFont} />
+        </ThemedView>
       </ThemedView>
     </ThemedView>
   );
@@ -44,6 +47,8 @@ const styles = StyleSheet.create({
   card: {
     padding: 20,
     borderRadius: 10,
+    flexDirection: "row",
+    gap: 40,
   },
   info: {},
   mealInfo: {
@@ -54,7 +59,9 @@ const styles = StyleSheet.create({
     fontWeight: 700,
     fontSize: 18,
   },
-  action: {},
+  action: {
+    flexDirection: "row",
+  },
   kalories: {
     color: "#2EC4B6",
     fontWeight: 700,
