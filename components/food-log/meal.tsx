@@ -9,7 +9,7 @@ export default function Meal() {
     <ThemedView style={styles.container}>
       <ThemedView style={[{ backgroundColor }, styles.card]}>
         <ThemedView style={[styles.info]}>
-          <ThemedView style={[{ backgroundColor }]}>
+          <ThemedView style={[{ backgroundColor }, styles.mealInfo]}>
             <ThemedText style={styles.mealName}>Breakfast</ThemedText>
             <ThemedText>8:30</ThemedText>
           </ThemedView>
@@ -34,6 +34,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   info: {},
+  mealInfo: {
+    flexDirection: "row",
+    gap: 10,
+  },
   mealName: {
     fontWeight: 700,
     fontSize: 18,
