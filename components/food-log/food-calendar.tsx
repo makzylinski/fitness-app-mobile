@@ -1,4 +1,3 @@
-import { useThemeColor } from "@/hooks/use-theme-color";
 import { useState } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { ThemedText } from "../ui/themed-text";
@@ -26,10 +25,6 @@ export default function FoodCalendar() {
     }
     return days;
   };
-
-  const primaryColor = useThemeColor({}, "primaryColor");
-
-  console.log(displayAllDaysInMonth(month, year));
 
   return (
     <ThemedView style={styles.container}>
