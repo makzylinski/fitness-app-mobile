@@ -8,13 +8,13 @@ export default function Meal() {
   return (
     <ThemedView style={styles.container}>
       <ThemedView style={[{ backgroundColor }, styles.card]}>
-        <ThemedView style={styles.info}>
-          <ThemedView>
+        <ThemedView style={[styles.info]}>
+          <ThemedView style={[{ backgroundColor }]}>
             <ThemedText>Breakfast</ThemedText>
             <ThemedText>8:30</ThemedText>
           </ThemedView>
 
-          <ThemedView>
+          <ThemedView style={[{ backgroundColor }]}>
             <ThemedText style={styles.kalories}>560</ThemedText>
             <ThemedText style={styles.macros}>P: 24g F: 17g C: 68g</ThemedText>
           </ThemedView>
