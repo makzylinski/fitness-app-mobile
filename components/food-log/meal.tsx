@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   action: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 16,
+    gap: 8,
   },
   kalories: {
     color: "#2EC4B6",
