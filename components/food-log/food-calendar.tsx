@@ -75,6 +75,12 @@ const styles = StyleSheet.create({
     height: 30,
     justifyContent: "center",
     alignItems: "center",
+    color: "black",
+    shadowColor: "#2EC4B6",
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.8,
+    shadowRadius: 10,
+    elevation: 8,
   },
   datesContainer: {
     flexDirection: "row",
@@ -94,5 +100,6 @@ const styles = StyleSheet.create({
   date: {
     color: "white",
     textAlign: "center",
+    lineHeight: 30,
   },
 });
