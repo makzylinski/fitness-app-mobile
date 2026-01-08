@@ -61,7 +61,7 @@ export default function FoodCalendar() {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 20,
+    marginHorizontal: 20,
   },
   active: {
     backgroundColor: "#2EC4B6",
