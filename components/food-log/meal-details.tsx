@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Image, StyleSheet } from "react-native";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
 
@@ -39,7 +39,14 @@ export default function MealDetails({ product }: MealDetailsProps) {
             </ThemedView>
           </ThemedView>
         </ThemedView>
-        <ThemedView style={styles.image}></ThemedView>
+        <ThemedView style={styles.imageContainer}>
+          <Image
+            style={styles.image}
+            source={{
+              uri: "https://www.everydaycheapskate.com/wp-content/uploads/20250407-how-to-cook-boneless-skinless-chicken-breast-on-a-cutting-board-with-thyme-garlic-and-red-peppercorns.png",
+            }}
+          />
+        </ThemedView>
       </ThemedView>
     </ThemedView>
   );
@@ -71,5 +78,12 @@ const styles = StyleSheet.create({
   macroItem: {
     backgroundColor: "#222222",
   },
-  image: {},
+  imageContainer: {
+    backgroundColor: "#222222",
+  },
+  image: {
+    width: 100,
+    height: 100,
+    borderRadius: 8,
+  },
 });
