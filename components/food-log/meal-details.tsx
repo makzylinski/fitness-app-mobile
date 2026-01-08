@@ -1,4 +1,3 @@
-import { useThemeColor } from "@/hooks/use-theme-color";
 import { StyleSheet } from "react-native";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
@@ -7,6 +6,7 @@ type MealDetailsProps = {
   product: {
     id: number;
     name: string;
+    dosage: string;
     macros: {
       kcal: number;
       protein: number;
@@ -17,13 +17,29 @@ type MealDetailsProps = {
 };
 
 export default function MealDetails({ product }: MealDetailsProps) {
-  const backgroundColor = useThemeColor({}, "inputBackground");
-
   return (
     <ThemedView style={styles.container}>
       <ThemedView style={styles.containerLine}> </ThemedView>
-      <ThemedView style={[{ backgroundColor }, styles.card]}>
-        <ThemedText>{product.name}</ThemedText>
+      <ThemedView style={styles.card}>
+        <ThemedView style={styles.cardDetails}>
+          <ThemedText style={styles.productName}>{product.name}</ThemedText>
+          <ThemedText>{product.dosage}</ThemedText>
+          <ThemedView style={styles.macros}>
+            <ThemedView style={styles.macroItem}>
+              <ThemedText>{product.macros.kcal} kcal</ThemedText>
+            </ThemedView>
+            <ThemedView style={styles.macroItem}>
+              <ThemedText>P: {product.macros.protein}</ThemedText>
+            </ThemedView>
+            <ThemedView style={styles.macroItem}>
+              <ThemedText>C: {product.macros.carbs}</ThemedText>
+            </ThemedView>
+            <ThemedView style={styles.macroItem}>
+              <ThemedText>F: {product.macros.fat}</ThemedText>
+            </ThemedView>
+          </ThemedView>
+        </ThemedView>
+        <ThemedView style={styles.image}></ThemedView>
       </ThemedView>
     </ThemedView>
   );
@@ -45,4 +61,15 @@ const styles = StyleSheet.create({
     width: "94%",
     borderRadius: 10,
   },
+  cardDetails: {
+    backgroundColor: "#222222",
+  },
+  productName: {
+    fontWeight: 700,
+  },
+  macros: {},
+  macroItem: {
+    backgroundColor: "#222222",
+  },
+  image: {},
 });

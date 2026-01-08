@@ -27,6 +27,7 @@ export default function Meal({ meal }: MealProps) {
     product: {
       id: 1,
       name: "Owsianka",
+      dosage: "1 bowl (250g)",
       macros: {
         kcal: 320,
         protein: 30,
