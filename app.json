@@ -23,7 +23,8 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.makzyl.fitnessappmobile"
     },
     "web": {
       "output": "static",
@@ -53,6 +54,13 @@
       "eas": {
         "projectId": "1010ce61-b76e-4944-a5a7-3513c195a378"
       }
+    },
+    "owner": "makzyl",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/1010ce61-b76e-4944-a5a7-3513c195a378"
     }
   }
 }
