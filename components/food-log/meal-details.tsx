@@ -29,8 +29,10 @@ export default function MealDetails({ product }: MealDetailsProps) {
             {product.dosage}
           </ThemedText>
           <ThemedView style={styles.macros}>
-            <ThemedView style={styles.macroItem}>
-              <ThemedText>{product.macros.kcal} kcal</ThemedText>
+            <ThemedView style={[styles.macroItem, styles.kcal]}>
+              <ThemedText style={styles.kcalText}>
+                {product.macros.kcal} kcal
+              </ThemedText>
             </ThemedView>
             <ThemedView style={styles.macroItem}>
               <ThemedText>P: {product.macros.protein}</ThemedText>
@@ -84,6 +86,17 @@ const styles = StyleSheet.create({
   macros: {},
   macroItem: {
     backgroundColor: "#222222",
+  },
+  kcal: {
+    backgroundColor: "#3A3A3A",
+    borderWidth: 1,
+    borderRadius: 10,
+    paddingHorizontal: 8,
+    alignSelf: "flex-start",
+  },
+  kcalText: {
+    color: "#ECEDEE",
+    fontSize: 12,
   },
   imageContainer: {
     backgroundColor: "#222222",
