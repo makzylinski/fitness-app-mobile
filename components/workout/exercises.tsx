@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 2,
     borderStyle: "dashed",
+    marginTop: 20,
   },
   addButtonText: {
     fontSize: 16,
