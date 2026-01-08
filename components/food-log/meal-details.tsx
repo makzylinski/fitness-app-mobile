@@ -1,3 +1,4 @@
+import { useThemeColor } from "@/hooks/use-theme-color";
 import { Image, StyleSheet } from "react-native";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
@@ -17,13 +18,16 @@ type MealDetailsProps = {
 };
 
 export default function MealDetails({ product }: MealDetailsProps) {
+  const lighterColorFont = useThemeColor({}, "inputLabel");
   return (
     <ThemedView style={styles.container}>
       <ThemedView style={styles.containerLine}> </ThemedView>
       <ThemedView style={styles.card}>
         <ThemedView style={styles.cardDetails}>
           <ThemedText style={styles.productName}>{product.name}</ThemedText>
-          <ThemedText>{product.dosage}</ThemedText>
+          <ThemedText style={[{ color: lighterColorFont }, styles.dosage]}>
+            {product.dosage}
+          </ThemedText>
           <ThemedView style={styles.macros}>
             <ThemedView style={styles.macroItem}>
               <ThemedText>{product.macros.kcal} kcal</ThemedText>
@@ -73,6 +77,9 @@ const styles = StyleSheet.create({
   },
   productName: {
     fontWeight: 700,
+  },
+  dosage: {
+    fontWeight: 600,
   },
   macros: {},
   macroItem: {
