@@ -4,6 +4,7 @@ import { Fragment, useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
+import MealDetails from "./meal-details";
 
 type MealProps = {
   meal: {
@@ -21,6 +22,20 @@ export default function Meal({ meal }: MealProps) {
 
   const onOpenScanner = () => console.log("open phone camera");
   const onAddMeal = () => console.log("on Add Meal");
+
+  const testMealDetail = {
+    product: {
+      id: 1,
+      name: "Owsianka",
+      dosage: "1 bowl (250g)",
+      macros: {
+        kcal: 320,
+        protein: 30,
+        carbs: 120,
+        fat: 50,
+      },
+    },
+  };
 
   const toggleMeal = (index: number) => {
     if (openMealIndexes.includes(index)) {
@@ -101,9 +116,7 @@ export default function Meal({ meal }: MealProps) {
             </ThemedView>
           </ThemedView>
           {openMealIndexes.includes(index) && (
-            <ThemedView>
-              <ThemedText>elo</ThemedText>
-            </ThemedView>
+            <MealDetails product={testMealDetail.product}></MealDetails>
           )}
         </Fragment>
       ))}
