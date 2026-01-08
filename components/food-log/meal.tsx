@@ -23,6 +23,19 @@ export default function Meal({ meal }: MealProps) {
   const onOpenScanner = () => console.log("open phone camera");
   const onAddMeal = () => console.log("on Add Meal");
 
+  const testMealDetail = {
+    product: {
+      id: 1,
+      name: "Owsianka",
+      macros: {
+        kcal: 320,
+        protein: 30,
+        carbs: 120,
+        fat: 50,
+      },
+    },
+  };
+
   const toggleMeal = (index: number) => {
     if (openMealIndexes.includes(index)) {
       setOpenMealIndexes(openMealIndexes.filter((i) => i !== index));
@@ -101,7 +114,9 @@ export default function Meal({ meal }: MealProps) {
               </Pressable>
             </ThemedView>
           </ThemedView>
-          {openMealIndexes.includes(index) && <MealDetails></MealDetails>}
+          {openMealIndexes.includes(index) && (
+            <MealDetails product={testMealDetail.product}></MealDetails>
+          )}
         </Fragment>
       ))}
     </ThemedView>
