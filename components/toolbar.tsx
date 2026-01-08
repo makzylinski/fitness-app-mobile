@@ -1,14 +1,16 @@
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { Ionicons } from "@expo/vector-icons";
 import { StyleSheet } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ThemedText } from "./ui/themed-text";
 import { ThemedView } from "./ui/themed-view";
 
 export default function Toolbar() {
   const lighterColorFont = useThemeColor({}, "inputLabel");
+  const insets = useSafeAreaInsets();
 
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView style={[styles.container, { paddingTop: insets.top }]}>
       <ThemedView style={styles.main}>
         <Ionicons name="menu" size={24} color={lighterColorFont} />
         <ThemedText style={styles.header}>Nazwa tutaj</ThemedText>

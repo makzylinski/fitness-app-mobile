@@ -33,7 +33,6 @@ export default function Trening() {
       indicatorStyle={{ backgroundColor: colors.primaryColor }}
       style={{
         backgroundColor: colors.background,
-        marginTop: 80,
         marginHorizontal: 20,
       }}
       activeColor={colors.text}

@@ -26,7 +26,6 @@ export default function FoodDiary() {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 50,
     flex: 1,
     position: "relative",
   },
