@@ -8,6 +8,7 @@ export default function CaloriesCounter() {
   const primaryColor = useThemeColor({}, "primaryColor");
   const lighterColorFont = useThemeColor({}, "inputLabel");
 
+// TODO: Change static data to api 
   return (
     <ThemedView style={[styles.container, { backgroundColor }]}>
       <ThemedView style={[styles.calories, { backgroundColor }]}>
