@@ -22,7 +22,7 @@ export default function PieChart() {
   };
 
   return (
-    <ThemedView>
+    <ThemedView style={[{ backgroundColor }]}>
       <ProgressChart
         data={data}
         width={180}
