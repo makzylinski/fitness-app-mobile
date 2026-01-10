@@ -3,6 +3,7 @@ import PieChart from "@/shared/components/pie-chart";
 import { StyleSheet } from "react-native";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
+import CalorieProgressBar from "./calorie-progress-bar";
 
 export default function CalorieSummary() {
   const backgroundColor = useThemeColor({}, "inputBackground");
@@ -14,9 +15,7 @@ export default function CalorieSummary() {
         <ThemedView style={[{ backgroundColor }, styles.kcal]}>
           <ThemedView style={[{ backgroundColor }]}>
             <PieChart></PieChart>
-          </ThemedView>
-          <ThemedView style={[{ backgroundColor }]}>
-            <ThemedText>1450/2000</ThemedText>
+            <CalorieProgressBar></CalorieProgressBar>
           </ThemedView>
         </ThemedView>
         <ThemedView style={[{ backgroundColor }]}>
