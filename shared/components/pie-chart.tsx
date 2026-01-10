@@ -1,21 +1,37 @@
 import { ThemedView } from "@/components/ui/themed-view";
 import { useThemeColor } from "@/hooks/use-theme-color";
-import { StyleSheet } from "react-native";
+import React from "react";
+import { ProgressChart } from "react-native-chart-kit";
 
 export default function PieChart() {
-  const backgroundColor = useThemeColor({}, "inputLabel");
+  const backgroundColor = useThemeColor({}, "inputBackground");
+
+  const data = {
+    data: [0.75],
+  };
+
+  const chartConfig = {
+    backgroundGradientFrom: backgroundColor,
+    backgroundGradientTo: backgroundColor,
+    color: (opacity = 1) => {
+      return `rgba(46, 196, 182, ${opacity})`;
+    },
+    strokeWidth: 10,
+    barPercentage: 0.5,
+    useShadowColorFromDataset: false,
+  };
+
   return (
     <ThemedView>
-      <ThemedView style={[{}, styles.pieChart]}></ThemedView>
+      <ProgressChart
+        data={data}
+        width={180}
+        height={180}
+        strokeWidth={16}
+        radius={60}
+        chartConfig={chartConfig}
+        hideLegend={true}
+      />
     </ThemedView>
   );
 }
-
-const styles = StyleSheet.create({
-  pieChart: {
-    borderRadius: 60,
-    width: 120,
-    height: 120,
-    backgroundColor: "#3A3A3C",
-  },
-});
