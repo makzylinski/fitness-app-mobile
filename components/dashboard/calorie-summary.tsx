@@ -4,7 +4,7 @@ import { ThemedView } from "../ui/themed-view";
 export default function CalorieSummary() {
   return (
     <ThemedView>
-      <ThemedText>CalorieSummary works!</ThemedText>
+      <ThemedText>Today&apos;s Clorie Summary</ThemedText>
     </ThemedView>
   );
 }
