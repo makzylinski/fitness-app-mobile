@@ -1,4 +1,5 @@
 import { useThemeColor } from "@/hooks/use-theme-color";
+import PieChart from "@/shared/components/pie-chart";
 import { StyleSheet } from "react-native";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
@@ -12,7 +13,7 @@ export default function CalorieSummary() {
       <ThemedView style={[{ backgroundColor }, styles.container]}>
         <ThemedView style={[{ backgroundColor }, styles.kcal]}>
           <ThemedView style={[{ backgroundColor }]}>
-            <ThemedText>chart pie</ThemedText>
+            <PieChart></PieChart>
           </ThemedView>
           <ThemedView style={[{ backgroundColor }]}>
             <ThemedText>1450/2000</ThemedText>
