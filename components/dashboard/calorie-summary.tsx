@@ -10,7 +10,17 @@ export default function CalorieSummary() {
     <ThemedView>
       <ThemedText style={styles.header}>Today&apos;s Clorie Summary</ThemedText>
       <ThemedView style={[{ backgroundColor }, styles.container]}>
-        <ThemedText>Elo</ThemedText>
+        <ThemedView style={[{ backgroundColor }, styles.kcal]}>
+          <ThemedView style={[{ backgroundColor }]}>
+            <ThemedText>chart pie</ThemedText>
+          </ThemedView>
+          <ThemedView style={[{ backgroundColor }]}>
+            <ThemedText>1450/2000</ThemedText>
+          </ThemedView>
+        </ThemedView>
+        <ThemedView style={[{ backgroundColor }]}>
+          <ThemedText>macros section</ThemedText>
+        </ThemedView>
       </ThemedView>
     </ThemedView>
   );
@@ -25,8 +35,6 @@ const styles = StyleSheet.create({
     padding: 20,
     marginVertical: 10,
     borderRadius: 16,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
   },
+  kcal: {},
 });
