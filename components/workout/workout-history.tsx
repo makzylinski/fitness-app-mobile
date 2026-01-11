@@ -1,7 +1,7 @@
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
 import { Exercise } from "./exercises";
@@ -117,53 +117,67 @@ export default function WorkoutHistory() {
   };
 
   return (
-    <ThemedView style={styles.container}>
-      {historyWorkouts.map((workout, workoutIndex) => (
-        <View key={workoutIndex}>
-          <ThemedText style={[styles.dateHeader, { color: secondaryText }]}>
-            {formatDate(workout.date)}
-          </ThemedText>
-          <View style={[styles.card, { backgroundColor: inputBackground }]}>
-            <View style={styles.cardHeader}>
-              <View style={styles.headerLeft}>
-                <View style={[styles.badge, { backgroundColor: primaryColor }]}>
-                  <Text style={styles.badgeText}>{workout.timeOfDay}</Text>
+    <ScrollView>
+      <ThemedView style={styles.container}>
+        {historyWorkouts.map((workout, workoutIndex) => (
+          <View key={workoutIndex}>
+            <ThemedText style={[styles.dateHeader, { color: secondaryText }]}>
+              {formatDate(workout.date)}
+            </ThemedText>
+            <View style={[styles.card, { backgroundColor: inputBackground }]}>
+              <View style={styles.cardHeader}>
+                <View style={styles.headerLeft}>
+                  <View
+                    style={[styles.badge, { backgroundColor: primaryColor }]}
+                  >
+                    <Text style={styles.badgeText}>{workout.timeOfDay}</Text>
+                  </View>
+                  <ThemedText
+                    style={[styles.timeText, { color: secondaryText }]}
+                  >
+                    {workout.time}
+                  </ThemedText>
                 </View>
-                <ThemedText style={[styles.timeText, { color: secondaryText }]}>
-                  {workout.time}
-                </ThemedText>
-              </View>
-              <Ionicons
-                name="chevron-forward"
-                size={24}
-                color={secondaryText}
-              />
-            </View>
-            <ThemedText style={styles.workoutName}>{workout.name}</ThemedText>
-            <ThemedView style={styles.divider}></ThemedView>
-            <View style={styles.statsRow}>
-              <View style={styles.statItem}>
                 <Ionicons
-                  name="fitness-outline"
-                  size={18}
-                  color={accentColor}
+                  name="chevron-forward"
+                  size={24}
+                  color={secondaryText}
                 />
-                <ThemedText style={[styles.statText, { color: secondaryText }]}>
-                  {workout.exercises.length} Exercises
-                </ThemedText>
               </View>
-              <View style={styles.statDot} />
-              <View style={styles.statItem}>
-                <Ionicons name="repeat-outline" size={18} color={accentColor} />
-                <ThemedText style={[styles.statText, { color: secondaryText }]}>
-                  {getTotalSets(workout.exercises)} Sets
-                </ThemedText>
+              <ThemedText style={styles.workoutName}>{workout.name}</ThemedText>
+              <ThemedView style={styles.divider}></ThemedView>
+              <View style={styles.statsRow}>
+                <View style={styles.statItem}>
+                  <Ionicons
+                    name="fitness-outline"
+                    size={18}
+                    color={accentColor}
+                  />
+                  <ThemedText
+                    style={[styles.statText, { color: secondaryText }]}
+                  >
+                    {workout.exercises.length} Exercises
+                  </ThemedText>
+                </View>
+                <View style={styles.statDot} />
+                <View style={styles.statItem}>
+                  <Ionicons
+                    name="repeat-outline"
+                    size={18}
+                    color={accentColor}
+                  />
+                  <ThemedText
+                    style={[styles.statText, { color: secondaryText }]}
+                  >
+                    {getTotalSets(workout.exercises)} Sets
+                  </ThemedText>
+                </View>
               </View>
             </View>
           </View>
-        </View>
-      ))}
-    </ThemedView>
+        ))}
+      </ThemedView>
+    </ScrollView>
   );
 }
 
