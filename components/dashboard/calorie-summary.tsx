@@ -1,6 +1,7 @@
 import { useThemeColor } from "@/hooks/use-theme-color";
 import PieChart from "@/shared/components/pie-chart";
 import { StyleSheet } from "react-native";
+import ThemedButton from "../ui/themed-button";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
 import CalorieProgressBar from "./calorie-progress-bar";
@@ -32,6 +33,9 @@ export default function CalorieSummary() {
       maxValue: 320,
     },
   ];
+
+  const onLogMeal = () => console.log("log meal");
+
   return (
     <ThemedView>
       <ThemedText style={styles.header}>Today&apos;s Clorie Summary</ThemedText>
@@ -52,6 +56,7 @@ export default function CalorieSummary() {
           ))}
         </ThemedView>
       </ThemedView>
+      <ThemedButton title="Log Meal" onPress={() => onLogMeal()}></ThemedButton>
     </ThemedView>
   );
 }
