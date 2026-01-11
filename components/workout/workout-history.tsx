@@ -2,6 +2,7 @@ import { useThemeColor } from "@/hooks/use-theme-color";
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
+import ThemedCard from "../ui/themed-card";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
 import { Exercise } from "./exercises";
@@ -124,7 +125,7 @@ export default function WorkoutHistory() {
             <ThemedText style={[styles.dateHeader, { color: secondaryText }]}>
               {formatDate(workout.date)}
             </ThemedText>
-            <View style={[styles.card, { backgroundColor: inputBackground }]}>
+            <ThemedCard style={styles.card}>
               <View style={styles.cardHeader}>
                 <View style={styles.headerLeft}>
                   <View
@@ -173,7 +174,7 @@ export default function WorkoutHistory() {
                   </ThemedText>
                 </View>
               </View>
-            </View>
+            </ThemedCard>
           </View>
         ))}
       </ThemedView>

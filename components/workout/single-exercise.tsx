@@ -1,6 +1,7 @@
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { StyleSheet } from "react-native";
 import { IconSymbol } from "../ui/icon-symbol";
+import ThemedCard from "../ui/themed-card";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
 
@@ -21,77 +22,71 @@ export default function SingleExercise({ exercise }: ExerciseProps) {
 
   return (
     <ThemedView style={styles.container}>
-      <ThemedView style={[{ backgroundColor }, styles.item]}>
-        <ThemedView style={styles.contentWrapper}>
-          <ThemedView style={styles.leftContent}>
-            <ThemedView style={[{ backgroundColor }, styles.nameContainer]}>
-              <ThemedView
-                style={[{ backgroundColor: accent }, styles.orangeBar]}
-              />
-              <ThemedText style={[{ color: textColor }, styles.name]}>
-                {exercise.name}
-              </ThemedText>
-            </ThemedView>
-
-            <ThemedView style={[{ backgroundColor }, styles.exerciseDetails]}>
-              <ThemedView style={[{ backgroundColor }, styles.detailItem]}>
-                <ThemedText style={styles.number}>
-                  {exercise.exercises.length}
-                </ThemedText>
-                <ThemedText style={[{ color: inputLabelColor }, styles.type]}>
-                  Sets
-                </ThemedText>
-              </ThemedView>
-
-              <ThemedText
-                style={[{ color: inputLabelColor }, styles.separator]}
-              >
-                •
-              </ThemedText>
-
-              <ThemedView style={[{ backgroundColor }, styles.detailItem]}>
-                <ThemedText style={styles.number}>
-                  {exercise.exercises.length}
-                </ThemedText>
-                <ThemedText style={[{ color: inputLabelColor }, styles.type]}>
-                  Reps
-                </ThemedText>
-              </ThemedView>
-
-              <ThemedText
-                style={[{ color: inputLabelColor }, styles.separator]}
-              >
-                •
-              </ThemedText>
-
-              <ThemedView style={[{ backgroundColor }, styles.detailItem]}>
-                <ThemedText style={styles.number}>
-                  {exercise.exercises.length}
-                </ThemedText>
-                <ThemedText style={[{ color: inputLabelColor }, styles.type]}>
-                  kg
-                </ThemedText>
-              </ThemedView>
-            </ThemedView>
+      <ThemedCard style={styles.contentWrapper}>
+        <ThemedView style={styles.leftContent}>
+          <ThemedView style={[{ backgroundColor }, styles.nameContainer]}>
+            <ThemedView
+              style={[{ backgroundColor: accent }, styles.orangeBar]}
+            />
+            <ThemedText style={[{ color: textColor }, styles.name]}>
+              {exercise.name}
+            </ThemedText>
           </ThemedView>
 
-          <ThemedView style={[{ backgroundColor }]}>
-            <IconSymbol
-              size={18}
-              name="pencil"
-              color={inputLabelColor}
-              style={styles.iconEdit}
-            />
+          <ThemedView style={[{ backgroundColor }, styles.exerciseDetails]}>
+            <ThemedView style={[{ backgroundColor }, styles.detailItem]}>
+              <ThemedText style={styles.number}>
+                {exercise.exercises.length}
+              </ThemedText>
+              <ThemedText style={[{ color: inputLabelColor }, styles.type]}>
+                Sets
+              </ThemedText>
+            </ThemedView>
 
-            <IconSymbol
-              size={18}
-              name="trash"
-              color={inputLabelColor}
-              style={styles.iconDelete}
-            />
+            <ThemedText style={[{ color: inputLabelColor }, styles.separator]}>
+              •
+            </ThemedText>
+
+            <ThemedView style={[{ backgroundColor }, styles.detailItem]}>
+              <ThemedText style={styles.number}>
+                {exercise.exercises.length}
+              </ThemedText>
+              <ThemedText style={[{ color: inputLabelColor }, styles.type]}>
+                Reps
+              </ThemedText>
+            </ThemedView>
+
+            <ThemedText style={[{ color: inputLabelColor }, styles.separator]}>
+              •
+            </ThemedText>
+
+            <ThemedView style={[{ backgroundColor }, styles.detailItem]}>
+              <ThemedText style={styles.number}>
+                {exercise.exercises.length}
+              </ThemedText>
+              <ThemedText style={[{ color: inputLabelColor }, styles.type]}>
+                kg
+              </ThemedText>
+            </ThemedView>
           </ThemedView>
         </ThemedView>
-      </ThemedView>
+
+        <ThemedView style={[{ backgroundColor }]}>
+          <IconSymbol
+            size={18}
+            name="pencil"
+            color={inputLabelColor}
+            style={styles.iconEdit}
+          />
+
+          <IconSymbol
+            size={18}
+            name="trash"
+            color={inputLabelColor}
+            style={styles.iconDelete}
+          />
+        </ThemedView>
+      </ThemedCard>
     </ThemedView>
   );
 }
@@ -103,7 +98,6 @@ const styles = StyleSheet.create({
   item: {
     borderRadius: 10,
     marginTop: 10,
-    padding: 10,
   },
   contentWrapper: {
     flexDirection: "row",
