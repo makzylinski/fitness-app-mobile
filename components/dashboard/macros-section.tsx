@@ -13,11 +13,14 @@ type MacrosProps = {
 
 export default function MacrosSection(props: MacrosProps) {
   const backgroundColor = useThemeColor({}, "inputBackground");
+  const color = useThemeColor({}, "inputLabel");
 
   return (
     <ThemedView>
       <ThemedView style={[{ backgroundColor }, styles.macroWrapper]}>
-        <ThemedText style={styles.macroName}>{props.name}</ThemedText>
+        <ThemedText style={[{ color }, styles.macroName]}>
+          {props.name}
+        </ThemedText>
         <ThemedText style={styles.macroValues}>
           {props.name.slice(0, 1).toUpperCase()}: {props.actualValue} /{" "}
           {props.maxValue}g
@@ -37,6 +40,8 @@ const styles = StyleSheet.create({
   },
   macroName: {
     textTransform: "capitalize",
+    fontWeight: 600,
+    fontSize: 18,
   },
   macroValues: {
     fontWeight: 700,
