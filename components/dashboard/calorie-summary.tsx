@@ -4,6 +4,7 @@ import { StyleSheet } from "react-native";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
 import CalorieProgressBar from "./calorie-progress-bar";
+import MacrosSection from "./macros-section";
 
 export default function CalorieSummary() {
   const backgroundColor = useThemeColor({}, "inputBackground");
@@ -17,7 +18,12 @@ export default function CalorieSummary() {
           <CalorieProgressBar></CalorieProgressBar>
         </ThemedView>
         <ThemedView style={[{ backgroundColor }]}>
-          <ThemedText>macros section</ThemedText>
+          <MacrosSection
+            name="carbs"
+            color="red"
+            actualValue={120}
+            maxValue={160}
+          ></MacrosSection>
         </ThemedView>
       </ThemedView>
     </ThemedView>
