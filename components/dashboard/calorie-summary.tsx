@@ -9,7 +9,29 @@ import MacrosSection from "./macros-section";
 export default function CalorieSummary() {
   const backgroundColor = useThemeColor({}, "inputBackground");
   const accent = useThemeColor({}, "accent");
+  const primaryColor = useThemeColor({}, "primaryColor");
+  const secondaryColor = useThemeColor({}, "secondaryColor");
 
+  const macrosData = [
+    {
+      name: "protein",
+      color: `${primaryColor}`,
+      actualValue: 80,
+      maxValue: 180,
+    },
+    {
+      name: "carbs",
+      color: `${accent}`,
+      actualValue: 120,
+      maxValue: 260,
+    },
+    {
+      name: "fats",
+      color: `${secondaryColor}`,
+      actualValue: 220,
+      maxValue: 320,
+    },
+  ];
   return (
     <ThemedView>
       <ThemedText style={styles.header}>Today&apos;s Clorie Summary</ThemedText>
@@ -19,12 +41,15 @@ export default function CalorieSummary() {
           <CalorieProgressBar></CalorieProgressBar>
         </ThemedView>
         <ThemedView style={[{ backgroundColor }]}>
-          <MacrosSection
-            name="carbs"
-            color={accent}
-            actualValue={120}
-            maxValue={160}
-          ></MacrosSection>
+          {macrosData.map((macro, index) => (
+            <MacrosSection
+              key={index}
+              name={macro.name}
+              color={macro.color}
+              actualValue={macro.actualValue}
+              maxValue={macro.maxValue}
+            ></MacrosSection>
+          ))}
         </ThemedView>
       </ThemedView>
     </ThemedView>

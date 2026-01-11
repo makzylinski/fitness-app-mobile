@@ -16,7 +16,7 @@ export default function MacrosSection(props: MacrosProps) {
   const color = useThemeColor({}, "inputLabel");
 
   return (
-    <ThemedView>
+    <ThemedView style={styles.container}>
       <ThemedView style={[{ backgroundColor }, styles.macroWrapper]}>
         <ThemedText style={[{ color }, styles.macroName]}>
           {props.name}
@@ -34,6 +34,9 @@ export default function MacrosSection(props: MacrosProps) {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    marginVertical: 5,
+  },
   macroWrapper: {
     flexDirection: "row",
     justifyContent: "space-between",
