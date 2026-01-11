@@ -11,12 +11,10 @@ export default function CalorieProgressBar() {
 
   return (
     <ThemedView style={[{ backgroundColor }, styles.container]}>
-      <ThemedView style={[{ backgroundColor }, styles.caloriesConsumed]}>
+      <ThemedView style={{ backgroundColor }}>
         <ThemedView style={[{ backgroundColor }, styles.counter]}>
           <ThemedText style={styles.consumed}>1450</ThemedText>
-          <ThemedText style={[{ color }, styles.calorieLimit]}>
-            / 2500 kcal
-          </ThemedText>
+          <ThemedText style={{ color }}>/ 2500 kcal</ThemedText>
         </ThemedView>
         <ProgressBar color={primaryColor} progressWidth={54}></ProgressBar>
         <ThemedView style={[{ backgroundColor }]}>
@@ -31,12 +29,10 @@ const styles = StyleSheet.create({
   container: {
     width: "60%",
   },
-  caloriesConsumed: {},
   consumed: {
     fontWeight: 700,
     fontSize: 22,
   },
-  calorieLimit: {},
   counter: {
     flexDirection: "row",
     justifyContent: "space-between",
