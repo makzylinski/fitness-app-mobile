@@ -27,7 +27,7 @@ export default function MacrosSection(props: MacrosProps) {
         </ThemedText>
       </ThemedView>
       <ThemedView style={{ backgroundColor }}>
-        <ProgressBar></ProgressBar>
+        <ProgressBar color={props.color} progressWidth={80}></ProgressBar>
       </ThemedView>
     </ThemedView>
   );

@@ -1,16 +1,21 @@
 import { ThemedView } from "@/components/ui/themed-view";
-import { useThemeColor } from "@/hooks/use-theme-color";
 import { StyleSheet } from "react-native";
 
-export default function ProgressBar() {
-  const primaryColor = useThemeColor({}, "primaryColor");
+type ProgressBarProps = {
+  color: string;
+  progressWidth: number;
+};
 
+export default function ProgressBar(props: ProgressBarProps) {
   return (
     <ThemedView style={styles.container}>
       <ThemedView
         style={[
           styles.kcalProgress,
-          { backgroundColor: primaryColor, width: "54%" },
+          {
+            backgroundColor: `${props.color}`,
+            width: `${props.progressWidth}%`,
+          },
         ]}
       />
     </ThemedView>

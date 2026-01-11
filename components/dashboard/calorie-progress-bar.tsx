@@ -7,6 +7,7 @@ import { ThemedView } from "../ui/themed-view";
 export default function CalorieProgressBar() {
   const backgroundColor = useThemeColor({}, "inputBackground");
   const color = useThemeColor({}, "inputLabel");
+  const primaryColor = useThemeColor({}, "primaryColor");
 
   return (
     <ThemedView style={[{ backgroundColor }, styles.container]}>
@@ -17,7 +18,7 @@ export default function CalorieProgressBar() {
             / 2500 kcal
           </ThemedText>
         </ThemedView>
-        <ProgressBar></ProgressBar>
+        <ProgressBar color={primaryColor} progressWidth={54}></ProgressBar>
         <ThemedView style={[{ backgroundColor }]}>
           <ThemedText style={[{ color }]}>1050 kcal remaining</ThemedText>
         </ThemedView>

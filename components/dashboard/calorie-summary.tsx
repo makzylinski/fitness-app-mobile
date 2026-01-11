@@ -8,6 +8,7 @@ import MacrosSection from "./macros-section";
 
 export default function CalorieSummary() {
   const backgroundColor = useThemeColor({}, "inputBackground");
+  const accent = useThemeColor({}, "accent");
 
   return (
     <ThemedView>
@@ -20,7 +21,7 @@ export default function CalorieSummary() {
         <ThemedView style={[{ backgroundColor }]}>
           <MacrosSection
             name="carbs"
-            color="red"
+            color={accent}
             actualValue={120}
             maxValue={160}
           ></MacrosSection>
