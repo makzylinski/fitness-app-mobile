@@ -12,6 +12,7 @@ export default function CalorieSummary() {
   const accent = useThemeColor({}, "accent");
   const primaryColor = useThemeColor({}, "primaryColor");
   const secondaryColor = useThemeColor({}, "secondaryColor");
+  const borderBottomColor = useThemeColor({}, "inputBorder");
 
   const macrosData = [
     {
@@ -40,7 +41,12 @@ export default function CalorieSummary() {
     <ThemedView>
       <ThemedText style={styles.header}>Today&apos;s Clorie Summary</ThemedText>
       <ThemedView style={[{ backgroundColor }, styles.container]}>
-        <ThemedView style={[{ backgroundColor }, styles.caloriesSection]}>
+        <ThemedView
+          style={[
+            { backgroundColor, borderBottomColor },
+            styles.caloriesSection,
+          ]}
+        >
           <PieChart></PieChart>
           <CalorieProgressBar></CalorieProgressBar>
         </ThemedView>
@@ -75,6 +81,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
   },
   caloriesSection: {
+    borderBottomWidth: 1,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
