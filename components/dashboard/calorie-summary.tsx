@@ -2,6 +2,7 @@ import { useThemeColor } from "@/hooks/use-theme-color";
 import PieChart from "@/shared/components/pie-chart";
 import { StyleSheet } from "react-native";
 import ThemedButton from "../ui/themed-button";
+import ThemedCard from "../ui/themed-card";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
 import CalorieProgressBar from "./calorie-progress-bar";
@@ -40,7 +41,7 @@ export default function CalorieSummary() {
   return (
     <ThemedView>
       <ThemedText style={styles.header}>Today&apos;s Clorie Summary</ThemedText>
-      <ThemedView style={[{ backgroundColor }, styles.container]}>
+      <ThemedCard style={styles.container}>
         <ThemedView
           style={[
             { backgroundColor, borderBottomColor },
@@ -65,7 +66,7 @@ export default function CalorieSummary() {
           title="Log Meal"
           onPress={() => onLogMeal()}
         ></ThemedButton>
-      </ThemedView>
+      </ThemedCard>
     </ThemedView>
   );
 }
@@ -81,6 +82,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
   },
   caloriesSection: {
+    paddingBottom: 20,
     borderBottomWidth: 1,
     flexDirection: "row",
     alignItems: "center",
