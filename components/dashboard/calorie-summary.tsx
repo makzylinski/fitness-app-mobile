@@ -16,13 +16,13 @@ export default function CalorieSummary() {
     {
       name: "protein",
       color: `${primaryColor}`,
-      actualValue: 80,
+      actualValue: 100,
       maxValue: 180,
     },
     {
       name: "carbs",
       color: `${accent}`,
-      actualValue: 120,
+      actualValue: 80,
       maxValue: 260,
     },
     {

@@ -15,6 +15,9 @@ export default function MacrosSection(props: MacrosProps) {
   const backgroundColor = useThemeColor({}, "inputBackground");
   const color = useThemeColor({}, "inputLabel");
 
+  const calculatePercentage = (): number =>
+    (props.actualValue / props.maxValue) * 100;
+
   return (
     <ThemedView style={styles.container}>
       <ThemedView style={[{ backgroundColor }, styles.macroWrapper]}>
@@ -27,7 +30,10 @@ export default function MacrosSection(props: MacrosProps) {
         </ThemedText>
       </ThemedView>
       <ThemedView style={{ backgroundColor }}>
-        <ProgressBar color={props.color} progressWidth={80}></ProgressBar>
+        <ProgressBar
+          color={props.color}
+          progressWidth={calculatePercentage()}
+        ></ProgressBar>
       </ThemedView>
     </ThemedView>
   );
