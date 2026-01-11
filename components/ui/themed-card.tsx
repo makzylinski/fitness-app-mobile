@@ -17,18 +17,16 @@ export default function ThemedCard({
   const backgroundColor = useThemeColor({}, "inputBackground");
 
   return (
-    <ThemedView>
-      <ThemedView style={[{ backgroundColor }, styles.card, style]}>
-        {textContent && <ThemedText>{textContent}</ThemedText>}
-        {children}
-      </ThemedView>
+    <ThemedView style={[{ backgroundColor }, styles.card, style]}>
+      {textContent && <ThemedText>{textContent}</ThemedText>}
+      {children}
     </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
   card: {
-    padding: 20,
+    padding: 10,
     marginVertical: 10,
     borderRadius: 10,
   },
