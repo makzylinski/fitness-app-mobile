@@ -1,24 +1,24 @@
 import { useThemeColor } from "@/hooks/use-theme-color";
-import { StyleSheet } from "react-native";
+import { StyleSheet, ViewStyle } from "react-native";
 import { ThemedText } from "./themed-text";
 import { ThemedView } from "./themed-view";
 
 type ThemedCardProps = {
-  borderRadius?: number;
   textContent?: string;
   children?: React.ReactNode;
+  style?: ViewStyle;
 };
 
 export default function ThemedCard({
   textContent,
   children,
-  borderRadius,
+  style,
 }: ThemedCardProps) {
   const backgroundColor = useThemeColor({}, "inputBackground");
 
   return (
     <ThemedView style={styles.container}>
-      <ThemedView style={[{ backgroundColor }, styles.card]}>
+      <ThemedView style={[{ backgroundColor }, styles.card, style]}>
         {textContent && <ThemedText>{textContent}</ThemedText>}
         {children}
       </ThemedView>

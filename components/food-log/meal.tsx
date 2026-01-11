@@ -2,6 +2,7 @@ import { useThemeColor } from "@/hooks/use-theme-color";
 import { Ionicons } from "@expo/vector-icons";
 import { Fragment, useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
+import ThemedCard from "../ui/themed-card";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
 import MealDetails from "./meal-details";
@@ -49,7 +50,7 @@ export default function Meal({ meal }: MealProps) {
     <ThemedView style={styles.container}>
       {meal.map((mealDetail, index) => (
         <Fragment key={mealDetail.id}>
-          <ThemedView style={[{ backgroundColor }, styles.card]}>
+          <ThemedCard style={styles.card}>
             <Pressable onPress={() => toggleMeal(index)}>
               <ThemedView style={styles.info}>
                 <ThemedView style={[{ backgroundColor }, styles.header]}>
@@ -114,7 +115,7 @@ export default function Meal({ meal }: MealProps) {
                 />
               </Pressable>
             </ThemedView>
-          </ThemedView>
+          </ThemedCard>
           {openMealIndexes.includes(index) && (
             <MealDetails product={testMealDetail.product}></MealDetails>
           )}
