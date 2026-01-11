@@ -36,5 +36,6 @@ const styles = StyleSheet.create({
   },
   caloriesSection: {
     flexDirection: "row",
+    justifyContent: "space-between",
   },
 });

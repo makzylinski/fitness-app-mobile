@@ -23,10 +23,10 @@ export default function PieChart() {
   return (
     <ProgressChart
       data={data}
-      width={180}
-      height={180}
-      strokeWidth={16}
-      radius={60}
+      width={120}
+      height={120}
+      strokeWidth={12}
+      radius={40}
       chartConfig={chartConfig}
       hideLegend={true}
     />
