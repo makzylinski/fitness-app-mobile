@@ -1,4 +1,5 @@
 import CalorieSummary from "@/components/dashboard/calorie-summary";
+import ThemedCard from "@/components/ui/themed-card";
 import { ThemedText } from "@/components/ui/themed-text";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { getGreetings } from "@/utils/getGreetings";
@@ -18,6 +19,7 @@ export default function Dashboard() {
           <ThemedText style={{ color }}>
             Comprehensive Summary of your activity
           </ThemedText>
+          <ThemedCard>test</ThemedCard>
         </ThemedView>
         <CalorieSummary></CalorieSummary>
       </ThemedView>
