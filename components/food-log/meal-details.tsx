@@ -1,6 +1,7 @@
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { Ionicons } from "@expo/vector-icons";
 import { Image, Pressable, StyleSheet } from "react-native";
+import ThemedCard from "../ui/themed-card";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
 
@@ -28,7 +29,7 @@ export default function MealDetails({ product }: MealDetailsProps) {
   return (
     <ThemedView style={styles.container}>
       <ThemedView style={[{ backgroundColor }, styles.containerLine]} />
-      <ThemedView style={[{ backgroundColor }, styles.card]}>
+      <ThemedCard style={styles.card}>
         <ThemedView style={[{ backgroundColor }, styles.leftSection]}>
           <ThemedText style={styles.productName}>{product.name}</ThemedText>
           <ThemedText style={[{ color: lighterColorFont }, styles.dosage]}>
@@ -63,13 +64,14 @@ export default function MealDetails({ product }: MealDetailsProps) {
             </ThemedText>
           </Pressable>
         </ThemedView>
+
         <Image
           style={styles.image}
           source={{
             uri: "https://www.everydaycheapskate.com/wp-content/uploads/20250407-how-to-cook-boneless-skinless-chicken-breast-on-a-cutting-board-with-thyme-garlic-and-red-peppercorns.png",
           }}
         />
-      </ThemedView>
+      </ThemedCard>
     </ThemedView>
   );
 }

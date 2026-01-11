@@ -32,8 +32,5 @@ const styles = StyleSheet.create({
     padding: 20,
     marginVertical: 10,
     borderRadius: 10,
-    // flexDirection: "row",
-    // justifyContent: "space-between",
-    // alignItems: "center",
   },
 });
