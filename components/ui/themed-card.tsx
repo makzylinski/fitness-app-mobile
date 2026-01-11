@@ -17,7 +17,7 @@ export default function ThemedCard({
   const backgroundColor = useThemeColor({}, "inputBackground");
 
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView>
       <ThemedView style={[{ backgroundColor }, styles.card, style]}>
         {textContent && <ThemedText>{textContent}</ThemedText>}
         {children}
@@ -27,7 +27,6 @@ export default function ThemedCard({
 }
 
 const styles = StyleSheet.create({
-  container: {},
   card: {
     padding: 20,
     marginVertical: 10,
