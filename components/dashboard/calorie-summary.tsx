@@ -73,7 +73,7 @@ export default function CalorieSummary() {
 const styles = StyleSheet.create({
   header: {
     fontWeight: 700,
-    fontSize: 24,
+    fontSize: 20,
   },
   container: {
     padding: 20,
