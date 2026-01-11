@@ -44,7 +44,7 @@ export default function CalorieSummary() {
           <PieChart></PieChart>
           <CalorieProgressBar></CalorieProgressBar>
         </ThemedView>
-        <ThemedView style={[{ backgroundColor }]}>
+        <ThemedView style={[{ backgroundColor }, styles.macrosSection]}>
           {macrosData.map((macro, index) => (
             <MacrosSection
               key={index}
@@ -55,8 +55,11 @@ export default function CalorieSummary() {
             ></MacrosSection>
           ))}
         </ThemedView>
+        <ThemedButton
+          title="Log Meal"
+          onPress={() => onLogMeal()}
+        ></ThemedButton>
       </ThemedView>
-      <ThemedButton title="Log Meal" onPress={() => onLogMeal()}></ThemedButton>
     </ThemedView>
   );
 }
@@ -75,5 +78,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+  },
+  macrosSection: {
+    marginBottom: 20,
   },
 });
