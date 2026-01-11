@@ -12,11 +12,9 @@ export default function CalorieSummary() {
     <ThemedView>
       <ThemedText style={styles.header}>Today&apos;s Clorie Summary</ThemedText>
       <ThemedView style={[{ backgroundColor }, styles.container]}>
-        <ThemedView style={[{ backgroundColor }, styles.kcal]}>
-          <ThemedView style={[{ backgroundColor }]}>
-            <PieChart></PieChart>
-            <CalorieProgressBar></CalorieProgressBar>
-          </ThemedView>
+        <ThemedView style={[{ backgroundColor }, styles.caloriesSection]}>
+          <PieChart></PieChart>
+          <CalorieProgressBar></CalorieProgressBar>
         </ThemedView>
         <ThemedView style={[{ backgroundColor }]}>
           <ThemedText>macros section</ThemedText>
@@ -36,5 +34,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderRadius: 16,
   },
-  kcal: {},
+  caloriesSection: {
+    flexDirection: "row",
+  },
 });
