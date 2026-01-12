@@ -64,8 +64,8 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 16,
     borderRadius: 16,
+    gap: 10,
   },
   iconContainer: {
     width: 56,
