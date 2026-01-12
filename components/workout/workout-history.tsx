@@ -8,7 +8,7 @@ import { ThemedView } from "../ui/themed-view";
 import { Exercise } from "./exercises";
 
 export default function WorkoutHistory() {
-  const [historyWorkouts, setHistoryWorkouts] = useState<
+  const [historyWorkouts] = useState<
     {
       date: Date;
       name: string;
