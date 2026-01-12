@@ -49,6 +49,7 @@ export default function SingleRecentWorkout({
             { backgroundColor, borderBottomColor },
             styles.container,
             index === workouts.length - 1 && styles.lastContainer,
+            index === 0 && styles.firstContainer,
           ]}
         >
           <ThemedView
@@ -88,6 +89,7 @@ export default function SingleRecentWorkout({
 
 const styles = StyleSheet.create({
   container: {
+    padding: 10,
     flexDirection: "row",
     alignItems: "center",
     borderRadius: 16,
@@ -97,8 +99,12 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 0,
     borderBottomLeftRadius: 0,
   },
+  firstContainer: {
+    paddingTop: 10,
+  },
   lastContainer: {
     borderBottomWidth: 0,
+    paddingBottom: 10,
   },
   iconContainer: {
     width: 56,
