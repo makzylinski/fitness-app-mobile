@@ -1,6 +1,5 @@
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { StyleSheet } from "react-native";
-import ThemedCard from "../ui/themed-card";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
 import SingleRecentWorkout from "./single-recent-workout";
@@ -13,6 +12,19 @@ export default function RecentWorkouts() {
       name: "Upper Body Power",
       date: new Date(),
       duration: "45min",
+      icon: "barbell-outline" as const,
+    },
+    {
+      name: "Morning Run",
+      date: new Date(2026, 9, 24),
+      duration: "5.2 km",
+      icon: "walk-outline" as const,
+    },
+    {
+      name: "Yoga Flow",
+      date: new Date(2026, 9, 22),
+      duration: "30min",
+      icon: "fitness-outline" as const,
     },
   ];
 
@@ -22,16 +34,7 @@ export default function RecentWorkouts() {
         <ThemedText style={styles.header}>Recent Workouts</ThemedText>
         <ThemedText style={{ color: primaryColor }}>View All</ThemedText>
       </ThemedView>
-      <ThemedCard style={styles.container}>
-        {recentWorkouts.map((workout, index) => (
-          <SingleRecentWorkout
-            key={index}
-            name={workout.name}
-            date={workout.date}
-            duration={workout.duration}
-          />
-        ))}
-      </ThemedCard>
+      <SingleRecentWorkout workouts={recentWorkouts} />
     </ThemedView>
   );
 }
