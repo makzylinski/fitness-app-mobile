@@ -1,21 +1,27 @@
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { Ionicons } from "@expo/vector-icons";
 import { StyleSheet } from "react-native";
+import ThemedCard from "../ui/themed-card";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
 
 type SingleRecentWorkoutProps = {
-  name: string;
-  date: Date;
-  duration: string;
-  icon?: keyof typeof Ionicons.glyphMap;
+  workouts: {
+    name: string;
+    date: Date;
+    duration: string;
+    icon?: keyof typeof Ionicons.glyphMap;
+  }[];
 };
 
-export default function SingleRecentWorkout(props: SingleRecentWorkoutProps) {
+export default function SingleRecentWorkout({
+  workouts,
+}: SingleRecentWorkoutProps) {
   const backgroundColor = useThemeColor({}, "inputBackground");
   const textColor = useThemeColor({}, "text");
   const secondaryTextColor = useThemeColor({}, "icon");
   const primaryColor = useThemeColor({}, "primaryColor");
+  const borderBottomColor = useThemeColor({}, "inputBorder");
 
   const formatDate = (date: Date) => {
     const today = new Date();
@@ -35,28 +41,48 @@ export default function SingleRecentWorkout(props: SingleRecentWorkoutProps) {
   };
 
   return (
-    <ThemedView style={[{ backgroundColor }, styles.container]}>
-      <ThemedView
-        style={[styles.iconContainer, { backgroundColor: primaryColor + "33" }]}
-      >
-        <Ionicons
-          name={props.icon || "barbell-outline"}
-          size={32}
-          color={primaryColor}
-        />
-      </ThemedView>
+    <ThemedCard>
+      {workouts.map((workout, index) => (
+        <ThemedView
+          key={index}
+          style={[
+            { backgroundColor, borderBottomColor },
+            styles.container,
+            index === workouts.length - 1 && styles.lastContainer,
+          ]}
+        >
+          <ThemedView
+            style={[
+              styles.iconContainer,
+              { backgroundColor: primaryColor + "33" },
+            ]}
+          >
+            <Ionicons
+              name={workout.icon || "barbell-outline"}
+              size={32}
+              color={primaryColor}
+            />
+          </ThemedView>
 
-      <ThemedView style={styles.workoutDetails}>
-        <ThemedText style={[styles.workoutName, { color: textColor }]}>
-          {props.name}
-        </ThemedText>
-        <ThemedText style={[styles.workoutInfo, { color: secondaryTextColor }]}>
-          {formatDate(props.date)} • {props.duration}
-        </ThemedText>
-      </ThemedView>
+          <ThemedView style={styles.workoutDetails}>
+            <ThemedText style={[styles.workoutName, { color: textColor }]}>
+              {workout.name}
+            </ThemedText>
+            <ThemedText
+              style={[styles.workoutInfo, { color: secondaryTextColor }]}
+            >
+              {formatDate(workout.date)} • {workout.duration}
+            </ThemedText>
+          </ThemedView>
 
-      <Ionicons name="chevron-forward" size={24} color={secondaryTextColor} />
-    </ThemedView>
+          <Ionicons
+            name="chevron-forward"
+            size={24}
+            color={secondaryTextColor}
+          />
+        </ThemedView>
+      ))}
+    </ThemedCard>
   );
 }
 
@@ -64,8 +90,15 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 16,
     borderRadius: 16,
+    gap: 10,
+    paddingVertical: 15,
+    borderBottomWidth: 1,
+    borderBottomRightRadius: 0,
+    borderBottomLeftRadius: 0,
+  },
+  lastContainer: {
+    borderBottomWidth: 0,
   },
   iconContainer: {
     width: 56,
