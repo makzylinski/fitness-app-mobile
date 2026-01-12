@@ -16,6 +16,7 @@ export default function SingleRecentWorkout(props: SingleRecentWorkoutProps) {
   const textColor = useThemeColor({}, "text");
   const secondaryTextColor = useThemeColor({}, "icon");
   const primaryColor = useThemeColor({}, "primaryColor");
+  const borderBottomColor = useThemeColor({}, "inputBorder");
 
   const formatDate = (date: Date) => {
     const today = new Date();
@@ -35,7 +36,9 @@ export default function SingleRecentWorkout(props: SingleRecentWorkoutProps) {
   };
 
   return (
-    <ThemedView style={[{ backgroundColor }, styles.container]}>
+    <ThemedView
+      style={[{ backgroundColor, borderBottomColor }, styles.container]}
+    >
       <ThemedView
         style={[styles.iconContainer, { backgroundColor: primaryColor + "33" }]}
       >
@@ -66,6 +69,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 16,
     gap: 10,
+    paddingBottom: 15,
+    borderBottomWidth: 1,
+    borderBottomRightRadius: 0,
+    borderBottomLeftRadius: 0,
   },
   iconContainer: {
     width: 56,
