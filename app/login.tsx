@@ -7,7 +7,9 @@ import { ThemedText } from "../components/ui/themed-text";
 import { ThemedView } from "../components/ui/themed-view";
 
 export default function Login() {
+  const accent = useThemeColor({}, "accent");
   const color = useThemeColor({}, "inputLabel");
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -45,9 +47,11 @@ export default function Login() {
         title="Log in"
         onPress={() => null}
       ></ThemedButton>
-      <ThemedView>
-        <ThemedText>Don&apos;t have an acoount?</ThemedText>
-        <ThemedText>Sing Up</ThemedText>
+      <ThemedView style={styles.signUpSection}>
+        <ThemedText style={[{ color }, styles.slogan]}>
+          Don&apos;t have an acoount?{" "}
+        </ThemedText>
+        <ThemedText style={[{ color: accent }, styles.cta]}>Sing Up</ThemedText>
       </ThemedView>
     </ThemedView>
   );
@@ -83,5 +87,18 @@ const styles = StyleSheet.create({
   },
   button: {
     marginVertical: 20,
+  },
+  signUpSection: {
+    flexDirection: "row",
+    justifyContent: "center",
+    marginVertical: 30,
+  },
+  cta: {
+    fontWeight: 700,
+    fontSize: 18,
+  },
+  slogan: {
+    fontWeight: 700,
+    fontSize: 18,
   },
 });
