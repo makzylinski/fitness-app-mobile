@@ -1,7 +1,7 @@
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
-import { Pressable, StyleSheet, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, View } from "react-native";
 import ThemedButton from "../components/ui/themed-button";
 import { ThemedInput } from "../components/ui/themed-input";
 import { ThemedText } from "../components/ui/themed-text";
@@ -17,58 +17,68 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <ThemedView style={styles.container}>
-      <ThemedView style={styles.headerContainer}>
-        <View style={[styles.iconContainer, { backgroundColor: primaryColor }]}>
-          <Ionicons name="barbell" size={48} color="#1A1A1A" />
-        </View>
-        <ThemedText style={styles.header}>Nazwa</ThemedText>
-        <ThemedText style={[{ color }, styles.subheader]}>
-          Strength & Nutrition
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.formContainer}>
-        <ThemedInput
-          style={styles.input}
-          placeholder="Enter your email"
-          value={email}
-          label="Email"
-          onChangeText={(text) => setEmail(text)}
-          keyboardType="email-address"
-          autoCapitalize="none"
+    <ScrollView>
+      <ThemedView style={styles.container}>
+        <ThemedView style={styles.headerContainer}>
+          <View
+            style={[styles.iconContainer, { backgroundColor: primaryColor }]}
+          >
+            <Ionicons name="barbell" size={48} color="#1A1A1A" />
+          </View>
+          <ThemedText style={styles.header}>Nazwa</ThemedText>
+          <ThemedText style={[{ color }, styles.subheader]}>
+            Strength & Nutrition
+          </ThemedText>
+        </ThemedView>
+        <ThemedView style={styles.formContainer}>
+          <ThemedInput
+            style={styles.input}
+            placeholder="Enter your email"
+            value={email}
+            label="Email"
+            onChangeText={(text) => setEmail(text)}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+          <ThemedInput
+            style={styles.input}
+            placeholder="Enter your password"
+            value={password}
+            label="Password"
+            secureTextEntry={!showPassword}
+            onChangeText={(text) => setPassword(text)}
+            rightIcon={
+              <Pressable
+                onPress={() => setShowPassword(!showPassword)}
+                style={{ paddingBottom: 14 }}
+              >
+                <Ionicons
+                  name={showPassword ? "eye-off" : "eye"}
+                  size={20}
+                  color={color}
+                />
+              </Pressable>
+            }
+          />
+          <ThemedText style={[{ color }, styles.resetPassword]}>
+            Forgot Password?
+          </ThemedText>
+        </ThemedView>
+        <ThemedButton
+          style={styles.button}
+          title="Log In"
+          onPress={() => null}
         />
-        <ThemedInput
-          style={styles.input}
-          placeholder="Enter your password"
-          value={password}
-          label="Password"
-          secureTextEntry={!showPassword}
-          onChangeText={(text) => setPassword(text)}
-          rightIcon={
-            <Pressable
-              onPress={() => setShowPassword(!showPassword)}
-              style={{ paddingBottom: 14 }}
-            >
-              <Ionicons
-                name={showPassword ? "eye-off" : "eye"}
-                size={20}
-                color={color}
-              />
-            </Pressable>
-          }
-        />
-        <ThemedText style={[{ color }, styles.resetPassword]}>
-          Forgot Password?
-        </ThemedText>
+        <ThemedView style={styles.signUpSection}>
+          <ThemedText style={[{ color }, styles.slogan]}>
+            Don&apos;t have an account?{" "}
+          </ThemedText>
+          <ThemedText style={[{ color: accent }, styles.cta]}>
+            Sign Up
+          </ThemedText>
+        </ThemedView>
       </ThemedView>
-      <ThemedButton style={styles.button} title="Log In" onPress={() => null} />
-      <ThemedView style={styles.signUpSection}>
-        <ThemedText style={[{ color }, styles.slogan]}>
-          Don&apos;t have an account?{" "}
-        </ThemedText>
-        <ThemedText style={[{ color: accent }, styles.cta]}>Sign Up</ThemedText>
-      </ThemedView>
-    </ThemedView>
+    </ScrollView>
   );
 }
 
