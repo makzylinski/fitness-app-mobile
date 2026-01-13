@@ -39,7 +39,11 @@ export default function Login() {
           Forgot your password?
         </ThemedText>
       </ThemedView>
-      <ThemedButton title="Log in" onPress={() => null}></ThemedButton>
+      <ThemedButton
+        style={styles.button}
+        title="Log in"
+        onPress={() => null}
+      ></ThemedButton>
       <ThemedView>
         <ThemedText>Don&apos;t have an acoount?</ThemedText>
         <ThemedText>Sing Up</ThemedText>
@@ -74,5 +78,8 @@ const styles = StyleSheet.create({
     fontSize: 12,
     alignSelf: "flex-end",
     marginVertical: 10,
+  },
+  button: {
+    marginVertical: 20,
   },
 });
