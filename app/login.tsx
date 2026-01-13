@@ -1,4 +1,5 @@
 import { useThemeColor } from "@/hooks/use-theme-color";
+import { useState } from "react";
 import { StyleSheet } from "react-native";
 import ThemedButton from "../components/ui/themed-button";
 import { ThemedInput } from "../components/ui/themed-input";
@@ -7,6 +8,8 @@ import { ThemedView } from "../components/ui/themed-view";
 
 export default function Login() {
   const color = useThemeColor({}, "inputLabel");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <ThemedView style={styles.container}>
@@ -18,8 +21,20 @@ export default function Login() {
         </ThemedText>
       </ThemedView>
       <ThemedView>
-        <ThemedInput></ThemedInput>
-        <ThemedInput></ThemedInput>
+        <ThemedInput
+          style={styles.input}
+          placeholder="Enter your email"
+          value={email}
+          label="Email"
+          onChangeText={(name) => setEmail(name)}
+        />
+        <ThemedInput
+          style={styles.input}
+          placeholder="Enter your password"
+          value={password}
+          label="Password"
+          onChangeText={(name) => setPassword(name)}
+        />
       </ThemedView>
       <ThemedButton title="Log in" onPress={() => null}></ThemedButton>
       <ThemedView>
@@ -45,4 +60,12 @@ const styles = StyleSheet.create({
     paddingBottom: 12,
   },
   subheader: {},
+  input: {
+    height: 40,
+    width: 150,
+    borderRadius: 10,
+    padding: 20,
+    fontWeight: 600,
+    fontSize: 14,
+  },
 });
