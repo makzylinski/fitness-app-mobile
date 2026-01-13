@@ -33,9 +33,10 @@ export default function Login() {
           placeholder="Enter your password"
           value={password}
           label="Password"
+          secureTextEntry={true}
           onChangeText={(name) => setPassword(name)}
         />
-        <ThemedText style={styles.resetPassword}>
+        <ThemedText style={[{ color }, styles.resetPassword]}>
           Forgot your password?
         </ThemedText>
       </ThemedView>
@@ -73,6 +74,7 @@ const styles = StyleSheet.create({
     padding: 15,
     fontWeight: 600,
     fontSize: 14,
+    marginBottom: 10,
   },
   resetPassword: {
     fontSize: 12,
