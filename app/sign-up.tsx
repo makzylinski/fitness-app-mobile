@@ -1,3 +1,4 @@
+import ThemedButton from "@/components/ui/themed-button";
 import { ThemedInput } from "@/components/ui/themed-input";
 import { ThemedText } from "@/components/ui/themed-text";
 import { ThemedView } from "@/components/ui/themed-view";
@@ -77,6 +78,7 @@ export default function SignUp() {
           }
         />
       </ThemedView>
+      <ThemedButton style={styles.button} title="Log In" onPress={() => null} />
     </ThemedView>
   );
 }
@@ -107,5 +109,10 @@ const styles = StyleSheet.create({
     padding: 16,
     fontSize: 16,
     marginBottom: 20,
+  },
+  button: {
+    marginBottom: 30,
+    borderRadius: 16,
+    paddingVertical: 18,
   },
 });
