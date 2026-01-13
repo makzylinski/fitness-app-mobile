@@ -6,7 +6,12 @@ import { useThemeColor } from "@/hooks/use-theme-color";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { useState } from "react";
-import { Pressable, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 
 export default function SignUp() {
   const [name, setName] = useState("");
@@ -15,114 +20,115 @@ export default function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [agreedToTerms, setAgreedToTerms] = useState(false);
 
   const color = useThemeColor({}, "inputLabel");
   const primaryColor = useThemeColor({}, "primaryColor");
   const textColor = useThemeColor({}, "text");
 
   return (
-    <ThemedView style={styles.container}>
-      <ThemedView style={styles.headerContainer}>
-        <ThemedText style={styles.header}>Create Account</ThemedText>
-      </ThemedView>
-
-      <ThemedView style={styles.formContainer}>
-        <ThemedInput
-          style={styles.input}
-          placeholder="Enter your name"
-          value={name}
-          label="Full Name"
-          onChangeText={(text) => setName(text)}
-        />
-        <ThemedInput
-          style={styles.input}
-          placeholder="example@email.com"
-          value={email}
-          label="Email Address"
-          onChangeText={(text) => setEmail(text)}
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-
-        <ThemedInput
-          style={styles.input}
-          placeholder="Create a password"
-          value={password}
-          label="Password"
-          secureTextEntry={!showPassword}
-          onChangeText={(text) => setPassword(text)}
-          rightIcon={
-            <Pressable
-              onPress={() => setShowPassword(!showPassword)}
-              style={{ paddingBottom: 14 }}
-            >
-              <Ionicons
-                name={showPassword ? "eye-off" : "eye"}
-                size={20}
-                color={color}
-              />
-            </Pressable>
-          }
-        />
-        <ThemedInput
-          style={styles.input}
-          placeholder="Repeat your password"
-          value={confirmPassword}
-          label="Confirm Password"
-          secureTextEntry={!showConfirmPassword}
-          onChangeText={(text) => setConfirmPassword(text)}
-          rightIcon={
-            <Pressable
-              onPress={() => setShowConfirmPassword(!showConfirmPassword)}
-              style={{ paddingBottom: 14 }}
-            >
-              <Ionicons
-                name={showConfirmPassword ? "eye-off" : "eye"}
-                size={20}
-                color={color}
-              />
-            </Pressable>
-          }
-        />
-      </ThemedView>
-
-      <ThemedView style={styles.bottomContainer}>
-        <ThemedButton
-          style={styles.button}
-          title="Sign Up"
-          onPress={() => null}
-        />
-
-        <ThemedView style={styles.dividerContainer}>
-          <ThemedView style={styles.divider} />
-          <ThemedText style={styles.dividerText}>OR</ThemedText>
-          <ThemedView style={styles.divider} />
+    <ScrollView>
+      <ThemedView style={styles.container}>
+        <ThemedView style={styles.headerContainer}>
+          <ThemedText style={styles.header}>Create Account</ThemedText>
         </ThemedView>
 
-        <TouchableOpacity
-          style={styles.googleButton}
-          onPress={() => null}
-          activeOpacity={0.7}
-        >
-          <Ionicons name="logo-google" size={20} color={textColor} />
-          <ThemedText style={styles.googleButtonText}>
-            Sign up with Google
-          </ThemedText>
-        </TouchableOpacity>
+        <ThemedView style={styles.formContainer}>
+          <ThemedInput
+            style={styles.input}
+            placeholder="Enter your name"
+            value={name}
+            label="Full Name"
+            onChangeText={(text) => setName(text)}
+          />
+          <ThemedInput
+            style={styles.input}
+            placeholder="example@email.com"
+            value={email}
+            label="Email Address"
+            onChangeText={(text) => setEmail(text)}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
 
-        <ThemedView style={styles.loginContainer}>
-          <ThemedText style={styles.loginText}>
-            Already have an account?{" "}
-            <TouchableOpacity onPress={() => router.push("/login")}>
-              <ThemedText style={[styles.link, { color: primaryColor }]}>
-                Log In
-              </ThemedText>
-            </TouchableOpacity>
-          </ThemedText>
+          <ThemedInput
+            style={styles.input}
+            placeholder="Create a password"
+            value={password}
+            label="Password"
+            secureTextEntry={!showPassword}
+            onChangeText={(text) => setPassword(text)}
+            rightIcon={
+              <Pressable
+                onPress={() => setShowPassword(!showPassword)}
+                style={{ paddingBottom: 14 }}
+              >
+                <Ionicons
+                  name={showPassword ? "eye-off" : "eye"}
+                  size={20}
+                  color={color}
+                />
+              </Pressable>
+            }
+          />
+          <ThemedInput
+            style={styles.input}
+            placeholder="Repeat your password"
+            value={confirmPassword}
+            label="Confirm Password"
+            secureTextEntry={!showConfirmPassword}
+            onChangeText={(text) => setConfirmPassword(text)}
+            rightIcon={
+              <Pressable
+                onPress={() => setShowConfirmPassword(!showConfirmPassword)}
+                style={{ paddingBottom: 14 }}
+              >
+                <Ionicons
+                  name={showConfirmPassword ? "eye-off" : "eye"}
+                  size={20}
+                  color={color}
+                />
+              </Pressable>
+            }
+          />
+        </ThemedView>
+
+        <ThemedView style={styles.bottomContainer}>
+          <ThemedButton
+            style={styles.button}
+            title="Sign Up"
+            onPress={() => null}
+          />
+
+          <ThemedView style={styles.dividerContainer}>
+            <ThemedView style={styles.divider} />
+            <ThemedText style={styles.dividerText}>OR</ThemedText>
+            <ThemedView style={styles.divider} />
+          </ThemedView>
+
+          <TouchableOpacity
+            style={styles.googleButton}
+            onPress={() => null}
+            activeOpacity={0.7}
+          >
+            <Ionicons name="logo-google" size={20} color={textColor} />
+            <ThemedText style={styles.googleButtonText}>
+              Sign up with Google
+            </ThemedText>
+          </TouchableOpacity>
+
+          <ThemedView style={styles.loginContainer}>
+            <ThemedText style={styles.loginText}>
+              Already have an account?{" "}
+              <TouchableOpacity onPress={() => router.push("/login")}>
+                <ThemedText style={[styles.link, { color: primaryColor }]}>
+                  Log In
+                </ThemedText>
+              </TouchableOpacity>
+            </ThemedText>
+          </ThemedView>
         </ThemedView>
       </ThemedView>
-    </ThemedView>
+    </ScrollView>
   );
 }
 
