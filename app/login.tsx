@@ -35,6 +35,9 @@ export default function Login() {
           label="Password"
           onChangeText={(name) => setPassword(name)}
         />
+        <ThemedText style={styles.resetPassword}>
+          Forgot your password?
+        </ThemedText>
       </ThemedView>
       <ThemedButton title="Log in" onPress={() => null}></ThemedButton>
       <ThemedView>
@@ -61,11 +64,15 @@ const styles = StyleSheet.create({
   },
   subheader: {},
   input: {
-    height: 40,
     width: 150,
     borderRadius: 10,
-    padding: 20,
+    padding: 15,
     fontWeight: 600,
     fontSize: 14,
+  },
+  resetPassword: {
+    fontSize: 12,
+    alignSelf: "flex-end",
+    marginVertical: 10,
   },
 });
