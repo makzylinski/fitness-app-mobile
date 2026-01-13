@@ -14,6 +14,8 @@ export default function Toolbar() {
 
   const navigateToLogin = () => router.push("/login");
 
+  const navigateToSignUp = () => router.push("/sign-up");
+
   return (
     <ThemedView style={[styles.container, { paddingTop: insets.top }]}>
       <ThemedView style={styles.main}>
@@ -22,11 +24,14 @@ export default function Toolbar() {
       </ThemedView>
 
       <ThemedView style={styles.icons}>
-        <Ionicons
-          name="notifications-outline"
-          size={24}
-          color={lighterColorFont}
-        />
+        <Pressable onPress={() => navigateToSignUp()}>
+          <Ionicons
+            name="notifications-outline"
+            size={24}
+            color={lighterColorFont}
+          />
+        </Pressable>
+
         <Pressable onPress={() => navigateToLogin()}>
           <Ionicons name="person-outline" size={24} color={lighterColorFont} />
         </Pressable>
