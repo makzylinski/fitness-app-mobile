@@ -27,8 +27,9 @@ export default function Toolbar() {
           size={24}
           color={lighterColorFont}
         />
-        <Pressable onPress={() => navigateToLogin()}></Pressable>
-        <Ionicons name="person-outline" size={24} color={lighterColorFont} />
+        <Pressable onPress={() => navigateToLogin()}>
+          <Ionicons name="person-outline" size={24} color={lighterColorFont} />
+        </Pressable>
       </ThemedView>
     </ThemedView>
   );
