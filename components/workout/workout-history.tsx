@@ -139,11 +139,7 @@ export default function WorkoutHistory() {
                     {workout.time}
                   </ThemedText>
                 </View>
-                <Ionicons
-                  name="chevron-forward"
-                  size={24}
-                  color={secondaryText}
-                />
+                <Ionicons name="chevron-down" size={24} color={secondaryText} />
               </View>
               <ThemedText style={styles.workoutName}>{workout.name}</ThemedText>
               <ThemedView style={styles.divider}></ThemedView>
