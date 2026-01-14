@@ -111,19 +111,20 @@ const styles = StyleSheet.create({
   setCellWrapper: {
     backgroundColor: "#373737",
     flex: 1,
-    flexDirection: "row",
+    position: "relative",
     alignItems: "center",
     justifyContent: "center",
-    gap: 6,
   },
   setNumber: {
     fontSize: 15,
     textAlign: "center",
   },
   prBadge: {
+    position: "absolute",
+    left: 10,
     paddingHorizontal: 8,
     paddingVertical: 3,
-    borderRadius: 10,
+    borderRadius: 50,
   },
   prText: {
     fontSize: 10,

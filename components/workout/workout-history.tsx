@@ -1,7 +1,7 @@
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import ThemedCard from "../ui/themed-card";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
@@ -9,6 +9,7 @@ import { Exercise } from "./exercises";
 import WorkoutSummary from "./workout-summary";
 
 export default function WorkoutHistory() {
+  const [openWorkoutIndexes, setOpenWorkoutIndexes] = useState<number[]>([]);
   const [historyWorkouts] = useState<
     {
       date: Date;
@@ -56,7 +57,7 @@ export default function WorkoutHistory() {
       ],
     },
     {
-      date: new Date(2026, 0, 3), // 3 stycznia 2026
+      date: new Date(2026, 0, 3),
       name: "Lower Body Strength",
       timeOfDay: "Evening",
       time: "18:30",
@@ -107,6 +108,16 @@ export default function WorkoutHistory() {
     return exercises.reduce((total, ex) => total + ex.exercises.length, 0);
   };
 
+  const toggleWorkouts = (index: number) => {
+    if (openWorkoutIndexes.includes(index)) {
+      setOpenWorkoutIndexes(openWorkoutIndexes.filter((i) => i !== index));
+    } else {
+      setOpenWorkoutIndexes([...openWorkoutIndexes, index]);
+    }
+
+    console.log(openWorkoutIndexes);
+  };
+
   const formatDate = (date: Date) => {
     return date
       .toLocaleDateString("en-US", {
@@ -139,11 +150,17 @@ export default function WorkoutHistory() {
                     {workout.time}
                   </ThemedText>
                 </View>
-                <Ionicons
-                  name="chevron-forward"
-                  size={24}
-                  color={secondaryText}
-                />
+                <Pressable onPress={() => toggleWorkouts(workoutIndex)}>
+                  <Ionicons
+                    name={
+                      openWorkoutIndexes.includes(workoutIndex)
+                        ? "chevron-down"
+                        : "chevron-up"
+                    }
+                    size={24}
+                    color={secondaryText}
+                  />
+                </Pressable>
               </View>
               <ThemedText style={styles.workoutName}>{workout.name}</ThemedText>
               <ThemedView style={styles.divider}></ThemedView>
@@ -174,7 +191,9 @@ export default function WorkoutHistory() {
                   </ThemedText>
                 </View>
               </View>
-              <WorkoutSummary></WorkoutSummary>
+              {openWorkoutIndexes.includes(workoutIndex) && (
+                <WorkoutSummary></WorkoutSummary>
+              )}
             </ThemedCard>
           </ThemedView>
         ))}
