@@ -45,8 +45,8 @@ export default function ExerciseRow({ item }: ExerciseRowProps) {
 
       {/* Rows */}
       {item.exercises.map((set, index) => (
-        <ThemedView key={index} style={[styles.dataRow, { backgroundColor }]}>
-          <ThemedView style={[{ backgroundColor }, styles.setCellWrapper]}>
+        <ThemedView key={index} style={styles.dataRow}>
+          <ThemedView style={styles.setCellWrapper}>
             {set.isPR && (
               <ThemedView style={[styles.prBadge, { backgroundColor: accent }]}>
                 <ThemedText style={styles.prText}>PR</ThemedText>
@@ -100,15 +100,16 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   dataRow: {
+    backgroundColor: "#373737",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingVertical: 16,
-    paddingHorizontal: 16,
+    paddingVertical: 5,
     borderRadius: 8,
     marginBottom: 8,
   },
   setCellWrapper: {
+    backgroundColor: "#373737",
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
