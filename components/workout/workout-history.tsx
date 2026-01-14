@@ -6,6 +6,7 @@ import ThemedCard from "../ui/themed-card";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
 import { Exercise } from "./exercises";
+import WorkoutSummary from "./workout-summary";
 
 export default function WorkoutHistory() {
   const [historyWorkouts] = useState<
@@ -100,7 +101,6 @@ export default function WorkoutHistory() {
 
   const primaryColor = useThemeColor({}, "primaryColor");
   const accentColor = useThemeColor({}, "accent");
-  const inputBackground = useThemeColor({}, "inputBackground");
   const secondaryText = useThemeColor({}, "inputLabel");
 
   const getTotalSets = (exercises: any[]) => {
@@ -121,7 +121,7 @@ export default function WorkoutHistory() {
     <ScrollView>
       <ThemedView style={styles.container}>
         {historyWorkouts.map((workout, workoutIndex) => (
-          <View key={workoutIndex}>
+          <ThemedView key={workoutIndex}>
             <ThemedText style={[styles.dateHeader, { color: secondaryText }]}>
               {formatDate(workout.date)}
             </ThemedText>
@@ -175,7 +175,8 @@ export default function WorkoutHistory() {
                 </View>
               </View>
             </ThemedCard>
-          </View>
+            <WorkoutSummary></WorkoutSummary>
+          </ThemedView>
         ))}
       </ThemedView>
     </ScrollView>
