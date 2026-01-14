@@ -152,7 +152,11 @@ export default function WorkoutHistory() {
                 </View>
                 <Pressable onPress={() => toggleWorkouts(workoutIndex)}>
                   <Ionicons
-                    name="chevron-down"
+                    name={
+                      openWorkoutIndexes.includes(workoutIndex)
+                        ? "chevron-down"
+                        : "chevron-up"
+                    }
                     size={24}
                     color={secondaryText}
                   />
