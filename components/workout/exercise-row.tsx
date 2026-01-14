@@ -47,12 +47,12 @@ export default function ExerciseRow({ item }: ExerciseRowProps) {
       {item.exercises.map((set, index) => (
         <ThemedView key={index} style={styles.dataRow}>
           <ThemedView style={styles.setCellWrapper}>
-            <ThemedText style={styles.setNumber}>{index + 1}</ThemedText>
             {set.isPR && (
               <ThemedView style={[styles.prBadge, { backgroundColor: accent }]}>
                 <ThemedText style={styles.prText}>PR</ThemedText>
               </ThemedView>
             )}
+            <ThemedText style={styles.setNumber}>{index + 1}</ThemedText>
           </ThemedView>
           <ThemedText
             style={[
@@ -111,16 +111,17 @@ const styles = StyleSheet.create({
   setCellWrapper: {
     backgroundColor: "#373737",
     flex: 1,
-    flexDirection: "row",
+    position: "relative",
     alignItems: "center",
     justifyContent: "center",
-    gap: 6,
   },
   setNumber: {
     fontSize: 15,
     textAlign: "center",
   },
   prBadge: {
+    position: "absolute",
+    left: 10,
     paddingHorizontal: 8,
     paddingVertical: 3,
     borderRadius: 50,
