@@ -1,3 +1,4 @@
+import { useThemeColor } from "@/hooks/use-theme-color";
 import React from "react";
 import { FlatList, StyleSheet } from "react-native";
 import { ThemedView } from "../ui/themed-view";
@@ -45,8 +46,10 @@ export default function WorkoutSummary() {
     },
   ]; //TODO: to be changed when API is implemented
 
+  const backgroundColor = useThemeColor({}, "inputBackground");
+
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView style={[{ backgroundColor }, styles.container]}>
       <FlatList
         data={exercises}
         renderItem={({ item }) => <ExerciseRow item={item} />}
