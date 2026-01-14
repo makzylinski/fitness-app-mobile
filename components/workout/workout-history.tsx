@@ -174,8 +174,8 @@ export default function WorkoutHistory() {
                   </ThemedText>
                 </View>
               </View>
+              <WorkoutSummary></WorkoutSummary>
             </ThemedCard>
-            <WorkoutSummary></WorkoutSummary>
           </ThemedView>
         ))}
       </ThemedView>

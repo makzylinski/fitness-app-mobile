@@ -7,22 +7,39 @@ export default function WorkoutSummary() {
   const exercises: Exercise[] = [
     {
       id: 1,
-      name: "Bench Press",
+      name: "Bench Press (Barbell)",
       exercises: [
         {
-          weight: 120,
-          weightUnit: "kg",
-          reps: 8,
-        },
-        {
-          weight: 100,
+          weight: 60,
           weightUnit: "kg",
           reps: 10,
         },
         {
           weight: 80,
           weightUnit: "kg",
+          reps: 8,
+        },
+        {
+          weight: 90,
+          weightUnit: "kg",
+          reps: 5,
+          isPR: true,
+        },
+      ],
+    },
+    {
+      id: 2,
+      name: "Lat Pulldown (Cable)",
+      exercises: [
+        {
+          weight: 45,
+          weightUnit: "kg",
           reps: 12,
+        },
+        {
+          weight: 52,
+          weightUnit: "kg",
+          reps: 10,
         },
       ],
     },
@@ -34,7 +51,7 @@ export default function WorkoutSummary() {
         data={exercises}
         renderItem={({ item }) => <ExerciseRow item={item} />}
         keyExtractor={(item) => item.id.toString()}
-        contentContainerStyle={styles.listContent}
+        scrollEnabled={false}
       />
     </ThemedView>
   );
@@ -42,10 +59,6 @@ export default function WorkoutSummary() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 20,
-  },
-  listContent: {
-    paddingBottom: 20,
+    marginTop: 16,
   },
 });

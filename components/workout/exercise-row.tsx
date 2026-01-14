@@ -10,6 +10,7 @@ export type Exercise = {
     weight: number;
     weightUnit: string;
     reps: number;
+    isPR?: boolean;
   }[];
 };
 
@@ -18,41 +19,57 @@ type ExerciseRowProps = {
 };
 
 export default function ExerciseRow({ item }: ExerciseRowProps) {
-  const borderColor = useThemeColor({}, "inputBorder");
   const labelColor = useThemeColor({}, "inputLabel");
+  const primaryColor = useThemeColor({}, "primaryColor");
+  const accent = useThemeColor({}, "accent");
+  const backgroundColor = useThemeColor({}, "inputBackground");
 
   return (
-    <ThemedView style={styles.exerciseContainer}>
-      <ThemedText style={styles.exerciseName}>{item.name}</ThemedText>
+    <ThemedView style={[{ backgroundColor }, styles.exerciseContainer]}>
+      <ThemedText style={[styles.exerciseName, { color: primaryColor }]}>
+        {item.name}
+      </ThemedText>
 
       {/* Header */}
-      <ThemedView style={[styles.tableRow, styles.headerRow]}>
+      <ThemedView style={[{ backgroundColor }, styles.tableHeader]}>
         <ThemedText style={[styles.headerCell, { color: labelColor }]}>
-          Set
+          SET
         </ThemedText>
         <ThemedText style={[styles.headerCell, { color: labelColor }]}>
-          Weight
+          WEIGHT
         </ThemedText>
         <ThemedText style={[styles.headerCell, { color: labelColor }]}>
-          Reps
+          REPS
         </ThemedText>
       </ThemedView>
 
       {/* Rows */}
       {item.exercises.map((set, index) => (
-        <ThemedView
-          key={index}
-          style={[
-            styles.tableRow,
-            styles.dataRow,
-            { borderTopColor: borderColor },
-          ]}
-        >
-          <ThemedText style={styles.cell}>{index + 1}</ThemedText>
-          <ThemedText style={styles.cell}>
+        <ThemedView key={index} style={[styles.dataRow, { backgroundColor }]}>
+          <ThemedView style={[{ backgroundColor }, styles.setCellWrapper]}>
+            {set.isPR && (
+              <ThemedView style={[styles.prBadge, { backgroundColor: accent }]}>
+                <ThemedText style={styles.prText}>PR</ThemedText>
+              </ThemedView>
+            )}
+            <ThemedText style={styles.setNumber}>{index + 1}</ThemedText>
+          </ThemedView>
+          <ThemedText
+            style={[
+              styles.cellCenter,
+              set.isPR && { color: accent, fontWeight: "600" },
+            ]}
+          >
             {set.weight} {set.weightUnit}
           </ThemedText>
-          <ThemedText style={styles.cell}>{set.reps}</ThemedText>
+          <ThemedText
+            style={[
+              styles.cellCenter,
+              set.isPR && { color: accent, fontWeight: "600" },
+            ]}
+          >
+            {set.reps}
+          </ThemedText>
         </ThemedView>
       ))}
     </ThemedView>
@@ -64,32 +81,57 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   exerciseName: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "700",
     marginBottom: 12,
   },
-  tableRow: {
+  tableHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingVertical: 12,
-    paddingHorizontal: 8,
-  },
-  headerRow: {
-    borderBottomWidth: 2,
-    borderBottomColor: "#ddd",
-  },
-  dataRow: {
-    borderTopWidth: 1,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    marginBottom: 4,
   },
   headerCell: {
     flex: 1,
+    fontSize: 11,
     fontWeight: "700",
-    fontSize: 14,
+    textAlign: "center",
+    letterSpacing: 0.5,
+  },
+  dataRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingVertical: 16,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    marginBottom: 8,
+  },
+  setCellWrapper: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 6,
+  },
+  setNumber: {
+    fontSize: 15,
     textAlign: "center",
   },
-  cell: {
+  prBadge: {
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 10,
+  },
+  prText: {
+    fontSize: 10,
+    fontWeight: "700",
+    color: "#1A1A1A",
+  },
+  cellCenter: {
     flex: 1,
     textAlign: "center",
-    fontSize: 14,
+    fontSize: 15,
   },
 });
