@@ -1,50 +1,232 @@
-# Welcome to your Expo app 👋
+# 💪 Fitness App Mobile
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern, cross-platform fitness tracking application built with React Native and Expo. Track your workouts, monitor your nutrition, and achieve your fitness goals with an intuitive and beautiful interface.
 
-## Get started
+## 🌟 Features
 
-1. Install dependencies
+### 📊 Dashboard
+
+- **Daily calorie tracking** with progress visualization
+- **Macronutrient breakdown** (Protein, Carbs, Fats)
+- **Recent workout history** with quick access
+- Smart greeting based on time of day
+
+### 🏋️ Workout Tracking
+
+- Create and log custom workouts
+- Pre-built exercise suggestions
+- Track sets, reps, and weight
+- Session notes for each workout
+- Workout history and performance tracking
+
+### 🍽️ Food Logging
+
+- Daily meal tracking (Breakfast, Lunch, Dinner, Snacks)
+- Calorie counter with visual feedback
+- Food calendar for historical data
+- Detailed meal information
+
+### 🎨 UI/UX
+
+- **Dark/Light theme support** with seamless switching
+- **Custom themed components** for consistent design
+- **Smooth animations** with React Native Reanimated
+- **Haptic feedback** for enhanced user experience
+- **Tab-based navigation** with custom icons
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- npm or yarn
+- Expo CLI
+- iOS Simulator (for Mac) or Android Emulator
+
+### Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone <repository-url>
+   cd fitness-app-mobile
+   ```
+
+2. **Install dependencies**
 
    ```bash
    npm install
    ```
 
-2. Start the app
+3. **Start the development server**
 
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+4. **Run on your preferred platform**
+   - Press `i` for iOS Simulator
+   - Press `a` for Android Emulator
+   - Scan QR code with Expo Go app on your device
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 📱 Platform Support
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- ✅ iOS
+- ✅ Android
+- ✅ Web (limited support)
 
-## Get a fresh project
+## 🛠️ Tech Stack
 
-When you're ready, run:
+### Core
 
-```bash
-npm run reset-project
+- **React Native** `0.81.5` - Mobile framework
+- **Expo** `~54.0` - Development platform
+- **TypeScript** `5.9.2` - Type safety
+- **React** `19.1.0` - UI library
+
+### Navigation
+
+- **Expo Router** `~6.0` - File-based routing
+- **React Navigation** `7.x` - Navigation library
+
+### UI & Styling
+
+- **Expo Symbols** - Native SF Symbols support
+- **React Native Reanimated** `4.1` - Animations
+- **React Native Gesture Handler** - Gesture support
+- **Custom themed components** - Consistent design system
+
+### Charts & Visualization
+
+- **React Native Chart Kit** - Data visualization
+- **Custom progress bars** - Calorie tracking
+
+### Additional Features
+
+- **Expo Haptics** - Tactile feedback
+- **React Native UI DatePicker** - Date selection
+- **React Native Tab View** - Tab components
+
+## 📁 Project Structure
+
+```
+fitness-app-mobile/
+├── app/                          # Expo Router screens
+│   ├── (tabs)/                  # Tab navigation
+│   │   ├── index.tsx           # Dashboard
+│   │   ├── workout.tsx         # Workout screen
+│   │   └── food-log.tsx        # Food logging
+│   ├── login.tsx               # Authentication
+│   └── _layout.tsx             # Root layout
+├── components/                  # Reusable components
+│   ├── dashboard/              # Dashboard components
+│   ├── workout/                # Workout components
+│   ├── food-log/               # Food log components
+│   ├── ui/                     # UI components (themed)
+│   └── shared/                 # Shared components
+├── constants/                   # Constants & theme
+│   └── theme.ts                # Color scheme & fonts
+├── hooks/                       # Custom React hooks
+├── utils/                       # Utility functions
+└── assets/                      # Static assets
+
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 🎨 Theming
 
-## Learn more
+The app supports both light and dark themes with a carefully crafted color palette:
 
-To learn more about developing your project with Expo, look at the following resources:
+**Primary Colors:**
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- Primary: `#2EC4B6` (Turquoise)
+- Accent: `#FF9F1C` (Orange)
+- Secondary: `#A855F7` (Purple)
 
-## Join the community
+**Dark Theme:**
 
-Join our community of developers creating universal apps.
+- Background: `#1A1A1A`
+- Surface: `#222222`
+- Input: `#2A2A2A`
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+**Light Theme:**
+
+- Background: `#FFFFFF`
+- Surface: `#FAFAFA`
+- Input: `#F5F5F5`
+
+## 🔧 Available Scripts
+
+```bash
+npm start              # Start Expo development server
+npm run android       # Run on Android
+npm run ios          # Run on iOS
+npm run web          # Run on web browser
+npm run lint         # Run ESLint
+npm run update       # Update with EAS
+npm run reset-project # Reset to clean project
+```
+
+## 🏗️ Development
+
+### Adding New Components
+
+All UI components should extend the themed components in `components/ui/`:
+
+- `ThemedView` - Themed container
+- `ThemedText` - Themed text
+- `ThemedCard` - Themed card
+- `ThemedInput` - Themed input
+- `ThemedButton` - Themed button
+
+### Icon Usage
+
+Use the `IconSymbol` component for cross-platform icon support:
+
+```tsx
+<IconSymbol name="dumbbell.fill" size={24} color={primaryColor} />
+```
+
+Supported icons are mapped in `components/ui/icon-symbol.tsx`.
+
+## 📦 Build & Deploy
+
+### Development Build
+
+```bash
+npx eas build --platform ios --profile development
+npx eas build --platform android --profile development
+```
+
+### Production Build
+
+```bash
+npx eas build --platform all --profile production
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is private and proprietary.
+
+## 👨‍💻 Author
+
+**Maks**
+
+## 🙏 Acknowledgments
+
+- Expo team for the amazing framework
+- React Native community
+- All contributors and testers
+
+---
+
+**Note:** This app is under active development. Features and documentation may change.
