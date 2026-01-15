@@ -24,7 +24,13 @@ const MAPPING = {
   "calendar.badge.clock": "calendar-today",
   trash: "delete",
   pencil: "edit",
-} as IconMapping;
+  "play.fill": "play-arrow",
+  "dumbbell.fill": "fitness-center",
+  "list.bullet": "list",
+  "plus.circle.fill": "add-circle",
+  plus: "add",
+  "chart.bar.fill": "bar-chart",
+} as const satisfies Partial<IconMapping>;
 
 /**
  * An icon component that uses native SF Symbols on iOS, and Material Icons on Android and web.

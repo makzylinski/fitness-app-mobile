@@ -1,37 +1,21 @@
-import { IconSymbol } from "@/components/ui/icon-symbol";
 import { ThemedInput } from "@/components/ui/themed-input";
 import { ThemedView } from "@/components/ui/themed-view";
-import Exercises from "@/components/workout/exercises";
 import { useThemeColor } from "@/hooks/use-theme-color";
-import Datepicker from "@/shared/components/datepicker";
 import Notes from "@/shared/components/notes";
-import Timepicker from "@/shared/components/timepicker";
-import dayjs from "dayjs";
 import { useState } from "react";
 import { Pressable, ScrollView, StyleSheet } from "react-native";
-import { DateType } from "react-native-ui-datepicker";
+import { IconSymbol } from "../ui/icon-symbol";
+import ThemedCard from "../ui/themed-card";
+import { ThemedText } from "../ui/themed-text";
 
 export default function LogWorkout() {
-  const [isDatepickerOpen, setIsDatepickerOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<DateType>();
-
-  const [isTimepickerOpen, setIsTimepickerOpen] = useState(false);
-  const [selectedTime, setSelectedTime] = useState<DateType>();
-
   const [notes, setNotes] = useState("");
 
-  const [workoutName, setWorkoutName] = useState("");
-
-  const iconColor = useThemeColor({}, "icon");
-
-  const handleSelectedDate = (date: DateType) => {
-    setSelectedDate(date);
-    setIsDatepickerOpen(false);
-  };
-
-  const handleSelectedTime = (time: DateType) => {
-    setSelectedTime(time);
-  };
+  const [workoutName, setWorkoutName] = useState("Upper Body Workout");
+  const inputLabelColor = useThemeColor({}, "inputLabel");
+  const backgroundColor = useThemeColor({}, "inputBackground");
+  const primaryColor = useThemeColor({}, "primaryColor");
+  const secondaryBackground = useThemeColor({}, "secondaryBackground");
 
   return (
     <ScrollView>
@@ -39,83 +23,112 @@ export default function LogWorkout() {
         {/* <InputSearch /> 
         TODO: this is the search workout input that shall be used in Exercises section
       */}
-        <ThemedInput
-          style={styles.input}
-          placeholder="Upper Body Workout"
-          value={workoutName}
-          label="Workout name"
-          onChangeText={(name) => setWorkoutName(name)}
-        />
-
-        <ThemedView style={styles.dateTimeContainer}>
-          <ThemedView style={styles.dateTimeInputWrapper}>
+        <ThemedCard style={styles.card}>
+          <ThemedView>
             <ThemedInput
-              style={styles.dateTimeInput}
-              placeholder="DD/MM/YYYY"
-              value={
-                selectedDate ? dayjs(selectedDate).format("DD/MM/YYYY") : ""
-              }
-              label="Date"
-              editable={false}
-              rightIcon={
-                <Pressable
-                  onPress={() => setIsDatepickerOpen(!isDatepickerOpen)}
-                >
-                  <IconSymbol
-                    size={12}
-                    name="calendar.badge.clock"
-                    color={iconColor}
-                  />
-                </Pressable>
-              }
+              style={styles.input}
+              placeholder="Lower Body Workout"
+              value={workoutName}
+              onChangeText={(name) => setWorkoutName(name)}
+            />
+            <Notes
+              notes={notes}
+              setNotes={setNotes}
+              placeholder="Add session notes (e.g., focus on slow essentrics)..."
             />
           </ThemedView>
-
-          <ThemedView style={styles.dateTimeInputWrapper}>
-            <ThemedInput
-              style={styles.dateTimeInput}
-              placeholder="HH:mm"
-              value={selectedTime ? dayjs(selectedTime).format("HH:mm") : ""}
-              label="Start time"
-              editable={false}
-              rightIcon={
-                <Pressable
-                  onPress={() => setIsTimepickerOpen(!isTimepickerOpen)}
-                >
-                  <IconSymbol
-                    size={12}
-                    name="calendar.badge.clock"
-                    color={iconColor}
-                  />
-                </Pressable>
-              }
+          <ThemedView style={{ backgroundColor, marginLeft: "auto" }}>
+            <IconSymbol
+              size={24}
+              name="pencil"
+              style={{ paddingTop: 8 }}
+              color={inputLabelColor}
             />
           </ThemedView>
+        </ThemedCard>
+
+        <ThemedView style={styles.sectionHeader}>
+          <ThemedText style={styles.sectionTitle}>
+            SUGGESTED EXERCISES
+          </ThemedText>
         </ThemedView>
 
-        {isDatepickerOpen && (
-          <Datepicker
-            selectedDate={selectedDate}
-            onDateSelect={handleSelectedDate}
-          />
-        )}
+        <ThemedCard
+          style={[
+            styles.exerciseCard,
+            { backgroundColor: secondaryBackground },
+          ]}
+        >
+          <ThemedView
+            style={[
+              styles.exerciseIcon,
+              { backgroundColor: inputLabelColor + "30" },
+            ]}
+          >
+            <IconSymbol
+              name="dumbbell.fill"
+              size={32}
+              color={inputLabelColor}
+            />
+          </ThemedView>
+          <ThemedView
+            style={[styles.exerciseInfo, { backgroundColor: "transparent" }]}
+          >
+            <ThemedText style={styles.exerciseName}>
+              Bench Press (Barbell)
+            </ThemedText>
+            <ThemedText style={styles.exerciseDetails}>
+              4 sets • 8-12 reps
+            </ThemedText>
+          </ThemedView>
+          <Pressable style={styles.addExerciseButton}>
+            <IconSymbol
+              name="plus.circle.fill"
+              size={32}
+              color={primaryColor}
+            />
+          </Pressable>
+        </ThemedCard>
 
-        {isTimepickerOpen && (
-          <Timepicker
-            selectedTime={selectedTime}
-            onTimeSelect={handleSelectedTime}
-            onClose={() => setIsTimepickerOpen(false)}
-          />
-        )}
+        <ThemedCard
+          style={[
+            styles.exerciseCard,
+            { backgroundColor: secondaryBackground },
+          ]}
+        >
+          <ThemedView
+            style={[
+              styles.exerciseIcon,
+              { backgroundColor: inputLabelColor + "30" },
+            ]}
+          >
+            <IconSymbol name="list.bullet" size={32} color={inputLabelColor} />
+          </ThemedView>
+          <ThemedView
+            style={[styles.exerciseInfo, { backgroundColor: "transparent" }]}
+          >
+            <ThemedText style={styles.exerciseName}>Pull-ups</ThemedText>
+            <ThemedText style={styles.exerciseDetails}>
+              3 sets • To failure
+            </ThemedText>
+          </ThemedView>
+          <Pressable style={styles.addExerciseButton}>
+            <IconSymbol
+              name="plus.circle.fill"
+              size={32}
+              color={primaryColor}
+            />
+          </Pressable>
+        </ThemedCard>
 
-        <Notes
-          notes={notes}
-          setNotes={setNotes}
-          label="Notes"
-          placeholder="How are you feeling today?"
-        />
+        {/* <Exercises></Exercises> */}
 
-        <Exercises></Exercises>
+        <Pressable
+          style={[{ backgroundColor: primaryColor }, styles.startButton]}
+        >
+          <IconSymbol name="play.fill" size={24} color="black" />
+          <ThemedText style={styles.startButtonText}>Start Workout</ThemedText>
+        </Pressable>
       </ThemedView>
     </ScrollView>
   );
@@ -127,30 +140,72 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: "center",
   },
-  titleText: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  dateTimeContainer: {
+  card: {
     flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  dateTimeInputWrapper: {
-    width: "48%",
+    padding: 12,
   },
   input: {
-    height: 40,
-    width: 150,
-    borderRadius: 10,
-    padding: 10,
-    fontWeight: 600,
-    fontSize: 12,
+    height: 32,
+    padding: 8,
+    fontWeight: "600",
+    fontSize: 18,
   },
-  dateTimeInput: {
-    height: 40,
-    borderRadius: 10,
-    padding: 10,
-    fontWeight: 600,
+  sectionHeader: {
+    marginTop: 24,
+    marginBottom: 12,
+  },
+  sectionTitle: {
     fontSize: 12,
+    fontWeight: "700",
+    letterSpacing: 1,
+    opacity: 0.6,
+  },
+  exerciseCard: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 16,
+    marginBottom: 12,
+    gap: 12,
+  },
+  exerciseIcon: {
+    width: 56,
+    height: 56,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  exerciseInfo: {
+    flex: 1,
+  },
+  exerciseName: {
+    fontSize: 16,
+    fontWeight: "600",
+    marginBottom: 4,
+  },
+  exerciseDetails: {
+    fontSize: 14,
+    opacity: 0.7,
+  },
+  addExerciseButton: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  startButtonText: {
+    fontSize: 16,
+    fontWeight: "700",
+    color: "black",
+    letterSpacing: 0.5,
+  },
+  startButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 10,
+    textTransform: "uppercase",
+    padding: 18,
+    borderRadius: 12,
   },
 });

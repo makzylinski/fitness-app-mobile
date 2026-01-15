@@ -6,7 +6,7 @@ import { ThemedView } from "./themed-view";
 type ThemedCardProps = {
   textContent?: string;
   children?: React.ReactNode;
-  style?: ViewStyle;
+  style?: ViewStyle | ViewStyle[];
 };
 
 export default function ThemedCard({

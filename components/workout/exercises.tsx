@@ -1,7 +1,5 @@
-import { useThemeColor } from "@/hooks/use-theme-color";
-import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
-import { Pressable, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
 import SingleExercise from "./single-exercise";
@@ -46,8 +44,6 @@ export default function Exercises() {
     },
   ]); // TODO: refactor this to separate type
 
-  const primaryColor = useThemeColor({}, "primaryColor");
-
   return (
     <ThemedView>
       <ThemedView style={styles.container}>
@@ -67,13 +63,6 @@ export default function Exercises() {
           ></SingleExercise>
         ))}
       </ThemedView>
-
-      <Pressable style={[{ borderColor: primaryColor }, styles.addButton]}>
-        <Ionicons name="add-circle" size={24} color={primaryColor} />
-        <ThemedText style={[{ color: primaryColor }, styles.addButtonText]}>
-          Add Exercise
-        </ThemedText>
-      </Pressable>
     </ThemedView>
   );
 }
@@ -87,21 +76,6 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 14,
     fontWeight: 700,
-  },
-  addButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 10,
-    padding: 15,
-    borderRadius: 10,
-    borderWidth: 2,
-    borderStyle: "dashed",
-    marginTop: 20,
-  },
-  addButtonText: {
-    fontSize: 16,
-    fontWeight: "600",
   },
   counter: {
     fontSize: 10,

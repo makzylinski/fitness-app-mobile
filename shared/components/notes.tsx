@@ -22,7 +22,7 @@ export default function Notes({
   const placeholderColor = useThemeColor({}, "icon");
 
   return (
-    <ThemedView>
+    <ThemedView style={{ backgroundColor }}>
       {label && (
         <ThemedText style={[{ color: inputLabelColor }, styles.label]}>
           {label.toUpperCase()}
@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
   textInput: {
     borderRadius: 10,
     padding: 10,
-    width: 355,
     marginTop: 0,
   },
   label: {
