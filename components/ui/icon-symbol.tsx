@@ -24,6 +24,7 @@ const MAPPING = {
   "calendar.badge.clock": "calendar-today",
   trash: "delete",
   pencil: "edit",
+  "play.fill": "play-arrow",
 } as IconMapping;
 
 /**

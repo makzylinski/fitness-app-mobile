@@ -77,21 +77,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 700,
   },
-  addButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 10,
-    padding: 15,
-    borderRadius: 10,
-    borderWidth: 2,
-    borderStyle: "dashed",
-    marginTop: 20,
-  },
-  addButtonText: {
-    fontSize: 16,
-    fontWeight: "600",
-  },
   counter: {
     fontSize: 10,
     color: "#B0B0B0",

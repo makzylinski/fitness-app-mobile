@@ -4,9 +4,10 @@ import Exercises from "@/components/workout/exercises";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import Notes from "@/shared/components/notes";
 import { useState } from "react";
-import { ScrollView, StyleSheet } from "react-native";
+import { Pressable, ScrollView, StyleSheet } from "react-native";
 import { IconSymbol } from "../ui/icon-symbol";
 import ThemedCard from "../ui/themed-card";
+import { ThemedText } from "../ui/themed-text";
 
 export default function LogWorkout() {
   const [notes, setNotes] = useState("");
@@ -14,6 +15,7 @@ export default function LogWorkout() {
   const [workoutName, setWorkoutName] = useState("Upper Body Workout");
   const inputLabelColor = useThemeColor({}, "inputLabel");
   const backgroundColor = useThemeColor({}, "inputBackground");
+  const primaryColor = useThemeColor({}, "primaryColor");
 
   return (
     <ScrollView>
@@ -46,6 +48,13 @@ export default function LogWorkout() {
         </ThemedCard>
 
         <Exercises></Exercises>
+
+        <Pressable
+          style={[{ backgroundColor: primaryColor }, styles.addButton]}
+        >
+          <IconSymbol name="play.fill" size={28} color="black" />
+          <ThemedText style={styles.addButtonText}>Start Workout</ThemedText>
+        </Pressable>
       </ThemedView>
     </ScrollView>
   );
@@ -66,5 +75,21 @@ const styles = StyleSheet.create({
     padding: 10,
     fontWeight: 600,
     fontSize: 22,
+  },
+  addButtonText: {
+    textTransform: "uppercase",
+    fontSize: 16,
+    fontWeight: "700",
+    color: "black",
+  },
+  addButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 10,
+    padding: 15,
+    borderRadius: 10,
+    borderWidth: 2,
+    marginTop: 20,
   },
 });
