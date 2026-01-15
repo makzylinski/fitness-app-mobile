@@ -5,7 +5,7 @@ import { useColorScheme, useWindowDimensions } from "react-native";
 import { TabBar, TabView } from "react-native-tab-view";
 import WorkoutHistory from "../../components/workout/workout-history";
 
-export default function Trening() {
+export default function Workout() {
   const layout = useWindowDimensions();
   const [index, setIndex] = useState(0);
   const colorScheme = useColorScheme() ?? "dark";
