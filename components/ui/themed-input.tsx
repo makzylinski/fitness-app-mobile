@@ -15,7 +15,7 @@ export function ThemedInput({ label, rightIcon, ...props }: ThemedInputProps) {
   const inputLabelColor = useThemeColor({}, "inputLabel");
 
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView style={[{ backgroundColor }, styles.container]}>
       {label && (
         <ThemedText style={[{ color: inputLabelColor }, styles.label]}>
           {label.toUpperCase()}
