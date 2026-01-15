@@ -204,9 +204,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: 10,
+    textTransform: "uppercase",
     padding: 18,
     borderRadius: 12,
-    marginTop: "auto",
-    marginBottom: 20,
   },
 });
