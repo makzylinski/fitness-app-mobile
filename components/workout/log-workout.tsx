@@ -1,6 +1,5 @@
 import { ThemedInput } from "@/components/ui/themed-input";
 import { ThemedView } from "@/components/ui/themed-view";
-import Exercises from "@/components/workout/exercises";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import Notes from "@/shared/components/notes";
 import { useState } from "react";
@@ -16,6 +15,7 @@ export default function LogWorkout() {
   const inputLabelColor = useThemeColor({}, "inputLabel");
   const backgroundColor = useThemeColor({}, "inputBackground");
   const primaryColor = useThemeColor({}, "primaryColor");
+  const secondaryBackground = useThemeColor({}, "secondaryBackground");
 
   return (
     <ScrollView>
@@ -37,7 +37,7 @@ export default function LogWorkout() {
               placeholder="Add session notes (e.g., focus on slow essentrics)..."
             />
           </ThemedView>
-          <ThemedView style={{ backgroundColor }}>
+          <ThemedView style={{ backgroundColor, marginLeft: "auto" }}>
             <IconSymbol
               size={24}
               name="pencil"
@@ -47,13 +47,87 @@ export default function LogWorkout() {
           </ThemedView>
         </ThemedCard>
 
-        <Exercises></Exercises>
+        <ThemedView style={styles.sectionHeader}>
+          <ThemedText style={styles.sectionTitle}>
+            SUGGESTED EXERCISES
+          </ThemedText>
+        </ThemedView>
+
+        <ThemedCard
+          style={[
+            styles.exerciseCard,
+            { backgroundColor: secondaryBackground },
+          ]}
+        >
+          <ThemedView
+            style={[
+              styles.exerciseIcon,
+              { backgroundColor: inputLabelColor + "30" },
+            ]}
+          >
+            <IconSymbol
+              name="dumbbell.fill"
+              size={32}
+              color={inputLabelColor}
+            />
+          </ThemedView>
+          <ThemedView
+            style={[styles.exerciseInfo, { backgroundColor: "transparent" }]}
+          >
+            <ThemedText style={styles.exerciseName}>
+              Bench Press (Barbell)
+            </ThemedText>
+            <ThemedText style={styles.exerciseDetails}>
+              4 sets • 8-12 reps
+            </ThemedText>
+          </ThemedView>
+          <Pressable style={styles.addExerciseButton}>
+            <IconSymbol
+              name="plus.circle.fill"
+              size={32}
+              color={primaryColor}
+            />
+          </Pressable>
+        </ThemedCard>
+
+        <ThemedCard
+          style={[
+            styles.exerciseCard,
+            { backgroundColor: secondaryBackground },
+          ]}
+        >
+          <ThemedView
+            style={[
+              styles.exerciseIcon,
+              { backgroundColor: inputLabelColor + "30" },
+            ]}
+          >
+            <IconSymbol name="list.bullet" size={32} color={inputLabelColor} />
+          </ThemedView>
+          <ThemedView
+            style={[styles.exerciseInfo, { backgroundColor: "transparent" }]}
+          >
+            <ThemedText style={styles.exerciseName}>Pull-ups</ThemedText>
+            <ThemedText style={styles.exerciseDetails}>
+              3 sets • To failure
+            </ThemedText>
+          </ThemedView>
+          <Pressable style={styles.addExerciseButton}>
+            <IconSymbol
+              name="plus.circle.fill"
+              size={32}
+              color={primaryColor}
+            />
+          </Pressable>
+        </ThemedCard>
+
+        {/* <Exercises></Exercises> */}
 
         <Pressable
-          style={[{ backgroundColor: primaryColor }, styles.addButton]}
+          style={[{ backgroundColor: primaryColor }, styles.startButton]}
         >
-          <IconSymbol name="play.fill" size={28} color="black" />
-          <ThemedText style={styles.addButtonText}>Start Workout</ThemedText>
+          <IconSymbol name="play.fill" size={24} color="black" />
+          <ThemedText style={styles.startButtonText}>Start Workout</ThemedText>
         </Pressable>
       </ThemedView>
     </ScrollView>
@@ -68,28 +142,71 @@ const styles = StyleSheet.create({
   },
   card: {
     flexDirection: "row",
+    padding: 12,
   },
   input: {
-    height: 40,
-    borderRadius: 10,
-    padding: 10,
-    fontWeight: 600,
-    fontSize: 22,
+    height: 32,
+    padding: 8,
+    fontWeight: "600",
+    fontSize: 18,
   },
-  addButtonText: {
-    textTransform: "uppercase",
+  sectionHeader: {
+    marginTop: 24,
+    marginBottom: 12,
+  },
+  sectionTitle: {
+    fontSize: 12,
+    fontWeight: "700",
+    letterSpacing: 1,
+    opacity: 0.6,
+  },
+  exerciseCard: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 16,
+    marginBottom: 12,
+    gap: 12,
+  },
+  exerciseIcon: {
+    width: 56,
+    height: 56,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  exerciseInfo: {
+    flex: 1,
+  },
+  exerciseName: {
+    fontSize: 16,
+    fontWeight: "600",
+    marginBottom: 4,
+  },
+  exerciseDetails: {
+    fontSize: 14,
+    opacity: 0.7,
+  },
+  addExerciseButton: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  startButtonText: {
     fontSize: 16,
     fontWeight: "700",
     color: "black",
+    letterSpacing: 0.5,
   },
-  addButton: {
+  startButton: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     gap: 10,
-    padding: 15,
-    borderRadius: 10,
-    borderWidth: 2,
-    marginTop: 20,
+    padding: 18,
+    borderRadius: 12,
+    marginTop: "auto",
+    marginBottom: 20,
   },
 });
