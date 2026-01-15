@@ -1,4 +1,3 @@
-import { useThemeColor } from "@/hooks/use-theme-color";
 import { useState } from "react";
 import { StyleSheet } from "react-native";
 import { ThemedText } from "../ui/themed-text";
@@ -44,8 +43,6 @@ export default function Exercises() {
       ],
     },
   ]); // TODO: refactor this to separate type
-
-  const primaryColor = useThemeColor({}, "primaryColor");
 
   return (
     <ThemedView>
