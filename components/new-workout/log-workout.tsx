@@ -2,6 +2,7 @@ import { ThemedInput } from "@/components/ui/themed-input";
 import { ThemedView } from "@/components/ui/themed-view";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import Notes from "@/shared/components/notes";
+import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Pressable, ScrollView, StyleSheet } from "react-native";
 import { IconSymbol } from "../ui/icon-symbol";
@@ -12,6 +13,7 @@ export default function LogWorkout() {
   const [notes, setNotes] = useState("");
 
   const [workoutName, setWorkoutName] = useState("Upper Body Workout");
+  const router = useRouter();
   const inputLabelColor = useThemeColor({}, "inputLabel");
   const backgroundColor = useThemeColor({}, "inputBackground");
   const primaryColor = useThemeColor({}, "primaryColor");
@@ -124,6 +126,7 @@ export default function LogWorkout() {
         {/* <Exercises></Exercises> */}
 
         <Pressable
+          onPress={() => router.push("/login")}
           style={[{ backgroundColor: primaryColor }, styles.startButton]}
         >
           <IconSymbol name="play.fill" size={24} color="black" />

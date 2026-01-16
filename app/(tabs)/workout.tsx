@@ -1,4 +1,4 @@
-import LogWorkout from "@/components/workout/log-workout";
+import LogWorkout from "@/components/new-workout/log-workout";
 import { Colors } from "@/constants/theme";
 import { useState } from "react";
 import { useColorScheme, useWindowDimensions } from "react-native";
