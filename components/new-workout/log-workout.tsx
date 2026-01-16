@@ -3,6 +3,7 @@ import { ThemedView } from "@/components/ui/themed-view";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import Notes from "@/shared/components/notes";
 import Timer from "@/shared/components/timer";
+import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Pressable, ScrollView, StyleSheet } from "react-native";
 import { IconSymbol } from "../ui/icon-symbol";
