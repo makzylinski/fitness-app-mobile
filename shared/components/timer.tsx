@@ -21,7 +21,9 @@ export default function Timer({ timerStart, timerStop }: TimerProps) {
         setSeconds((prev) => prev + 1);
       }, 1000);
     } else if (timerStop) {
-      setTime("");
+      if (interval) {
+        clearInterval(interval);
+      }
     }
 
     return () => {
