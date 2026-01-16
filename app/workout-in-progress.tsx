@@ -7,7 +7,10 @@ export default function WorkInProgress() {
 
   return (
     <ThemedView>
-      <ThemedText>Work in Progress works! - {notes}</ThemedText>
+      <ThemedView>
+        <ThemedText>Work in Progress works! - {notes}</ThemedText>
+        <ThemedText>Timer</ThemedText>
+      </ThemedView>
     </ThemedView>
   );
 }
