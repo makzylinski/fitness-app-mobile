@@ -126,7 +126,9 @@ export default function LogWorkout() {
         {/* <Exercises></Exercises> */}
 
         <Pressable
-          onPress={() => router.push("/login")}
+          onPress={() =>
+            router.push({ pathname: "/workout-in-progress", params: { notes } })
+          }
           style={[{ backgroundColor: primaryColor }, styles.startButton]}
         >
           <IconSymbol name="play.fill" size={24} color="black" />
