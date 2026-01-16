@@ -13,6 +13,7 @@ export default function LogWorkout() {
   const [notes, setNotes] = useState("");
 
   const [workoutName, setWorkoutName] = useState("Upper Body Workout");
+  const router = useRouter();
   const inputLabelColor = useThemeColor({}, "inputLabel");
   const backgroundColor = useThemeColor({}, "inputBackground");
   const primaryColor = useThemeColor({}, "primaryColor");
@@ -126,6 +127,7 @@ export default function LogWorkout() {
         {/* <Exercises></Exercises> */}
 
         <Pressable
+          onPress={() => router.push("/login")}
           style={[{ backgroundColor: primaryColor }, styles.startButton]}
         >
           <IconSymbol name="play.fill" size={24} color="black" />
