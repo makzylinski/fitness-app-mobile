@@ -25,7 +25,7 @@ export default function LogWorkout() {
         TODO: this is the search workout input that shall be used in Exercises section
       */}
         <ThemedCard style={styles.card}>
-          <Timer timerStart={false} timerStop={false}></Timer>
+          <Timer timerStart={true} timerStop={false}></Timer>
           <ThemedView>
             <ThemedInput
               style={styles.input}
