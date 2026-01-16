@@ -24,7 +24,7 @@ export default function LogWorkout() {
         TODO: this is the search workout input that shall be used in Exercises section
       */}
         <ThemedCard style={styles.card}>
-          <ThemedView>
+          <ThemedView style={{ flex: 1 }}>
             <ThemedInput
               style={styles.input}
               placeholder="Lower Body Workout"
