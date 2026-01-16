@@ -2,7 +2,6 @@ import { ThemedInput } from "@/components/ui/themed-input";
 import { ThemedView } from "@/components/ui/themed-view";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import Notes from "@/shared/components/notes";
-import Timer from "@/shared/components/timer";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Pressable, ScrollView, StyleSheet } from "react-native";
@@ -27,7 +26,6 @@ export default function LogWorkout() {
         TODO: this is the search workout input that shall be used in Exercises section
       */}
         <ThemedCard style={styles.card}>
-          <Timer timerStart={true} timerStop={false}></Timer>
           <ThemedView>
             <ThemedInput
               style={styles.input}
