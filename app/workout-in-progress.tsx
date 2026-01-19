@@ -5,8 +5,10 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+import ThemedCard from "../components/ui/themed-card";
 import { ThemedText } from "../components/ui/themed-text";
 import { ThemedView } from "../components/ui/themed-view";
+import { useThemeColor } from "../hooks/use-theme-color";
 
 const exercisesInitial = [
   {
@@ -37,8 +39,15 @@ export default function WorkoutInProgress() {
     });
   };
 
+  // theme colors
+  const cardBg = useThemeColor({}, "inputBackground");
+  const cardIconBg = useThemeColor({}, "primaryColor");
+  const cardIconColor = useThemeColor({}, "background");
+  const mainBg = useThemeColor({}, "background");
+  const textColor = useThemeColor({}, "text");
+
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView style={[styles.container, { backgroundColor: mainBg }]}>
       {/* Header */}
       <ThemedView style={styles.header}>
         <ThemedView>
@@ -58,37 +67,54 @@ export default function WorkoutInProgress() {
       {/* Exercises List */}
       <ScrollView style={styles.scrollView}>
         {exercises.map((exercise, idx) => (
-          <ThemedView key={exercise.name} style={styles.exerciseCard}>
+          <ThemedCard
+            key={exercise.name}
+            style={[styles.exerciseCard, { backgroundColor: cardBg }]}
+          >
             <ThemedView style={styles.exerciseHeader}>
-              <ThemedView style={styles.exerciseIconBox}>
-                <ThemedText style={styles.exerciseIcon}>
+              <ThemedView
+                style={[
+                  styles.exerciseIconBox,
+                  { backgroundColor: cardIconBg },
+                ]}
+              >
+                <ThemedText
+                  style={[styles.exerciseIcon, { color: cardIconColor }]}
+                >
                   {exercise.icon}
                 </ThemedText>
               </ThemedView>
-              <ThemedText style={styles.exerciseName}>
+              <ThemedText style={[styles.exerciseName, { color: textColor }]}>
                 {exercise.name}
               </ThemedText>
             </ThemedView>
             {exercise.sets.length > 0 ? (
               <ThemedView>
                 <ThemedView style={styles.setsHeaderRow}>
-                  <ThemedText style={styles.setsHeaderText}>SET</ThemedText>
+                  <ThemedText style={[styles.setsHeaderText]}>SET</ThemedText>
                   <ThemedText
                     style={[styles.setsHeaderText, styles.setsHeaderPrevious]}
                   >
                     PREVIOUS
                   </ThemedText>
-                  <ThemedText style={styles.setsHeaderText}>KG</ThemedText>
-                  <ThemedText style={styles.setsHeaderText}>REPS</ThemedText>
+                  <ThemedText style={[styles.setsHeaderText]}>KG</ThemedText>
+                  <ThemedText style={[styles.setsHeaderText]}>REPS</ThemedText>
                 </ThemedView>
                 {exercise.sets.map((set, setIdx) => (
                   <ThemedView key={set.id} style={styles.setRow}>
-                    <ThemedText style={styles.setId}>{set.id}</ThemedText>
-                    <ThemedText style={styles.setPrevious}>
+                    <ThemedText style={[styles.setId, { color: textColor }]}>
+                      {set.id}
+                    </ThemedText>
+                    <ThemedText
+                      style={[styles.setPrevious, { color: textColor }]}
+                    >
                       {set.previous}
                     </ThemedText>
                     <TextInput
-                      style={styles.inputKg}
+                      style={[
+                        styles.inputKg,
+                        { color: textColor, backgroundColor: cardBg },
+                      ]}
                       value={set.kg}
                       keyboardType="numeric"
                       onChangeText={(text) => {
@@ -100,7 +126,10 @@ export default function WorkoutInProgress() {
                       }}
                     />
                     <TextInput
-                      style={styles.inputReps}
+                      style={[
+                        styles.inputReps,
+                        { color: textColor, backgroundColor: cardBg },
+                      ]}
                       value={set.reps}
                       keyboardType="numeric"
                       onChangeText={(text) => {
@@ -115,19 +144,19 @@ export default function WorkoutInProgress() {
                 ))}
                 <TouchableOpacity
                   onPress={() => addSet(idx)}
-                  style={styles.addSetButton}
+                  style={[styles.addSetButton, { backgroundColor: mainBg }]}
                 >
-                  <ThemedText style={styles.addSetButtonText}>
+                  <ThemedText style={[styles.addSetButtonText]}>
                     + ADD SET
                   </ThemedText>
                 </TouchableOpacity>
               </ThemedView>
             ) : (
-              <ThemedText style={styles.noSetsText}>
+              <ThemedText style={[styles.noSetsText]}>
                 No sets added yet
               </ThemedText>
             )}
-          </ThemedView>
+          </ThemedCard>
         ))}
         <ThemedView style={styles.bottomSpacer} />
       </ScrollView>
@@ -192,7 +221,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   exerciseCard: {
-    backgroundColor: "#232527",
     borderRadius: 16,
     marginBottom: 16,
     padding: 16,
@@ -203,7 +231,6 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   exerciseIconBox: {
-    backgroundColor: "#1DE9B6",
     borderRadius: 8,
     width: 32,
     height: 32,
@@ -212,11 +239,9 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   exerciseIcon: {
-    color: "#232527",
     fontSize: 20,
   },
   exerciseName: {
-    color: "#fff",
     fontWeight: "bold",
     fontSize: 18,
   },
