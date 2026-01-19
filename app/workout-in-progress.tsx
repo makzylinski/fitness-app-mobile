@@ -274,14 +274,12 @@ const styles = StyleSheet.create({
   },
   addSetButton: {
     marginTop: 8,
-    backgroundColor: "#181A1B",
     borderRadius: 8,
     padding: 10,
     alignItems: "center",
   },
   addSetButtonText: {
-    color: "#1DE9B6",
-    fontWeight: "bold",
+    fontWeight: 700,
   },
   noSetsText: {
     color: "#888",
