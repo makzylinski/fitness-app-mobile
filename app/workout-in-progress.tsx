@@ -65,7 +65,7 @@ export default function WorkoutInProgress() {
       </ThemedView>
 
       {/* Exercises List */}
-      <ScrollView style={styles.scrollView}>
+      <ScrollView>
         {exercises.map((exercise, idx) => (
           <ThemedCard
             key={exercise.name}
@@ -176,8 +176,7 @@ export default function WorkoutInProgress() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#181A1B",
-    paddingTop: 32,
+    margin: 20,
   },
   header: {
     flexDirection: "row",
@@ -187,9 +186,8 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   headerTitle: {
-    fontSize: 22,
-    fontWeight: "bold",
-    color: "#fff",
+    fontSize: 18,
+    fontWeight: 700,
   },
   headerTimerRow: {
     flexDirection: "row",
@@ -207,10 +205,6 @@ const styles = StyleSheet.create({
     fontWeight: 700,
     paddingVertical: 8,
     fontSize: 14,
-  },
-  scrollView: {
-    flex: 1,
-    paddingHorizontal: 12,
   },
   exerciseCard: {
     borderRadius: 16,
