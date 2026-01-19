@@ -200,12 +200,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#232527",
     borderRadius: 16,
     paddingHorizontal: 18,
-    paddingVertical: 8,
+    alignSelf: "flex-start",
   },
   finishButtonText: {
     color: "#fff",
-    fontWeight: "bold",
-    fontSize: 16,
+    fontWeight: 700,
+    paddingVertical: 8,
+    fontSize: 14,
   },
   scrollView: {
     flex: 1,
