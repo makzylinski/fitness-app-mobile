@@ -185,7 +185,9 @@ export default function WorkoutInProgress() {
         <TouchableOpacity
           style={[{ backgroundColor: cardIconBg }, styles.addExerciseButton]}
         >
-          <ThemedText style={styles.addExerciseButtonText}>
+          <ThemedText
+            style={[{ color: cardIconColor }, styles.addExerciseButtonText]}
+          >
             + ADD EXERCISE
           </ThemedText>
         </TouchableOpacity>
@@ -310,8 +312,7 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   addExerciseButtonText: {
-    color: "#181A1B",
-    fontWeight: "bold",
+    fontWeight: 700,
     fontSize: 18,
   },
 });
