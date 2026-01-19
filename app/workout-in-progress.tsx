@@ -182,7 +182,9 @@ export default function WorkoutInProgress() {
 
       {/* Add Exercise Button */}
       <ThemedView style={styles.addExerciseContainer}>
-        <TouchableOpacity style={styles.addExerciseButton}>
+        <TouchableOpacity
+          style={[{ backgroundColor: cardIconBg }, styles.addExerciseButton]}
+        >
           <ThemedText style={styles.addExerciseButtonText}>
             + ADD EXERCISE
           </ThemedText>
@@ -299,12 +301,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   addExerciseButton: {
-    backgroundColor: "#1DE9B6",
     borderRadius: 20,
     paddingVertical: 18,
     width: "90%",
     alignItems: "center",
-    shadowColor: "#1DE9B6",
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 4,
