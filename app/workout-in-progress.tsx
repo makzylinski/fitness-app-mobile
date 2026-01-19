@@ -75,12 +75,7 @@ export default function WorkoutInProgress() {
             <ThemedView
               style={[{ backgroundColor: cardBg }, styles.exerciseHeader]}
             >
-              <ThemedView
-                style={[
-                  styles.exerciseIconBox,
-                  { backgroundColor: cardIconBg },
-                ]}
-              >
+              <ThemedView style={[styles.exerciseIconBox]}>
                 <ThemedText
                   style={[styles.exerciseIcon, { color: cardIconColor }]}
                 >
@@ -168,9 +163,17 @@ export default function WorkoutInProgress() {
                 ))}
                 <TouchableOpacity
                   onPress={() => addSet(idx)}
-                  style={[styles.addSetButton, { backgroundColor: mainBg }]}
+                  style={[
+                    styles.addSetButton,
+                    { backgroundColor: lightFontColor },
+                  ]}
                 >
-                  <ThemedText style={[styles.addSetButtonText]}>
+                  <ThemedText
+                    style={[
+                      { backgroundColor: cardBg },
+                      styles.addSetButtonText,
+                    ]}
+                  >
                     + ADD SET
                   </ThemedText>
                 </TouchableOpacity>
