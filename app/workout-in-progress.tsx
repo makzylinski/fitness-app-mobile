@@ -72,7 +72,9 @@ export default function WorkoutInProgress() {
       <ScrollView>
         {exercises.map((exercise, idx) => (
           <ThemedCard key={exercise.name}>
-            <ThemedView style={styles.exerciseHeader}>
+            <ThemedView
+              style={[{ backgroundColor: cardBg }, styles.exerciseHeader]}
+            >
               <ThemedView
                 style={[
                   styles.exerciseIconBox,
@@ -91,7 +93,9 @@ export default function WorkoutInProgress() {
             </ThemedView>
             {exercise.sets.length > 0 ? (
               <ThemedView>
-                <ThemedView style={styles.setsHeaderRow}>
+                <ThemedView
+                  style={[{ backgroundColor: cardBg }, styles.setsHeaderRow]}
+                >
                   <ThemedText
                     style={[{ color: lighterColorFont }, styles.setsHeaderText]}
                   >
@@ -118,7 +122,10 @@ export default function WorkoutInProgress() {
                   </ThemedText>
                 </ThemedView>
                 {exercise.sets.map((set, setIdx) => (
-                  <ThemedView key={set.id} style={styles.setRow}>
+                  <ThemedView
+                    key={set.id}
+                    style={[{ backgroundColor: cardBg }, styles.setRow]}
+                  >
                     <ThemedText style={[styles.setId, { color: textColor }]}>
                       {set.id}
                     </ThemedText>
