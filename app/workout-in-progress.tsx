@@ -46,6 +46,7 @@ export default function WorkoutInProgress() {
   const cardIconColor = useThemeColor({}, "background");
   const mainBg = useThemeColor({}, "background");
   const textColor = useThemeColor({}, "text");
+  const lighterColorFont = useThemeColor({}, "inputLabel");
 
   return (
     <ThemedView style={[styles.container, { backgroundColor: mainBg }]}>
@@ -69,10 +70,7 @@ export default function WorkoutInProgress() {
       {/* Exercises List */}
       <ScrollView>
         {exercises.map((exercise, idx) => (
-          <ThemedCard
-            key={exercise.name}
-            style={[styles.exerciseCard, { backgroundColor: cardBg }]}
-          >
+          <ThemedCard key={exercise.name}>
             <ThemedView style={styles.exerciseHeader}>
               <ThemedView
                 style={[
@@ -93,14 +91,30 @@ export default function WorkoutInProgress() {
             {exercise.sets.length > 0 ? (
               <ThemedView>
                 <ThemedView style={styles.setsHeaderRow}>
-                  <ThemedText style={[styles.setsHeaderText]}>SET</ThemedText>
                   <ThemedText
-                    style={[styles.setsHeaderText, styles.setsHeaderPrevious]}
+                    style={[{ color: lighterColorFont }, styles.setsHeaderText]}
+                  >
+                    SET
+                  </ThemedText>
+                  <ThemedText
+                    style={[
+                      { color: lighterColorFont },
+                      styles.setsHeaderText,
+                      styles.setsHeaderPrevious,
+                    ]}
                   >
                     PREVIOUS
                   </ThemedText>
-                  <ThemedText style={[styles.setsHeaderText]}>KG</ThemedText>
-                  <ThemedText style={[styles.setsHeaderText]}>REPS</ThemedText>
+                  <ThemedText
+                    style={[{ color: lighterColorFont }, styles.setsHeaderText]}
+                  >
+                    KG
+                  </ThemedText>
+                  <ThemedText
+                    style={[{ color: lighterColorFont }, styles.setsHeaderText]}
+                  >
+                    REPS
+                  </ThemedText>
                 </ThemedView>
                 {exercise.sets.map((set, setIdx) => (
                   <ThemedView key={set.id} style={styles.setRow}>
@@ -205,11 +219,6 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     fontSize: 14,
   },
-  exerciseCard: {
-    borderRadius: 16,
-    marginBottom: 16,
-    padding: 16,
-  },
   exerciseHeader: {
     flexDirection: "row",
     alignItems: "center",
@@ -227,7 +236,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   exerciseName: {
-    fontWeight: "bold",
+    fontWeight: 700,
     fontSize: 18,
   },
   setsHeaderRow: {
@@ -236,7 +245,6 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   setsHeaderText: {
-    color: "#888",
     width: 40,
   },
   setsHeaderPrevious: {
