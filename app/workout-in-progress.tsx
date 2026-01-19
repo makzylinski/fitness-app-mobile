@@ -47,6 +47,7 @@ export default function WorkoutInProgress() {
   const mainBg = useThemeColor({}, "background");
   const textColor = useThemeColor({}, "text");
   const lighterColorFont = useThemeColor({}, "inputLabel");
+  const lightFontColor = useThemeColor({}, "inputBorder");
 
   return (
     <ThemedView style={[styles.container, { backgroundColor: mainBg }]}>
@@ -168,7 +169,9 @@ export default function WorkoutInProgress() {
                 </TouchableOpacity>
               </ThemedView>
             ) : (
-              <ThemedText style={[styles.noSetsText]}>
+              <ThemedText
+                style={[{ color: lightFontColor }, styles.noSetsText]}
+              >
                 No sets added yet
               </ThemedText>
             )}
@@ -282,7 +285,6 @@ const styles = StyleSheet.create({
     fontWeight: 700,
   },
   noSetsText: {
-    color: "#888",
     fontStyle: "italic",
     marginTop: 8,
   },
