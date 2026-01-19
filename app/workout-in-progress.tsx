@@ -1,3 +1,4 @@
+import ExerciseInProgress from "@/components/new-workout/exercise-in-progress";
 import Timer from "@/shared/components/timer";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { ThemedText } from "../components/ui/themed-text";
@@ -30,7 +31,7 @@ export default function WorkoutInProgress() {
       </ThemedView>
 
       {/* Exercises List */}
-
+      <ExerciseInProgress></ExerciseInProgress>
       {/* Add Exercise Button */}
       <ThemedView style={styles.addExerciseContainer}>
         <TouchableOpacity
