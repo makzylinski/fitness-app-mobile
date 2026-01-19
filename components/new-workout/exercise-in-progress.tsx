@@ -164,35 +164,6 @@ export default function ExerciseInProgress() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    margin: 20,
-  },
-  header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 8,
-  },
-  headerTitle: {
-    fontSize: 18,
-    fontWeight: 700,
-  },
-  headerTimerRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: 4,
-  },
-  finishButton: {
-    borderRadius: 16,
-    paddingHorizontal: 18,
-    alignSelf: "flex-start",
-  },
-  finishButtonText: {
-    fontWeight: 700,
-    paddingVertical: 8,
-    fontSize: 14,
-  },
   exerciseHeader: {
     flexDirection: "row",
     alignItems: "center",
@@ -261,25 +232,5 @@ const styles = StyleSheet.create({
   },
   bottomSpacer: {
     height: 80,
-  },
-  addExerciseContainer: {
-    position: "absolute",
-    bottom: 24,
-    left: 0,
-    right: 0,
-    alignItems: "center",
-  },
-  addExerciseButton: {
-    borderRadius: 20,
-    paddingVertical: 18,
-    width: "90%",
-    alignItems: "center",
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
-    elevation: 4,
-  },
-  addExerciseButtonText: {
-    fontWeight: 700,
-    fontSize: 18,
   },
 });
