@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
 import { ThemedText } from "../components/ui/themed-text";
 import { ThemedView } from "../components/ui/themed-view";
 
@@ -41,7 +35,7 @@ export default function WorkoutInProgress() {
   return (
     <ThemedView style={{ flex: 1, backgroundColor: "#181A1B", paddingTop: 32 }}>
       {/* Header */}
-      <View
+      <ThemedView
         style={{
           flexDirection: "row",
           justifyContent: "space-between",
@@ -50,13 +44,13 @@ export default function WorkoutInProgress() {
           marginBottom: 8,
         }}
       >
-        <View>
+        <ThemedView>
           <ThemedText
             style={{ fontSize: 22, fontWeight: "bold", color: "#fff" }}
           >
             Upper Body Hypertrophy
           </ThemedText>
-          <View
+          <ThemedView
             style={{ flexDirection: "row", alignItems: "center", marginTop: 4 }}
           >
             <Text style={{ color: "#1DE9B6", fontWeight: "bold" }}>●</Text>
@@ -65,8 +59,8 @@ export default function WorkoutInProgress() {
             >
               00:14:42
             </Text>
-          </View>
-        </View>
+          </ThemedView>
+        </ThemedView>
         <TouchableOpacity
           style={{
             backgroundColor: "#232527",
@@ -79,12 +73,12 @@ export default function WorkoutInProgress() {
             FINISH
           </Text>
         </TouchableOpacity>
-      </View>
+      </ThemedView>
 
       {/* Exercises List */}
       <ScrollView style={{ flex: 1, paddingHorizontal: 12 }}>
         {exercises.map((exercise, idx) => (
-          <View
+          <ThemedView
             key={exercise.name}
             style={{
               backgroundColor: "#232527",
@@ -93,14 +87,14 @@ export default function WorkoutInProgress() {
               padding: 16,
             }}
           >
-            <View
+            <ThemedView
               style={{
                 flexDirection: "row",
                 alignItems: "center",
                 marginBottom: 8,
               }}
             >
-              <View
+              <ThemedView
                 style={{
                   backgroundColor: "#1DE9B6",
                   borderRadius: 8,
@@ -114,14 +108,14 @@ export default function WorkoutInProgress() {
                 <Text style={{ color: "#232527", fontSize: 20 }}>
                   {exercise.icon}
                 </Text>
-              </View>
+              </ThemedView>
               <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 18 }}>
                 {exercise.name}
               </Text>
-            </View>
+            </ThemedView>
             {exercise.sets.length > 0 ? (
-              <View>
-                <View
+              <ThemedView>
+                <ThemedView
                   style={{
                     flexDirection: "row",
                     justifyContent: "space-between",
@@ -132,9 +126,9 @@ export default function WorkoutInProgress() {
                   <Text style={{ color: "#888", width: 90 }}>PREVIOUS</Text>
                   <Text style={{ color: "#888", width: 40 }}>KG</Text>
                   <Text style={{ color: "#888", width: 40 }}>REPS</Text>
-                </View>
+                </ThemedView>
                 {exercise.sets.map((set, setIdx) => (
-                  <View
+                  <ThemedView
                     key={set.id}
                     style={{
                       flexDirection: "row",
@@ -183,7 +177,7 @@ export default function WorkoutInProgress() {
                         });
                       }}
                     />
-                  </View>
+                  </ThemedView>
                 ))}
                 <TouchableOpacity
                   onPress={() => addSet(idx)}
@@ -199,7 +193,7 @@ export default function WorkoutInProgress() {
                     + ADD SET
                   </Text>
                 </TouchableOpacity>
-              </View>
+              </ThemedView>
             ) : (
               <Text
                 style={{ color: "#888", fontStyle: "italic", marginTop: 8 }}
@@ -207,13 +201,13 @@ export default function WorkoutInProgress() {
                 No sets added yet
               </Text>
             )}
-          </View>
+          </ThemedView>
         ))}
-        <View style={{ height: 80 }} />
+        <ThemedView style={{ height: 80 }} />
       </ScrollView>
 
       {/* Add Exercise Button */}
-      <View
+      <ThemedView
         style={{
           position: "absolute",
           bottom: 24,
@@ -239,7 +233,7 @@ export default function WorkoutInProgress() {
             + ADD EXERCISE
           </Text>
         </TouchableOpacity>
-      </View>
+      </ThemedView>
     </ThemedView>
   );
 }
