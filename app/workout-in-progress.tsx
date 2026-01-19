@@ -1,3 +1,4 @@
+import Timer from "@/shared/components/timer";
 import { useState } from "react";
 import {
   ScrollView,
@@ -55,8 +56,7 @@ export default function WorkoutInProgress() {
             Upper Body Hypertrophy
           </ThemedText>
           <ThemedView style={styles.headerTimerRow}>
-            <ThemedText style={styles.headerTimerDot}>●</ThemedText>
-            <ThemedText style={styles.headerTimerText}>00:14:42</ThemedText>
+            <Timer timerStart={false} timerStop={false}></Timer>
           </ThemedView>
         </ThemedView>
         <TouchableOpacity style={styles.finishButton}>
@@ -195,15 +195,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginTop: 4,
-  },
-  headerTimerDot: {
-    color: "#1DE9B6",
-    fontWeight: "bold",
-  },
-  headerTimerText: {
-    color: "#1DE9B6",
-    marginLeft: 4,
-    fontWeight: "bold",
   },
   finishButton: {
     backgroundColor: "#232527",
