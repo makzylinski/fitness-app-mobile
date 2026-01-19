@@ -208,7 +208,4 @@ const styles = StyleSheet.create({
     fontStyle: "italic",
     marginTop: 8,
   },
-  bottomSpacer: {
-    height: 80,
-  },
 });
