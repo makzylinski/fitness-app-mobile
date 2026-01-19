@@ -256,24 +256,18 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   setId: {
-    color: "#fff",
     width: 40,
   },
   setPrevious: {
-    color: "#fff",
     width: 90,
   },
   inputKg: {
-    backgroundColor: "#181A1B",
-    color: "#fff",
     width: 40,
     borderRadius: 6,
     padding: 4,
     marginRight: 8,
   },
   inputReps: {
-    backgroundColor: "#181A1B",
-    color: "#fff",
     width: 40,
     borderRadius: 6,
     padding: 4,
