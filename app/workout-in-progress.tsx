@@ -59,7 +59,9 @@ export default function WorkoutInProgress() {
             <Timer timerStart={false} timerStop={false}></Timer>
           </ThemedView>
         </ThemedView>
-        <TouchableOpacity style={styles.finishButton}>
+        <TouchableOpacity
+          style={[{ backgroundColor: cardBg }, styles.finishButton]}
+        >
           <ThemedText style={styles.finishButtonText}>FINISH</ThemedText>
         </TouchableOpacity>
       </ThemedView>
@@ -182,7 +184,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 20,
     marginBottom: 8,
   },
   headerTitle: {
@@ -195,13 +196,11 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   finishButton: {
-    backgroundColor: "#232527",
     borderRadius: 16,
     paddingHorizontal: 18,
     alignSelf: "flex-start",
   },
   finishButtonText: {
-    color: "#fff",
     fontWeight: 700,
     paddingVertical: 8,
     fontSize: 14,
