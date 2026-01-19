@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { ScrollView, TextInput, TouchableOpacity } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
 import { ThemedText } from "../components/ui/themed-text";
 import { ThemedView } from "../components/ui/themed-view";
 
@@ -33,138 +38,57 @@ export default function WorkoutInProgress() {
   };
 
   return (
-    <ThemedView style={{ flex: 1, backgroundColor: "#181A1B", paddingTop: 32 }}>
+    <ThemedView style={styles.container}>
       {/* Header */}
-      <ThemedView
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-          paddingHorizontal: 20,
-          marginBottom: 8,
-        }}
-      >
+      <ThemedView style={styles.header}>
         <ThemedView>
-          <ThemedText
-            style={{ fontSize: 22, fontWeight: "bold", color: "#fff" }}
-          >
+          <ThemedText style={styles.headerTitle}>
             Upper Body Hypertrophy
           </ThemedText>
-          <ThemedView
-            style={{ flexDirection: "row", alignItems: "center", marginTop: 4 }}
-          >
-            <ThemedText style={{ color: "#1DE9B6", fontWeight: "bold" }}>
-              ●
-            </ThemedText>
-            <ThemedText
-              style={{ color: "#1DE9B6", marginLeft: 4, fontWeight: "bold" }}
-            >
-              00:14:42
-            </ThemedText>
+          <ThemedView style={styles.headerTimerRow}>
+            <ThemedText style={styles.headerTimerDot}>●</ThemedText>
+            <ThemedText style={styles.headerTimerText}>00:14:42</ThemedText>
           </ThemedView>
         </ThemedView>
-        <TouchableOpacity
-          style={{
-            backgroundColor: "#232527",
-            borderRadius: 16,
-            paddingHorizontal: 18,
-            paddingVertical: 8,
-          }}
-        >
-          <ThemedText
-            style={{ color: "#fff", fontWeight: "bold", fontSize: 16 }}
-          >
-            FINISH
-          </ThemedText>
+        <TouchableOpacity style={styles.finishButton}>
+          <ThemedText style={styles.finishButtonText}>FINISH</ThemedText>
         </TouchableOpacity>
       </ThemedView>
 
       {/* Exercises List */}
-      <ScrollView style={{ flex: 1, paddingHorizontal: 12 }}>
+      <ScrollView style={styles.scrollView}>
         {exercises.map((exercise, idx) => (
-          <ThemedView
-            key={exercise.name}
-            style={{
-              backgroundColor: "#232527",
-              borderRadius: 16,
-              marginBottom: 16,
-              padding: 16,
-            }}
-          >
-            <ThemedView
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                marginBottom: 8,
-              }}
-            >
-              <ThemedView
-                style={{
-                  backgroundColor: "#1DE9B6",
-                  borderRadius: 8,
-                  width: 32,
-                  height: 32,
-                  justifyContent: "center",
-                  alignItems: "center",
-                  marginRight: 12,
-                }}
-              >
-                <ThemedText style={{ color: "#232527", fontSize: 20 }}>
+          <ThemedView key={exercise.name} style={styles.exerciseCard}>
+            <ThemedView style={styles.exerciseHeader}>
+              <ThemedView style={styles.exerciseIconBox}>
+                <ThemedText style={styles.exerciseIcon}>
                   {exercise.icon}
                 </ThemedText>
               </ThemedView>
-              <ThemedText
-                style={{ color: "#fff", fontWeight: "bold", fontSize: 18 }}
-              >
+              <ThemedText style={styles.exerciseName}>
                 {exercise.name}
               </ThemedText>
             </ThemedView>
             {exercise.sets.length > 0 ? (
               <ThemedView>
-                <ThemedView
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    marginBottom: 6,
-                  }}
-                >
-                  <ThemedText style={{ color: "#888", width: 40 }}>
-                    SET
-                  </ThemedText>
-                  <ThemedText style={{ color: "#888", width: 90 }}>
+                <ThemedView style={styles.setsHeaderRow}>
+                  <ThemedText style={styles.setsHeaderText}>SET</ThemedText>
+                  <ThemedText
+                    style={[styles.setsHeaderText, styles.setsHeaderPrevious]}
+                  >
                     PREVIOUS
                   </ThemedText>
-                  <ThemedText style={{ color: "#888", width: 40 }}>
-                    KG
-                  </ThemedText>
-                  <ThemedText style={{ color: "#888", width: 40 }}>
-                    REPS
-                  </ThemedText>
+                  <ThemedText style={styles.setsHeaderText}>KG</ThemedText>
+                  <ThemedText style={styles.setsHeaderText}>REPS</ThemedText>
                 </ThemedView>
                 {exercise.sets.map((set, setIdx) => (
-                  <ThemedView
-                    key={set.id}
-                    style={{
-                      flexDirection: "row",
-                      alignItems: "center",
-                      marginBottom: 6,
-                    }}
-                  >
-                    <ThemedText style={{ color: "#fff", width: 40 }}>
-                      {set.id}
-                    </ThemedText>
-                    <ThemedText style={{ color: "#fff", width: 90 }}>
+                  <ThemedView key={set.id} style={styles.setRow}>
+                    <ThemedText style={styles.setId}>{set.id}</ThemedText>
+                    <ThemedText style={styles.setPrevious}>
                       {set.previous}
                     </ThemedText>
                     <TextInput
-                      style={{
-                        backgroundColor: "#181A1B",
-                        color: "#fff",
-                        width: 40,
-                        borderRadius: 6,
-                        padding: 4,
-                        marginRight: 8,
-                      }}
+                      style={styles.inputKg}
                       value={set.kg}
                       keyboardType="numeric"
                       onChangeText={(text) => {
@@ -176,13 +100,7 @@ export default function WorkoutInProgress() {
                       }}
                     />
                     <TextInput
-                      style={{
-                        backgroundColor: "#181A1B",
-                        color: "#fff",
-                        width: 40,
-                        borderRadius: 6,
-                        padding: 4,
-                      }}
+                      style={styles.inputReps}
                       value={set.reps}
                       keyboardType="numeric"
                       onChangeText={(text) => {
@@ -197,57 +115,27 @@ export default function WorkoutInProgress() {
                 ))}
                 <TouchableOpacity
                   onPress={() => addSet(idx)}
-                  style={{
-                    marginTop: 8,
-                    backgroundColor: "#181A1B",
-                    borderRadius: 8,
-                    padding: 10,
-                    alignItems: "center",
-                  }}
+                  style={styles.addSetButton}
                 >
-                  <ThemedText style={{ color: "#1DE9B6", fontWeight: "bold" }}>
+                  <ThemedText style={styles.addSetButtonText}>
                     + ADD SET
                   </ThemedText>
                 </TouchableOpacity>
               </ThemedView>
             ) : (
-              <ThemedText
-                style={{ color: "#888", fontStyle: "italic", marginTop: 8 }}
-              >
+              <ThemedText style={styles.noSetsText}>
                 No sets added yet
               </ThemedText>
             )}
           </ThemedView>
         ))}
-        <ThemedView style={{ height: 80 }} />
+        <ThemedView style={styles.bottomSpacer} />
       </ScrollView>
 
       {/* Add Exercise Button */}
-      <ThemedView
-        style={{
-          position: "absolute",
-          bottom: 24,
-          left: 0,
-          right: 0,
-          alignItems: "center",
-        }}
-      >
-        <TouchableOpacity
-          style={{
-            backgroundColor: "#1DE9B6",
-            borderRadius: 20,
-            paddingVertical: 18,
-            width: "90%",
-            alignItems: "center",
-            shadowColor: "#1DE9B6",
-            shadowOpacity: 0.3,
-            shadowRadius: 8,
-            elevation: 4,
-          }}
-        >
-          <ThemedText
-            style={{ color: "#181A1B", fontWeight: "bold", fontSize: 18 }}
-          >
+      <ThemedView style={styles.addExerciseContainer}>
+        <TouchableOpacity style={styles.addExerciseButton}>
+          <ThemedText style={styles.addExerciseButtonText}>
             + ADD EXERCISE
           </ThemedText>
         </TouchableOpacity>
@@ -255,3 +143,163 @@ export default function WorkoutInProgress() {
     </ThemedView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#181A1B",
+    paddingTop: 32,
+  },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 20,
+    marginBottom: 8,
+  },
+  headerTitle: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: "#fff",
+  },
+  headerTimerRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 4,
+  },
+  headerTimerDot: {
+    color: "#1DE9B6",
+    fontWeight: "bold",
+  },
+  headerTimerText: {
+    color: "#1DE9B6",
+    marginLeft: 4,
+    fontWeight: "bold",
+  },
+  finishButton: {
+    backgroundColor: "#232527",
+    borderRadius: 16,
+    paddingHorizontal: 18,
+    paddingVertical: 8,
+  },
+  finishButtonText: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 16,
+  },
+  scrollView: {
+    flex: 1,
+    paddingHorizontal: 12,
+  },
+  exerciseCard: {
+    backgroundColor: "#232527",
+    borderRadius: 16,
+    marginBottom: 16,
+    padding: 16,
+  },
+  exerciseHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 8,
+  },
+  exerciseIconBox: {
+    backgroundColor: "#1DE9B6",
+    borderRadius: 8,
+    width: 32,
+    height: 32,
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: 12,
+  },
+  exerciseIcon: {
+    color: "#232527",
+    fontSize: 20,
+  },
+  exerciseName: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  setsHeaderRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 6,
+  },
+  setsHeaderText: {
+    color: "#888",
+    width: 40,
+  },
+  setsHeaderPrevious: {
+    width: 90,
+  },
+  setRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 6,
+  },
+  setId: {
+    color: "#fff",
+    width: 40,
+  },
+  setPrevious: {
+    color: "#fff",
+    width: 90,
+  },
+  inputKg: {
+    backgroundColor: "#181A1B",
+    color: "#fff",
+    width: 40,
+    borderRadius: 6,
+    padding: 4,
+    marginRight: 8,
+  },
+  inputReps: {
+    backgroundColor: "#181A1B",
+    color: "#fff",
+    width: 40,
+    borderRadius: 6,
+    padding: 4,
+  },
+  addSetButton: {
+    marginTop: 8,
+    backgroundColor: "#181A1B",
+    borderRadius: 8,
+    padding: 10,
+    alignItems: "center",
+  },
+  addSetButtonText: {
+    color: "#1DE9B6",
+    fontWeight: "bold",
+  },
+  noSetsText: {
+    color: "#888",
+    fontStyle: "italic",
+    marginTop: 8,
+  },
+  bottomSpacer: {
+    height: 80,
+  },
+  addExerciseContainer: {
+    position: "absolute",
+    bottom: 24,
+    left: 0,
+    right: 0,
+    alignItems: "center",
+  },
+  addExerciseButton: {
+    backgroundColor: "#1DE9B6",
+    borderRadius: 20,
+    paddingVertical: 18,
+    width: "90%",
+    alignItems: "center",
+    shadowColor: "#1DE9B6",
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+  addExerciseButtonText: {
+    color: "#181A1B",
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+});
