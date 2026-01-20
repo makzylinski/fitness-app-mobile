@@ -49,7 +49,7 @@ export default function SingleExerciseInProgress({
         </ThemedText>
       </ThemedView>
       {exercise.sets.length > 0 ? (
-        <ThemedView>
+        <ThemedView style={{ backgroundColor: cardBg }}>
           <ThemedView
             style={[{ backgroundColor: cardBg }, styles.setsHeaderRow]}
           >
