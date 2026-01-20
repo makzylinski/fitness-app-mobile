@@ -126,7 +126,10 @@ export default function SingleExerciseInProgress({
             style={[styles.addSetButton, { backgroundColor: lightFontColor }]}
           >
             <ThemedText
-              style={[{ backgroundColor: cardBg }, styles.addSetButtonText]}
+              style={[
+                { backgroundColor: lightFontColor },
+                styles.addSetButtonText,
+              ]}
             >
               + ADD SET
             </ThemedText>
