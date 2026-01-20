@@ -6,7 +6,6 @@ import { ThemedView } from "../ui/themed-view";
 
 type Set = {
   id: number;
-  previous: string;
   kg: string;
   reps: string;
 };
@@ -53,72 +52,88 @@ export default function SingleExerciseInProgress({
           <ThemedView
             style={[{ backgroundColor: cardBg }, styles.setsHeaderRow]}
           >
-            <ThemedText
-              style={[{ color: lighterColorFont }, styles.setsHeaderText]}
-            >
-              SET
-            </ThemedText>
-            <ThemedText
-              style={[
-                { color: lighterColorFont },
-                styles.setsHeaderText,
-                styles.setsHeaderPrevious,
-              ]}
-            >
-              PREVIOUS
-            </ThemedText>
-            <ThemedText
-              style={[{ color: lighterColorFont }, styles.setsHeaderText]}
-            >
-              KG
-            </ThemedText>
-            <ThemedText
-              style={[{ color: lighterColorFont }, styles.setsHeaderText]}
-            >
-              REPS
-            </ThemedText>
+            <ThemedView style={[styles.colSet, { backgroundColor: cardBg }]}>
+              <ThemedText
+                style={{ color: lighterColorFont }}
+                numberOfLines={1}
+                ellipsizeMode="tail"
+              >
+                SET
+              </ThemedText>
+            </ThemedView>
+            <ThemedView style={[styles.colKg, { backgroundColor: cardBg }]}>
+              <ThemedText
+                style={{ color: lighterColorFont }}
+                numberOfLines={1}
+                ellipsizeMode="tail"
+              >
+                KG
+              </ThemedText>
+            </ThemedView>
+            <ThemedView style={[styles.colReps, { backgroundColor: cardBg }]}>
+              <ThemedText
+                style={{ color: lighterColorFont }}
+                numberOfLines={1}
+                ellipsizeMode="tail"
+              >
+                REPS
+              </ThemedText>
+            </ThemedView>
           </ThemedView>
           {exercise.sets.map((set, setIdx) => (
             <ThemedView
               key={set.id}
               style={[{ backgroundColor: cardBg }, styles.setRow]}
             >
-              <ThemedText style={[styles.setId, { color: textColor }]}>
-                {set.id}
-              </ThemedText>
-              <ThemedText style={[styles.setPrevious, { color: textColor }]}>
-                {set.previous}
-              </ThemedText>
-              <TextInput
-                style={[
-                  styles.inputKg,
-                  { color: textColor, backgroundColor: cardBg },
-                ]}
-                value={set.kg}
-                keyboardType="numeric"
-                onChangeText={(text) => {
-                  setExercises((prev) => {
-                    const updated = [...prev];
-                    updated[exerciseIndex].sets[setIdx].kg = text;
-                    return updated;
-                  });
-                }}
-              />
-              <TextInput
-                style={[
-                  styles.inputReps,
-                  { color: textColor, backgroundColor: cardBg },
-                ]}
-                value={set.reps}
-                keyboardType="numeric"
-                onChangeText={(text) => {
-                  setExercises((prev) => {
-                    const updated = [...prev];
-                    updated[exerciseIndex].sets[setIdx].reps = text;
-                    return updated;
-                  });
-                }}
-              />
+              <ThemedView style={[styles.colSet, { backgroundColor: cardBg }]}>
+                <ThemedText
+                  style={{ color: textColor }}
+                  numberOfLines={1}
+                  ellipsizeMode="tail"
+                >
+                  {set.id}
+                </ThemedText>
+              </ThemedView>
+              <ThemedView style={[styles.colKg, { backgroundColor: cardBg }]}>
+                <TextInput
+                  style={{
+                    color: textColor,
+                    backgroundColor: cardBg,
+                    flex: 1,
+                    textAlign: "center",
+                    padding: 0,
+                  }}
+                  value={set.kg}
+                  keyboardType="numeric"
+                  onChangeText={(text) => {
+                    setExercises((prev) => {
+                      const updated = [...prev];
+                      updated[exerciseIndex].sets[setIdx].kg = text;
+                      return updated;
+                    });
+                  }}
+                />
+              </ThemedView>
+              <ThemedView style={[styles.colReps, { backgroundColor: cardBg }]}>
+                <TextInput
+                  style={{
+                    color: textColor,
+                    backgroundColor: cardBg,
+                    flex: 1,
+                    textAlign: "center",
+                    padding: 0,
+                  }}
+                  value={set.reps}
+                  keyboardType="numeric"
+                  onChangeText={(text) => {
+                    setExercises((prev) => {
+                      const updated = [...prev];
+                      updated[exerciseIndex].sets[setIdx].reps = text;
+                      return updated;
+                    });
+                  }}
+                />
+              </ThemedView>
             </ThemedView>
           ))}
           <TouchableOpacity
@@ -167,36 +182,34 @@ const styles = StyleSheet.create({
   },
   setsHeaderRow: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    alignItems: "center",
     marginBottom: 6,
-  },
-  setsHeaderText: {
-    width: 40,
-  },
-  setsHeaderPrevious: {
-    width: 90,
+    width: "100%",
   },
   setRow: {
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 6,
+    width: "100%",
   },
-  setId: {
-    width: 40,
+  colSet: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
-  setPrevious: {
-    width: 90,
-  },
-  inputKg: {
-    width: 40,
+  colKg: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: 6,
-    padding: 4,
-    marginRight: 8,
+    padding: 0,
   },
-  inputReps: {
-    width: 40,
+  colReps: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: 6,
-    padding: 4,
+    padding: 0,
   },
   addSetButton: {
     marginTop: 8,
