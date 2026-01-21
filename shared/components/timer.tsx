@@ -19,6 +19,7 @@ export default function Timer({ timerStart, timerStop }: TimerProps) {
     if (timerStart && !timerStop) {
       interval = setInterval(() => {
         setSeconds((prev) => prev + 1);
+        console.log(seconds);
       }, 1000);
     } else if (timerStop) {
       if (interval) {
