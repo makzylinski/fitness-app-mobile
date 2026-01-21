@@ -1,15 +1,24 @@
 import ExerciseInProgress from "@/components/new-workout/exercise-in-progress";
 import Timer from "@/shared/components/timer";
+import { useEffect, useState } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { ThemedText } from "../components/ui/themed-text";
 import { ThemedView } from "../components/ui/themed-view";
 import { useThemeColor } from "../hooks/use-theme-color";
 
 export default function WorkoutInProgress() {
+  const [timerStart, setTimerStart] = useState(false);
+
   const cardBg = useThemeColor({}, "inputBackground");
   const cardIconBg = useThemeColor({}, "primaryColor");
   const cardIconColor = useThemeColor({}, "background");
   const mainBg = useThemeColor({}, "background");
+
+  useEffect(() => {
+    if (!timerStart) {
+      setTimerStart(true);
+    }
+  }, []);
 
   return (
     <ThemedView style={[styles.container, { backgroundColor: mainBg }]}>
@@ -20,7 +29,7 @@ export default function WorkoutInProgress() {
             Upper Body Hypertrophy
           </ThemedText>
           <ThemedView style={styles.headerTimerRow}>
-            <Timer timerStart={false} timerStop={false}></Timer>
+            <Timer timerStart={timerStart} timerStop={false}></Timer>
           </ThemedView>
         </ThemedView>
         <TouchableOpacity
