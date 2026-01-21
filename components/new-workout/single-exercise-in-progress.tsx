@@ -1,5 +1,6 @@
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { IconSymbol } from "../ui/icon-symbol";
 import ThemedCard from "../ui/themed-card";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
@@ -33,15 +34,15 @@ export default function SingleExerciseInProgress({
   const lighterColorFont = useThemeColor({}, "inputLabel");
   const lightFontColor = useThemeColor({}, "inputBorder");
   const cardBg = useThemeColor({}, "inputBackground");
-  const cardIconColor = useThemeColor({}, "background");
+  const accent = useThemeColor({}, "primaryColor");
 
   return (
     <ThemedCard key={exercise.name}>
       <ThemedView style={[{ backgroundColor: cardBg }, styles.exerciseHeader]}>
-        <ThemedView style={[styles.exerciseIconBox]}>
-          <ThemedText style={[styles.exerciseIcon, { color: cardIconColor }]}>
-            {exercise.icon}
-          </ThemedText>
+        <ThemedView
+          style={[styles.exerciseIconBox, { backgroundColor: accent + "30" }]}
+        >
+          <IconSymbol name="dumbbell.fill" size={28} color={accent} />
         </ThemedView>
         <ThemedText style={[styles.exerciseName, { color: textColor }]}>
           {exercise.name}
@@ -167,8 +168,8 @@ const styles = StyleSheet.create({
   },
   exerciseIconBox: {
     borderRadius: 8,
-    width: 32,
-    height: 32,
+    width: 48,
+    height: 48,
     justifyContent: "center",
     alignItems: "center",
     marginRight: 12,
