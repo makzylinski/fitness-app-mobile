@@ -54,7 +54,7 @@ export default function SingleExerciseInProgress({
           >
             <ThemedView style={[styles.colSet, { backgroundColor: cardBg }]}>
               <ThemedText
-                style={{ color: lighterColorFont }}
+                style={[{ color: lighterColorFont }, styles.colHeaderText]}
                 numberOfLines={1}
                 ellipsizeMode="tail"
               >
@@ -63,7 +63,7 @@ export default function SingleExerciseInProgress({
             </ThemedView>
             <ThemedView style={[styles.colKg, { backgroundColor: cardBg }]}>
               <ThemedText
-                style={{ color: lighterColorFont }}
+                style={[{ color: lighterColorFont }, styles.colHeaderText]}
                 numberOfLines={1}
                 ellipsizeMode="tail"
               >
@@ -72,7 +72,7 @@ export default function SingleExerciseInProgress({
             </ThemedView>
             <ThemedView style={[styles.colReps, { backgroundColor: cardBg }]}>
               <ThemedText
-                style={{ color: lighterColorFont }}
+                style={[{ color: lighterColorFont }, styles.colHeaderText]}
                 numberOfLines={1}
                 ellipsizeMode="tail"
               >
@@ -196,6 +196,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  colHeaderText: {
+    fontSize: 12,
+    fontWeight: 700,
   },
   colKg: {
     flex: 1,
