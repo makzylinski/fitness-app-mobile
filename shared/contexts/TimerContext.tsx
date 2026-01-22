@@ -5,7 +5,7 @@ type TimerType = {
   increment: () => void;
 };
 
-const TimerContext = createContext<TimerType | undefined>(undefined);
+export const TimerContext = createContext<TimerType | undefined>(undefined);
 
 export const TimerProvider = ({ children }: { children: ReactNode }) => {
   const [time, setTime] = useState(0);
