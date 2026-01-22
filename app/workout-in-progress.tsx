@@ -15,6 +15,12 @@ export default function WorkoutInProgress() {
   const cardIconColor = useThemeColor({}, "background");
   const mainBg = useThemeColor({}, "background");
 
+  const finishWorkout = () => {
+    if (isTimerActive) {
+      setIsTimerActive(false);
+    }
+  };
+
   useEffect(() => {
     if (!isTimerActive) {
       setIsTimerActive(true);
@@ -34,6 +40,7 @@ export default function WorkoutInProgress() {
           </ThemedView>
         </ThemedView>
         <TouchableOpacity
+          onPress={() => finishWorkout()}
           style={[{ backgroundColor: cardBg }, styles.finishButton]}
         >
           <ThemedText style={styles.finishButtonText}>FINISH</ThemedText>
