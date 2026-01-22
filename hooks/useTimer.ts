@@ -1,4 +1,4 @@
-import { TimerContext } from "@/shared/contexts/TimerContext";
+import { TimerContext } from "@/shared/contexts/timer-context";
 import { useContext } from "react";
 
 export const useTimer = () => {
