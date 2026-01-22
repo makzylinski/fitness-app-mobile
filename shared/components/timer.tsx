@@ -1,44 +1,12 @@
 import { ThemedText } from "@/components/ui/themed-text";
 import { ThemedView } from "@/components/ui/themed-view";
 import { useThemeColor } from "@/hooks/use-theme-color";
-import { useEffect, useState } from "react";
+import { useTimer } from "@/hooks/useTimer";
 import { StyleSheet } from "react-native";
 
-type TimerProps = {
-  timerStart: boolean;
-  timerStop: boolean;
-};
-
-export default function Timer({ timerStart, timerStop }: TimerProps) {
+export default function Timer() {
   const primaryColor = useThemeColor({}, "primaryColor");
-  const [time, setTime] = useState("");
-  const [seconds, setSeconds] = useState(0);
-
-  useEffect(() => {
-    let interval: ReturnType<typeof setInterval> | undefined;
-    if (timerStart && !timerStop) {
-      interval = setInterval(() => {
-        setSeconds((prev) => prev + 1);
-        console.log(seconds);
-      }, 1000);
-    } else if (timerStop) {
-      if (interval) {
-        clearInterval(interval);
-      }
-    }
-
-    return () => {
-      if (interval) clearInterval(interval);
-    };
-  }, [timerStart, timerStop]);
-
-  useEffect(() => {
-    const h = String(Math.floor(seconds / 3600)).padStart(2, "0");
-    const m = String(Math.floor(seconds / 60)).padStart(2, "0");
-    const s = String(Math.floor(seconds % 60)).padStart(2, "0");
-
-    setTime(`${h}:${m}:${s}`);
-  }, [seconds]);
+  const { time } = useTimer();
 
   return (
     <ThemedView style={styles.container}>
