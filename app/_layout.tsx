@@ -7,6 +7,7 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
 
+import ActiveWorkoutWidget from "@/components/new-workout/active-workout-widget";
 import { Colors } from "@/constants/theme";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import { TimerProvider } from "@/shared/contexts/timer-context";
@@ -45,6 +46,7 @@ export default function RootLayout() {
       <ThemeProvider
         value={colorScheme === "dark" ? CustomDarkTheme : CustomLightTheme}
       >
+        <ActiveWorkoutWidget></ActiveWorkoutWidget>
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen
