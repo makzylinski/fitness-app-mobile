@@ -6,32 +6,42 @@ import { ThemedView } from "../ui/themed-view";
 
 export default function ActiveWorkoutWidget() {
   const primaryColor = useThemeColor({}, "primaryColor");
-  const accent = useThemeColor({}, "primaryColor");
 
   return (
     <ThemedView style={[{ backgroundColor: primaryColor }, styles.container]}>
-      <ThemedView style={styles.leftSection}>
+      <ThemedView
+        style={[{ backgroundColor: primaryColor }, styles.leftSection]}
+      >
         <ThemedView
-          style={[styles.exerciseIconBox, { backgroundColor: accent + "30" }]}
+          style={[
+            styles.exerciseIconBox,
+            { backgroundColor: primaryColor + "30" },
+          ]}
         >
-          <IconSymbol name="dumbbell.fill" size={28} color={accent} />
+          <IconSymbol name="dumbbell.fill" size={28} color="white" />
           <ThemedView style={styles.liveDot} />
         </ThemedView>
-        <ThemedView style={styles.textsColumn}>
+        <ThemedView
+          style={[{ backgroundColor: primaryColor }, styles.textsColumn]}
+        >
           <ThemedText style={styles.liveText}>
             <ThemedText style={styles.liveLabel}>Live: </ThemedText>Push Day
             Routine
           </ThemedText>
-          <ThemedView style={styles.rowTime}>
+          <ThemedView
+            style={[{ backgroundColor: primaryColor }, styles.rowTime]}
+          >
             <ThemedView style={styles.timeDot} />
             <ThemedText style={styles.timeText}>42 : 15</ThemedText>
           </ThemedView>
         </ThemedView>
       </ThemedView>
-      <ThemedView style={styles.rightSection}>
+      <ThemedView
+        style={[{ backgroundColor: primaryColor }, styles.rightSection]}
+      >
         <ThemedView style={styles.viewButton}>
           <ThemedText style={styles.viewButtonText}>View</ThemedText>
-          <IconSymbol name="chevron.right" size={20} color={accent} />
+          <IconSymbol name="chevron.right" size={20} color={primaryColor} />
         </ThemedView>
       </ThemedView>
     </ThemedView>
