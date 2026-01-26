@@ -6,9 +6,15 @@ import { ThemedView } from "./themed-view";
 export type ThemedInputProps = TextInputProps & {
   label?: string;
   rightIcon?: React.ReactNode;
+  labelStyle?: any;
 };
 
-export function ThemedInput({ label, rightIcon, ...props }: ThemedInputProps) {
+export function ThemedInput({
+  label,
+  rightIcon,
+  labelStyle,
+  ...props
+}: ThemedInputProps) {
   const backgroundColor = useThemeColor({}, "inputBackground");
   const textColor = useThemeColor({}, "text");
   const placeholderColor = useThemeColor({}, "icon");
@@ -17,8 +23,10 @@ export function ThemedInput({ label, rightIcon, ...props }: ThemedInputProps) {
   return (
     <ThemedView style={[{ backgroundColor }, styles.container]}>
       {label && (
-        <ThemedText style={[{ color: inputLabelColor }, styles.label]}>
-          {label.toUpperCase()}
+        <ThemedText
+          style={[{ color: inputLabelColor }, styles.label, labelStyle]}
+        >
+          {label}
         </ThemedText>
       )}
       <View style={styles.inputWrapper}>
