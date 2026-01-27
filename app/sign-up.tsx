@@ -12,6 +12,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function SignUp() {
   const [name, setName] = useState("");
@@ -21,15 +22,18 @@ export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  const insets = useSafeAreaInsets();
+
   const color = useThemeColor({}, "inputLabel");
   const primaryColor = useThemeColor({}, "primaryColor");
   const textColor = useThemeColor({}, "text");
+  const backgroundColor = useThemeColor({}, "background");
 
   const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   return (
     <ScrollView>
-      <ThemedView style={styles.container}>
+      <ThemedView style={[styles.container, { paddingTop: insets.top }]}>
         <ThemedView style={styles.headerContainer}>
           <ThemedText style={styles.header}>Create Account</ThemedText>
         </ThemedView>
@@ -176,7 +180,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 24,
-    paddingTop: 60,
     paddingBottom: 40,
   },
   headerContainer: {
@@ -201,9 +204,6 @@ const styles = StyleSheet.create({
   },
   formContainer: {
     flex: 1,
-  },
-  input: {
-    // ...existing code...
   },
   roundedInput: {
     borderRadius: 24,
