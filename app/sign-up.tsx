@@ -27,7 +27,6 @@ export default function SignUp() {
   const color = useThemeColor({}, "inputLabel");
   const primaryColor = useThemeColor({}, "primaryColor");
   const textColor = useThemeColor({}, "text");
-  const backgroundColor = useThemeColor({}, "background");
 
   const [acceptedTerms, setAcceptedTerms] = useState(false);
 
