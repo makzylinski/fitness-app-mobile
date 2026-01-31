@@ -113,7 +113,7 @@ export default function SignUp() {
               )}
             </Pressable>
             <ThemedText style={styles.termsText}>
-              I agree to
+              I agree to{" "}
               <ThemedText
                 style={{ color: primaryColor, textDecorationLine: "underline" }}
               >
