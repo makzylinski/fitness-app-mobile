@@ -134,15 +134,7 @@ export default function SignUp() {
         </ThemedView>
 
         <ThemedView style={styles.bottomContainer}>
-          <ThemedButton
-            style={
-              !acceptedTerms
-                ? [styles.button, { opacity: 0.5 }]
-                : [styles.button]
-            }
-            title="Sign Up"
-            onPress={onSignUp}
-          />
+          <ThemedButton title="Sign Up" onPress={onSignUp} />
 
           <ThemedView style={styles.dividerContainer}>
             <ThemedView style={styles.divider} />
