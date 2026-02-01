@@ -1,7 +1,7 @@
 import { ThemedText } from "@/components/ui/themed-text";
 import { ThemedView } from "@/components/ui/themed-view";
 import { useThemeColor } from "@/hooks/use-theme-color";
-import { useTimer } from "@/hooks/useTimer";
+import { useTimer } from "@/hooks/use-timer";
 import { StyleSheet } from "react-native";
 
 export default function Timer() {

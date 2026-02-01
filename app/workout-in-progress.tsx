@@ -1,5 +1,5 @@
 import ExerciseInProgress from "@/components/new-workout/exercise-in-progress";
-import { useTimer } from "@/hooks/useTimer";
+import { useTimer } from "@/hooks/use-timer";
 import Timer from "@/shared/components/timer";
 import { useEffect } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
