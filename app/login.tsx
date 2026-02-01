@@ -19,6 +19,7 @@ export default function Login() {
     setPassword,
     showPassword,
     setShowPassword,
+    onLogin,
   } = useLogin();
 
   return (
@@ -69,11 +70,7 @@ export default function Login() {
             Forgot Password?
           </ThemedText>
         </ThemedView>
-        <ThemedButton
-          style={styles.button}
-          title="Log In"
-          onPress={() => null}
-        />
+        <ThemedButton style={styles.button} title="Log In" onPress={onLogin} />
         <ThemedView style={styles.signUpSection}>
           <ThemedText style={[{ color }, styles.slogan]}>
             Don&apos;t have an account?{" "}

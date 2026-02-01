@@ -1,9 +1,19 @@
+import { login } from "@/api/authService";
 import { useState } from "react";
 
 export const useLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+
+  const onLogin = async () => {
+    try {
+      const response = await login();
+      console.log(response);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return {
     email,
@@ -12,5 +22,6 @@ export const useLogin = () => {
     setPassword,
     showPassword,
     setShowPassword,
+    onLogin,
   };
 };
