@@ -1,44 +1,35 @@
-import { register } from "@/api/authService";
 import ThemedButton from "@/components/ui/themed-button";
 import { ThemedInput } from "@/components/ui/themed-input";
 import { ThemedText } from "@/components/ui/themed-text";
 import { ThemedView } from "@/components/ui/themed-view";
+import { useSignUp } from "@/hooks/use-sign-up";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
-import { useState } from "react";
 import {
   Pressable,
   ScrollView,
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function SignUp() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  const insets = useSafeAreaInsets();
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    showPassword,
+    setShowPassword,
+    acceptedTerms,
+    setAcceptedTerms,
+    insets,
+    onSignUp,
+  } = useSignUp();
 
   const color = useThemeColor({}, "inputLabel");
   const primaryColor = useThemeColor({}, "primaryColor");
   const textColor = useThemeColor({}, "text");
-
-  const [acceptedTerms, setAcceptedTerms] = useState(false);
-
-  const onSignUp = async () => {
-    try {
-      const result = await register();
-      console.log(result);
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
   return (
     <ScrollView>
@@ -48,14 +39,6 @@ export default function SignUp() {
         </ThemedView>
 
         <ThemedView style={styles.formContainer}>
-          <ThemedInput
-            style={styles.roundedInput}
-            placeholder="Enter your full name"
-            value={name}
-            label="Full Name"
-            labelStyle={styles.inputLabel}
-            onChangeText={(text) => setName(text)}
-          />
           <ThemedInput
             style={styles.roundedInput}
             placeholder="example@email.com"
@@ -74,6 +57,8 @@ export default function SignUp() {
             label="Password"
             labelStyle={styles.inputLabel}
             secureTextEntry={!showPassword}
+            textContentType="newPassword"
+            autoComplete="password"
             onChangeText={(text) => setPassword(text)}
             rightIcon={
               <Pressable
@@ -82,27 +67,6 @@ export default function SignUp() {
               >
                 <Ionicons
                   name={showPassword ? "eye-off" : "eye"}
-                  size={20}
-                  color={color}
-                />
-              </Pressable>
-            }
-          />
-          <ThemedInput
-            style={styles.roundedInput}
-            placeholder="Repeat your password"
-            value={confirmPassword}
-            label="Confirm Password"
-            labelStyle={styles.inputLabel}
-            secureTextEntry={!showConfirmPassword}
-            onChangeText={(text) => setConfirmPassword(text)}
-            rightIcon={
-              <Pressable
-                onPress={() => setShowConfirmPassword(!showConfirmPassword)}
-                style={{ paddingBottom: 0 }}
-              >
-                <Ionicons
-                  name={showConfirmPassword ? "eye-off" : "eye"}
                   size={20}
                   color={color}
                 />
@@ -134,15 +98,7 @@ export default function SignUp() {
         </ThemedView>
 
         <ThemedView style={styles.bottomContainer}>
-          <ThemedButton
-            style={
-              !acceptedTerms
-                ? [styles.button, { opacity: 0.5 }]
-                : [styles.button]
-            }
-            title="Sign Up"
-            onPress={onSignUp}
-          />
+          <ThemedButton title="Sign Up" onPress={onSignUp} />
 
           <ThemedView style={styles.dividerContainer}>
             <ThemedView style={styles.divider} />

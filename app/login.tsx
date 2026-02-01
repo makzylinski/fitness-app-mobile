@@ -1,6 +1,6 @@
+import { useLogin } from "@/hooks/use-login";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { Ionicons } from "@expo/vector-icons";
-import { useState } from "react";
 import { Pressable, ScrollView, StyleSheet, View } from "react-native";
 import ThemedButton from "../components/ui/themed-button";
 import { ThemedInput } from "../components/ui/themed-input";
@@ -12,9 +12,15 @@ export default function Login() {
   const color = useThemeColor({}, "inputLabel");
   const primaryColor = useThemeColor({}, "primaryColor");
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    showPassword,
+    setShowPassword,
+    onLogin,
+  } = useLogin();
 
   return (
     <ScrollView>
@@ -64,11 +70,7 @@ export default function Login() {
             Forgot Password?
           </ThemedText>
         </ThemedView>
-        <ThemedButton
-          style={styles.button}
-          title="Log In"
-          onPress={() => null}
-        />
+        <ThemedButton style={styles.button} title="Log In" onPress={onLogin} />
         <ThemedView style={styles.signUpSection}>
           <ThemedText style={[{ color }, styles.slogan]}>
             Don&apos;t have an account?{" "}
