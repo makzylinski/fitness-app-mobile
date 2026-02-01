@@ -15,18 +15,12 @@ import {
 
 export default function SignUp() {
   const {
-    name,
-    setName,
     email,
     setEmail,
     password,
     setPassword,
-    confirmPassword,
-    setConfirmPassword,
     showPassword,
     setShowPassword,
-    showConfirmPassword,
-    setShowConfirmPassword,
     acceptedTerms,
     setAcceptedTerms,
     insets,
@@ -45,14 +39,6 @@ export default function SignUp() {
         </ThemedView>
 
         <ThemedView style={styles.formContainer}>
-          <ThemedInput
-            style={styles.roundedInput}
-            placeholder="Enter your full name"
-            value={name}
-            label="Full Name"
-            labelStyle={styles.inputLabel}
-            onChangeText={(text) => setName(text)}
-          />
           <ThemedInput
             style={styles.roundedInput}
             placeholder="example@email.com"
@@ -81,29 +67,6 @@ export default function SignUp() {
               >
                 <Ionicons
                   name={showPassword ? "eye-off" : "eye"}
-                  size={20}
-                  color={color}
-                />
-              </Pressable>
-            }
-          />
-          <ThemedInput
-            style={styles.roundedInput}
-            placeholder="Repeat your password"
-            value={confirmPassword}
-            label="Confirm Password"
-            labelStyle={styles.inputLabel}
-            secureTextEntry={!showConfirmPassword}
-            textContentType="newPassword"
-            autoComplete="new-password"
-            onChangeText={(text) => setConfirmPassword(text)}
-            rightIcon={
-              <Pressable
-                onPress={() => setShowConfirmPassword(!showConfirmPassword)}
-                style={{ paddingBottom: 0 }}
-              >
-                <Ionicons
-                  name={showConfirmPassword ? "eye-off" : "eye"}
                   size={20}
                   color={color}
                 />
