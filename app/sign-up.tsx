@@ -1,44 +1,41 @@
-import { register } from "@/api/authService";
 import ThemedButton from "@/components/ui/themed-button";
 import { ThemedInput } from "@/components/ui/themed-input";
 import { ThemedText } from "@/components/ui/themed-text";
 import { ThemedView } from "@/components/ui/themed-view";
+import { useSignUp } from "@/hooks/use-sign-up";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
-import { useState } from "react";
 import {
   Pressable,
   ScrollView,
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function SignUp() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  const insets = useSafeAreaInsets();
+  const {
+    name,
+    setName,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    confirmPassword,
+    setConfirmPassword,
+    showPassword,
+    setShowPassword,
+    showConfirmPassword,
+    setShowConfirmPassword,
+    acceptedTerms,
+    setAcceptedTerms,
+    insets,
+    onSignUp,
+  } = useSignUp();
 
   const color = useThemeColor({}, "inputLabel");
   const primaryColor = useThemeColor({}, "primaryColor");
   const textColor = useThemeColor({}, "text");
-
-  const [acceptedTerms, setAcceptedTerms] = useState(false);
-
-  const onSignUp = async () => {
-    try {
-      const result = await register();
-      console.log(result);
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
   return (
     <ScrollView>
