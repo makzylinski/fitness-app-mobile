@@ -71,6 +71,8 @@ export default function SignUp() {
             label="Password"
             labelStyle={styles.inputLabel}
             secureTextEntry={!showPassword}
+            textContentType="newPassword"
+            autoComplete="password"
             onChangeText={(text) => setPassword(text)}
             rightIcon={
               <Pressable
@@ -92,6 +94,8 @@ export default function SignUp() {
             label="Confirm Password"
             labelStyle={styles.inputLabel}
             secureTextEntry={!showConfirmPassword}
+            textContentType="newPassword"
+            autoComplete="new-password"
             onChangeText={(text) => setConfirmPassword(text)}
             rightIcon={
               <Pressable
