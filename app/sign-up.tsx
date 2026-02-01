@@ -1,3 +1,4 @@
+import { register } from "@/api/authService";
 import ThemedButton from "@/components/ui/themed-button";
 import { ThemedInput } from "@/components/ui/themed-input";
 import { ThemedText } from "@/components/ui/themed-text";
@@ -29,6 +30,15 @@ export default function SignUp() {
   const textColor = useThemeColor({}, "text");
 
   const [acceptedTerms, setAcceptedTerms] = useState(false);
+
+  const onSignUp = async () => {
+    try {
+      const result = await register();
+      console.log(result);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <ScrollView>
@@ -113,7 +123,7 @@ export default function SignUp() {
               )}
             </Pressable>
             <ThemedText style={styles.termsText}>
-              I agree to
+              I agree to{" "}
               <ThemedText
                 style={{ color: primaryColor, textDecorationLine: "underline" }}
               >
@@ -131,15 +141,7 @@ export default function SignUp() {
                 : [styles.button]
             }
             title="Sign Up"
-            onPress={
-              acceptedTerms
-                ? () => {
-                    console.log();
-                  }
-                : () => {
-                    console.log();
-                  }
-            }
+            onPress={onSignUp}
           />
 
           <ThemedView style={styles.dividerContainer}>
