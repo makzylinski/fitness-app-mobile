@@ -1,4 +1,5 @@
 import { login } from "@/api/authService";
+import { router } from "expo-router";
 import { useState } from "react";
 
 export const useLogin = () => {
@@ -9,6 +10,9 @@ export const useLogin = () => {
   const onLogin = async () => {
     try {
       const response = await login();
+      if (response?.status === 200) {
+        router.push("/");
+      }
       console.log(response);
     } catch (err) {
       console.error(err);
