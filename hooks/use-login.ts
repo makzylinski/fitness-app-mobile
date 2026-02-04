@@ -9,7 +9,7 @@ export const useLogin = () => {
 
   const onLogin = async () => {
     try {
-      const response = await login();
+      const response = await login(email, password);
       if (response?.status === 200) {
         router.push("/");
       }
