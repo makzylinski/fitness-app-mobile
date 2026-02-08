@@ -11,3 +11,9 @@ export const login = async (email: string, password: string) =>
     email,
     password,
   });
+
+export const sendVerificationCode = async (email: string, code: number) =>
+  await apiClient.post("/auth/verification-code", {
+    email,
+    code,
+  });
