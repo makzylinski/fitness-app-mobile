@@ -1,4 +1,5 @@
 import { register } from "@/api/authService";
+import { router } from "expo-router";
 import { useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -13,6 +14,7 @@ export const useSignUp = () => {
   const onSignUp = async () => {
     try {
       const result = await register(email, password);
+      router.push("/verification-code");
       console.log(result);
     } catch (err) {
       console.error(err);
