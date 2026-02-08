@@ -14,7 +14,7 @@ export const useSignUp = () => {
   const onSignUp = async () => {
     try {
       const result = await register(email, password);
-      router.push("/verification-code");
+      router.push({ pathname: "/verification-code", params: { email: email } });
       console.log(result);
     } catch (err) {
       console.error(err);

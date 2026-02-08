@@ -1,6 +1,7 @@
 import { ThemedText } from "@/components/ui/themed-text";
 import { ThemedView } from "@/components/ui/themed-view";
 import { useThemeColor } from "@/hooks/use-theme-color";
+import { UseVerificationCode } from "@/hooks/use-verification-code";
 import { Ionicons } from "@expo/vector-icons";
 import { useRef, useState } from "react";
 import { Pressable, StyleSheet, TextInput, View } from "react-native";
@@ -15,7 +16,6 @@ export default function VerificationCode() {
   const verifyBtnBg = useThemeColor({}, "primaryColor");
   const verifyBtnText = useThemeColor({}, "background");
   const secureTextColor = useThemeColor({}, "icon");
-  const [code, setCode] = useState(["", "", "", "", ""]);
   const [isResending, setIsResending] = useState(false);
   const [isVerifying, setIsVerifying] = useState(false);
   const inputs = [
@@ -25,6 +25,7 @@ export default function VerificationCode() {
     useRef(null),
     useRef(null),
   ];
+  const { setCode, code, onSendVerificationCode } = UseVerificationCode();
 
   const handleChange = (text: string, idx: number) => {
     if (/^\d?$/.test(text)) {
@@ -49,7 +50,7 @@ export default function VerificationCode() {
 
   const handleVerify = () => {
     setIsVerifying(true);
-    setTimeout(() => setIsVerifying(false), 1000); // TODO
+    onSendVerificationCode();
   };
 
   return (
