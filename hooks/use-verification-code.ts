@@ -2,7 +2,7 @@ import { sendVerificationCode } from "@/api/authService";
 import { router, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 
-export const UseVerificationCode = () => {
+export const useVerificationCode = () => {
   const { email } = useLocalSearchParams();
   const [code, setCode] = useState(["", "", "", "", ""]);
   const [finalCode, setFinalCode] = useState(0);
@@ -12,26 +12,10 @@ export const UseVerificationCode = () => {
   const onSendVerificationCode = async () => {
     try {
       const result = await sendVerificationCode(String(email), finalCode);
-      router.push("/verification-code");
+      router.push("/");
       console.log(result);
     } catch (err) {
       console.error(err);
-    }
-  };
-
-  const handleChange = (text: string, idx: number) => {
-    if (/^\d?$/.test(text)) {
-      const newCode = [...code];
-      newCode[idx] = text;
-      setCode(newCode);
-      if (text && idx < 4) {
-        // @ts-ignore
-        inputs[idx + 1].current?.focus();
-      }
-      if (!text && idx > 0) {
-        // @ts-ignore
-        inputs[idx - 1].current?.focus();
-      }
     }
   };
 
@@ -55,7 +39,6 @@ export const UseVerificationCode = () => {
     code,
     setCode,
     onSendVerificationCode,
-    handleChange,
     handleResend,
     handleVerify,
     isResending,
