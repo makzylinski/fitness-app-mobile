@@ -3,7 +3,7 @@ import { ThemedView } from "@/components/ui/themed-view";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { UseVerificationCode } from "@/hooks/use-verification-code";
 import { Ionicons } from "@expo/vector-icons";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Pressable, StyleSheet, TextInput, View } from "react-native";
 
 export default function VerificationCode() {
@@ -16,8 +16,6 @@ export default function VerificationCode() {
   const verifyBtnBg = useThemeColor({}, "primaryColor");
   const verifyBtnText = useThemeColor({}, "background");
   const secureTextColor = useThemeColor({}, "icon");
-  const [isResending, setIsResending] = useState(false);
-  const [isVerifying, setIsVerifying] = useState(false);
   const inputs = [
     useRef(null),
     useRef(null),
@@ -25,33 +23,14 @@ export default function VerificationCode() {
     useRef(null),
     useRef(null),
   ];
-  const { setCode, code, onSendVerificationCode } = UseVerificationCode();
-
-  const handleChange = (text: string, idx: number) => {
-    if (/^\d?$/.test(text)) {
-      const newCode = [...code];
-      newCode[idx] = text;
-      setCode(newCode);
-      if (text && idx < 4) {
-        // @ts-ignore
-        inputs[idx + 1].current?.focus();
-      }
-      if (!text && idx > 0) {
-        // @ts-ignore
-        inputs[idx - 1].current?.focus();
-      }
-    }
-  };
-
-  const handleResend = () => {
-    setIsResending(true);
-    setTimeout(() => setIsResending(false), 1000); // TODO
-  };
-
-  const handleVerify = () => {
-    setIsVerifying(true);
-    onSendVerificationCode();
-  };
+  const {
+    code,
+    handleChange,
+    handleResend,
+    handleVerify,
+    isResending,
+    isVerifying,
+  } = UseVerificationCode();
 
   return (
     <ThemedView style={[styles.container, { backgroundColor }]}>
