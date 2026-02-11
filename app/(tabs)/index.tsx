@@ -1,5 +1,4 @@
 import CalorieSummary from "@/components/dashboard/calorie-summary";
-import RecentWorkouts from "@/components/dashboard/recent-workouts";
 import { ThemedText } from "@/components/ui/themed-text";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { getGreetings } from "@/utils/getGreetings";
@@ -21,7 +20,7 @@ export default function Dashboard() {
           </ThemedText>
         </ThemedView>
         <CalorieSummary></CalorieSummary>
-        <RecentWorkouts></RecentWorkouts>
+        {/* <RecentWorkouts></RecentWorkouts> */}
       </ThemedView>
     </ScrollView>
   );
