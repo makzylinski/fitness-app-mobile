@@ -4,11 +4,11 @@ import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
 
 export default function CaloriesCounter() {
-  const backgroundColor = useThemeColor({}, "inputBackground");
-  const primaryColor = useThemeColor({}, "primaryColor");
-  const lighterColorFont = useThemeColor({}, "inputLabel");
+  const backgroundColor = useThemeColor("inputBackground");
+  const primaryColor = useThemeColor("primaryColor");
+  const lighterColorFont = useThemeColor("inputLabel");
 
-// TODO: Change static data to api 
+  // TODO: Change static data to api
   return (
     <ThemedView style={[styles.container, { backgroundColor }]}>
       <ThemedView style={[styles.calories, { backgroundColor }]}>
