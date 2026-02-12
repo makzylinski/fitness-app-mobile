@@ -10,12 +10,9 @@ export default function FoodCalendar() {
   const year = dateToday.getFullYear();
   const [selectedDate, setSelectedDate] = useState<number | null>(day);
 
-  const formattedDate = `${day}/${month}/${year}`;
-  console.log(formattedDate);
-
   const displayAllDaysInMonth = (
     selectedMonth: number,
-    selectedYear: number
+    selectedYear: number,
   ) => {
     const date = new Date(selectedYear, selectedMonth, 1);
     const days = [];
