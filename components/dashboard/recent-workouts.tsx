@@ -5,7 +5,7 @@ import { ThemedView } from "../ui/themed-view";
 import SingleRecentWorkout from "./single-recent-workout";
 
 export default function RecentWorkouts() {
-  const primaryColor = useThemeColor({}, "primaryColor");
+  const primaryColor = useThemeColor("primaryColor");
 
   const recentWorkouts = [
     {

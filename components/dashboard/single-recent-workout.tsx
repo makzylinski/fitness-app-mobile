@@ -17,11 +17,11 @@ type SingleRecentWorkoutProps = {
 export default function SingleRecentWorkout({
   workouts,
 }: SingleRecentWorkoutProps) {
-  const backgroundColor = useThemeColor({}, "inputBackground");
-  const textColor = useThemeColor({}, "text");
-  const secondaryTextColor = useThemeColor({}, "icon");
-  const primaryColor = useThemeColor({}, "primaryColor");
-  const borderBottomColor = useThemeColor({}, "inputBorder");
+  const backgroundColor = useThemeColor("inputBackground");
+  const textColor = useThemeColor("text");
+  const secondaryTextColor = useThemeColor("icon");
+  const primaryColor = useThemeColor("primaryColor");
+  const borderBottomColor = useThemeColor("inputBorder");
 
   const formatDate = (date: Date) => {
     const today = new Date();
