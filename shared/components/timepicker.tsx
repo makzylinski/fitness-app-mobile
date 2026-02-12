@@ -21,7 +21,7 @@ export default function Timepicker({
 }: TimepickerProps) {
   const defaultStyles = useDefaultStyles();
   const [tempTime, setTempTime] = useState<DateType>(selectedTime);
-  const buttonBg = useThemeColor({}, "tint");
+  const buttonBg = useThemeColor("tint");
 
   const handleConfirm = () => {
     onTimeSelect(tempTime);

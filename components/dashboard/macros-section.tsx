@@ -12,8 +12,8 @@ type MacrosProps = {
 };
 
 export default function MacrosSection(props: MacrosProps) {
-  const backgroundColor = useThemeColor({}, "inputBackground");
-  const color = useThemeColor({}, "inputLabel");
+  const backgroundColor = useThemeColor("inputBackground");
+  const color = useThemeColor("inputLabel");
 
   const calculatePercentage = (): number =>
     (props.actualValue / props.maxValue) * 100;

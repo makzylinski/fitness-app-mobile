@@ -9,7 +9,7 @@ import { ThemedView } from "./ui/themed-view";
 export default function Toolbar() {
   const router = useRouter();
 
-  const lighterColorFont = useThemeColor({}, "inputLabel");
+  const lighterColorFont = useThemeColor("inputLabel");
   const insets = useSafeAreaInsets();
 
   const navigateToLogin = () => router.push("/login");

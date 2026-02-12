@@ -1,29 +1,12 @@
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
-} from "@react-navigation/native";
+import { Colors } from "@/constants/theme";
+import { TimerProvider } from "@/shared/contexts/timer-context";
+import { DarkTheme, ThemeProvider } from "@react-navigation/native";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
 
-import { Colors } from "@/constants/theme";
-import { useColorScheme } from "@/hooks/use-color-scheme";
-import { TimerProvider } from "@/shared/contexts/timer-context";
-
 export const unstable_settings = {
   anchor: "(tabs)",
-};
-
-const CustomLightTheme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    background: Colors.light.background,
-    text: Colors.light.text,
-    primary: Colors.light.tint,
-    card: Colors.light.background,
-  },
 };
 
 const CustomDarkTheme = {
@@ -38,13 +21,9 @@ const CustomDarkTheme = {
 };
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <TimerProvider>
-      <ThemeProvider
-        value={colorScheme === "dark" ? CustomDarkTheme : CustomLightTheme}
-      >
+      <ThemeProvider value={CustomDarkTheme}>
         {/* <ActiveWorkoutWidget></ActiveWorkoutWidget> */}
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />

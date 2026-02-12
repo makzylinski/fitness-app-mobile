@@ -14,7 +14,7 @@ export default function ThemedCard({
   children,
   style,
 }: ThemedCardProps) {
-  const backgroundColor = useThemeColor({}, "inputBackground");
+  const backgroundColor = useThemeColor("inputBackground");
 
   return (
     <ThemedView style={[{ backgroundColor }, styles.card, style]}>

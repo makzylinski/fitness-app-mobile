@@ -17,9 +17,9 @@ type MealProps = {
 export default function Meal({ meal }: MealProps) {
   const [openMealIndexes, setOpenMealIndexes] = useState<number[]>([]);
 
-  const backgroundColor = useThemeColor({}, "inputBackground");
-  const lighterColorFont = useThemeColor({}, "inputLabel");
-  const primaryColor = useThemeColor({}, "primaryColor");
+  const backgroundColor = useThemeColor("inputBackground");
+  const lighterColorFont = useThemeColor("inputLabel");
+  const primaryColor = useThemeColor("primaryColor");
 
   const onOpenScanner = () => console.log("open phone camera");
   const onAddMeal = () => console.log("on Add Meal");

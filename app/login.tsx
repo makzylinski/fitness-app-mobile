@@ -8,9 +8,9 @@ import { ThemedText } from "../components/ui/themed-text";
 import { ThemedView } from "../components/ui/themed-view";
 
 export default function Login() {
-  const accent = useThemeColor({}, "accent");
-  const color = useThemeColor({}, "inputLabel");
-  const primaryColor = useThemeColor({}, "primaryColor");
+  const accent = useThemeColor("accent");
+  const color = useThemeColor("inputLabel");
+  const primaryColor = useThemeColor("primaryColor");
 
   const {
     email,

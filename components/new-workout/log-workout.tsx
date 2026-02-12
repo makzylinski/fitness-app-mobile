@@ -14,10 +14,10 @@ export default function LogWorkout() {
 
   const [workoutName, setWorkoutName] = useState("Upper Body Workout");
   const router = useRouter();
-  const inputLabelColor = useThemeColor({}, "inputLabel");
-  const backgroundColor = useThemeColor({}, "inputBackground");
-  const primaryColor = useThemeColor({}, "primaryColor");
-  const secondaryBackground = useThemeColor({}, "secondaryBackground");
+  const inputLabelColor = useThemeColor("inputLabel");
+  const backgroundColor = useThemeColor("inputBackground");
+  const primaryColor = useThemeColor("primaryColor");
+  const secondaryBackground = useThemeColor("secondaryBackground");
 
   return (
     <ScrollView>

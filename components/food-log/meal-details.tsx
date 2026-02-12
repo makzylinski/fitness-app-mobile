@@ -20,9 +20,9 @@ type MealDetailsProps = {
 };
 
 export default function MealDetails({ product }: MealDetailsProps) {
-  const lighterColorFont = useThemeColor({}, "inputLabel");
-  const primaryColor = useThemeColor({}, "primaryColor");
-  const backgroundColor = useThemeColor({}, "inputBackground");
+  const lighterColorFont = useThemeColor("inputLabel");
+  const primaryColor = useThemeColor("primaryColor");
+  const backgroundColor = useThemeColor("inputBackground");
 
   const onExchange = () => console.log("Exchange");
 

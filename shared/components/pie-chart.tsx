@@ -3,7 +3,7 @@ import React from "react";
 import { ProgressChart } from "react-native-chart-kit";
 
 export default function PieChart() {
-  const backgroundColor = useThemeColor({}, "inputBackground");
+  const backgroundColor = useThemeColor("inputBackground");
 
   const data = {
     data: [0.75],

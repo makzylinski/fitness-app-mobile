@@ -5,7 +5,7 @@ import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
 
 export default function ActiveWorkoutWidget() {
-  const primaryColor = useThemeColor({}, "primaryColor");
+  const primaryColor = useThemeColor("primaryColor");
 
   return (
     <ThemedView style={[{ backgroundColor: primaryColor }, styles.container]}>

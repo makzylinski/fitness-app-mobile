@@ -16,10 +16,10 @@ export default function Notes({
   label,
   placeholder,
 }: NotesProps) {
-  const backgroundColor = useThemeColor({}, "inputBackground");
-  const inputLabelColor = useThemeColor({}, "inputLabel");
-  const textColor = useThemeColor({}, "text");
-  const placeholderColor = useThemeColor({}, "icon");
+  const backgroundColor = useThemeColor("inputBackground");
+  const inputLabelColor = useThemeColor("inputLabel");
+  const textColor = useThemeColor("text");
+  const placeholderColor = useThemeColor("icon");
 
   return (
     <ThemedView style={{ backgroundColor }}>

@@ -7,15 +7,15 @@ import { useRef } from "react";
 import { Pressable, StyleSheet, TextInput, View } from "react-native";
 
 export default function VerificationCode() {
-  const backgroundColor = useThemeColor({}, "background");
-  const textColor = useThemeColor({}, "text");
-  const subtitleColor = useThemeColor({}, "inputLabel");
-  const codeInputBg = useThemeColor({}, "inputBackground");
-  const codeInputBorder = useThemeColor({}, "inputBorder");
-  const accentColor = useThemeColor({}, "accent");
-  const verifyBtnBg = useThemeColor({}, "primaryColor");
-  const verifyBtnText = useThemeColor({}, "background");
-  const secureTextColor = useThemeColor({}, "icon");
+  const backgroundColor = useThemeColor("background");
+  const textColor = useThemeColor("text");
+  const subtitleColor = useThemeColor("inputLabel");
+  const codeInputBg = useThemeColor("inputBackground");
+  const codeInputBorder = useThemeColor("inputBorder");
+  const accentColor = useThemeColor("accent");
+  const verifyBtnBg = useThemeColor("primaryColor");
+  const verifyBtnText = useThemeColor("background");
+  const secureTextColor = useThemeColor("icon");
   const inputs = [
     useRef(null),
     useRef(null),

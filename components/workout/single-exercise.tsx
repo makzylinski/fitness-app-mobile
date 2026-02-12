@@ -15,10 +15,10 @@ type ExerciseProps = {
 };
 
 export default function SingleExercise({ exercise }: ExerciseProps) {
-  const backgroundColor = useThemeColor({}, "inputBackground");
-  const inputLabelColor = useThemeColor({}, "inputLabel");
-  const textColor = useThemeColor({}, "text");
-  const accent = useThemeColor({}, "accent");
+  const backgroundColor = useThemeColor("inputBackground");
+  const inputLabelColor = useThemeColor("inputLabel");
+  const textColor = useThemeColor("text");
+  const accent = useThemeColor("accent");
 
   return (
     <ThemedView style={styles.container}>

@@ -30,11 +30,11 @@ export default function SingleExerciseInProgress({
   setExercises,
   exerciseIndex,
 }: SingleExerciseInProgressProps) {
-  const textColor = useThemeColor({}, "text");
-  const lighterColorFont = useThemeColor({}, "inputLabel");
-  const lightFontColor = useThemeColor({}, "inputBorder");
-  const cardBg = useThemeColor({}, "inputBackground");
-  const accent = useThemeColor({}, "primaryColor");
+  const textColor = useThemeColor("text");
+  const lighterColorFont = useThemeColor("inputLabel");
+  const lightFontColor = useThemeColor("inputBorder");
+  const cardBg = useThemeColor("inputBackground");
+  const accent = useThemeColor("primaryColor");
 
   return (
     <ThemedCard key={exercise.name}>

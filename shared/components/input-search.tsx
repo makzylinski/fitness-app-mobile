@@ -6,7 +6,7 @@ import { useState } from "react";
 import { StyleSheet } from "react-native";
 
 export default function InputSearch() {
-  const backgroundColor = useThemeColor({}, "inputBackground");
+  const backgroundColor = useThemeColor("inputBackground");
   const [searchText, setSearchText] = useState("");
   const exercises: string[] = [
     //TODO: this is only testing data, will fetch it from server later
@@ -18,7 +18,7 @@ export default function InputSearch() {
   ];
 
   const filteredExercises = exercises.filter((exercise) =>
-    exercise.toLowerCase().includes(searchText.toLowerCase())
+    exercise.toLowerCase().includes(searchText.toLowerCase()),
   );
 
   return (

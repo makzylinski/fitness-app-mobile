@@ -9,11 +9,11 @@ import CalorieProgressBar from "./calorie-progress-bar";
 import MacrosSection from "./macros-section";
 
 export default function CalorieSummary() {
-  const backgroundColor = useThemeColor({}, "inputBackground");
-  const accent = useThemeColor({}, "accent");
-  const primaryColor = useThemeColor({}, "primaryColor");
-  const secondaryColor = useThemeColor({}, "secondaryColor");
-  const borderBottomColor = useThemeColor({}, "inputBorder");
+  const backgroundColor = useThemeColor("inputBackground");
+  const accent = useThemeColor("accent");
+  const primaryColor = useThemeColor("primaryColor");
+  const secondaryColor = useThemeColor("secondaryColor");
+  const borderBottomColor = useThemeColor("inputBorder");
 
   const macrosData = [
     {
