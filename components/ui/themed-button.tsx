@@ -15,7 +15,7 @@ export default function ThemedButton({
   style,
   color,
 }: ThemedButtonProps) {
-  const backgroundColor = useThemeColor({}, "primaryColor");
+  const backgroundColor = useThemeColor("primaryColor");
 
   return (
     <ThemedView style={styles.container}>

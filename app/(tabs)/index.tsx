@@ -6,7 +6,7 @@ import { ScrollView, StyleSheet } from "react-native";
 import { ThemedView } from "../../components/ui/themed-view";
 
 export default function Dashboard() {
-  const color = useThemeColor({}, "inputLabel");
+  const color = useThemeColor("inputLabel");
 
   return (
     <ScrollView>
