@@ -15,10 +15,10 @@ export function ThemedInput({
   labelStyle,
   ...props
 }: ThemedInputProps) {
-  const backgroundColor = useThemeColor({}, "inputBackground");
-  const textColor = useThemeColor({}, "text");
-  const placeholderColor = useThemeColor({}, "icon");
-  const inputLabelColor = useThemeColor({}, "inputLabel");
+  const backgroundColor = useThemeColor("inputBackground");
+  const textColor = useThemeColor("text");
+  const placeholderColor = useThemeColor("icon");
+  const inputLabelColor = useThemeColor("inputLabel");
 
   return (
     <ThemedView style={[{ backgroundColor }, styles.container]}>
