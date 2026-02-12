@@ -1,15 +1,14 @@
 import LogWorkout from "@/components/new-workout/log-workout";
 import { Colors } from "@/constants/theme";
 import { useState } from "react";
-import { useColorScheme, useWindowDimensions } from "react-native";
+import { useWindowDimensions } from "react-native";
 import { TabBar, TabView } from "react-native-tab-view";
 import WorkoutHistory from "../../components/workout/workout-history";
 
 export default function Workout() {
   const layout = useWindowDimensions();
   const [index, setIndex] = useState(0);
-  const colorScheme = useColorScheme() ?? "dark";
-  const colors = Colors[colorScheme];
+  const colors = Colors["dark"];
 
   const [routes] = useState([
     { key: "log-wortkout", title: "Log Workout" },

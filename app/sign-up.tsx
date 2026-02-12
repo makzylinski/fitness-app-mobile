@@ -27,9 +27,9 @@ export default function SignUp() {
     onSignUp,
   } = useSignUp();
 
-  const color = useThemeColor({}, "inputLabel");
-  const primaryColor = useThemeColor({}, "primaryColor");
-  const textColor = useThemeColor({}, "text");
+  const color = useThemeColor("inputLabel");
+  const primaryColor = useThemeColor("primaryColor");
+  const textColor = useThemeColor("text");
 
   return (
     <ScrollView>
