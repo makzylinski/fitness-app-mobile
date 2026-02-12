@@ -5,7 +5,7 @@ import { useTimer } from "@/hooks/use-timer";
 import { StyleSheet } from "react-native";
 
 export default function Timer() {
-  const primaryColor = useThemeColor({}, "primaryColor");
+  const primaryColor = useThemeColor("primaryColor");
   const { time } = useTimer();
   return (
     <ThemedView style={styles.container}>
