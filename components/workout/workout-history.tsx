@@ -100,9 +100,9 @@ export default function WorkoutHistory() {
     },
   ]); //TODO: fetch data from API later
 
-  const primaryColor = useThemeColor({}, "primaryColor");
-  const accentColor = useThemeColor({}, "accent");
-  const secondaryText = useThemeColor({}, "inputLabel");
+  const primaryColor = useThemeColor("primaryColor");
+  const accentColor = useThemeColor("accent");
+  const secondaryText = useThemeColor("inputLabel");
 
   const getTotalSets = (exercises: any[]) => {
     return exercises.reduce((total, ex) => total + ex.exercises.length, 0);

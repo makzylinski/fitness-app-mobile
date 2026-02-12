@@ -19,10 +19,10 @@ type ExerciseRowProps = {
 };
 
 export default function ExerciseRow({ item }: ExerciseRowProps) {
-  const labelColor = useThemeColor({}, "inputLabel");
-  const primaryColor = useThemeColor({}, "primaryColor");
-  const accent = useThemeColor({}, "accent");
-  const backgroundColor = useThemeColor({}, "inputBackground");
+  const labelColor = useThemeColor("inputLabel");
+  const primaryColor = useThemeColor("primaryColor");
+  const accent = useThemeColor("accent");
+  const backgroundColor = useThemeColor("inputBackground");
 
   return (
     <ThemedView style={[{ backgroundColor }, styles.exerciseContainer]}>

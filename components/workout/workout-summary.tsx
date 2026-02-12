@@ -46,7 +46,7 @@ export default function WorkoutSummary() {
     },
   ]; //TODO: to be changed when API is implemented
 
-  const backgroundColor = useThemeColor({}, "inputBackground");
+  const backgroundColor = useThemeColor("inputBackground");
 
   return (
     <ThemedView style={[{ backgroundColor }, styles.container]}>
