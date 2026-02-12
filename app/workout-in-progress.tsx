@@ -10,10 +10,10 @@ import { useThemeColor } from "../hooks/use-theme-color";
 export default function WorkoutInProgress() {
   const { isTimerActive, setIsTimerActive } = useTimer();
 
-  const cardBg = useThemeColor({}, "inputBackground");
-  const cardIconBg = useThemeColor({}, "primaryColor");
-  const cardIconColor = useThemeColor({}, "background");
-  const mainBg = useThemeColor({}, "background");
+  const cardBg = useThemeColor("inputBackground");
+  const cardIconBg = useThemeColor("primaryColor");
+  const cardIconColor = useThemeColor("background");
+  const mainBg = useThemeColor("background");
 
   const finishWorkout = () => {
     if (isTimerActive) {
