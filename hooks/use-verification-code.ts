@@ -1,6 +1,6 @@
 import { sendVerificationCode } from "@/api/authService";
+import { AuthStorage } from "@/storage/auth-storage";
 import { router, useLocalSearchParams } from "expo-router";
-import * as SecureStore from "expo-secure-store";
 import { useEffect, useState } from "react";
 
 export const useVerificationCode = () => {
@@ -13,12 +13,7 @@ export const useVerificationCode = () => {
   const onSendVerificationCode = async () => {
     try {
       const result = await sendVerificationCode(String(email), finalCode);
-
-      await SecureStore.setItemAsync(
-        "access_token",
-        (result.data as { token: string }).token,
-      );
-
+      AuthStorage.setToken((result.data as { token: string }).token);
       router.push("/");
     } catch (err) {
       console.error(err);
