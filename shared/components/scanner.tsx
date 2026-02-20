@@ -15,7 +15,7 @@ export default function Scanner() {
 
   return (
     <CameraView
-      style={{ flex: 1 }}
+      style={{ height: 300, width: "100%" }}
       barcodeScannerSettings={{
         barcodeTypes: ["ean13", "ean8", "qr", "upc_a"],
       }}
