@@ -1,8 +1,17 @@
-import { CameraView } from "expo-camera";
+import { CameraView, useCameraPermissions } from "expo-camera";
 import { useState } from "react";
+import { Text } from "react-native";
 
 export default function Scanner() {
+  const [permission, requestPermission] = useCameraPermissions();
   const [scanned, setScanned] = useState(false);
+
+  if (!permission) return null;
+
+  if (!permission.granted) {
+    requestPermission();
+    return <Text>Need camera access.</Text>;
+  }
 
   return (
     <CameraView
