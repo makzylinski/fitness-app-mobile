@@ -1,7 +1,8 @@
 import { useThemeColor } from "@/hooks/use-theme-color";
+import Scanner from "@/shared/components/scanner";
 import { Ionicons } from "@expo/vector-icons";
 import { Fragment, useState } from "react";
-import { Pressable, StyleSheet } from "react-native";
+import { Button, Modal, Pressable, StyleSheet } from "react-native";
 import ThemedCard from "../ui/themed-card";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
@@ -21,8 +22,9 @@ export default function Meal({ meal }: MealProps) {
   const lighterColorFont = useThemeColor("inputLabel");
   const primaryColor = useThemeColor("primaryColor");
 
-  const onOpenScanner = () => console.log("open phone camera");
+  const onOpenScanner = () => setScannerVisible(true);
   const onAddMeal = () => console.log("on Add Meal");
+  const [scannerVisible, setScannerVisible] = useState(false);
 
   const testMealDetail = {
     product: {
@@ -48,6 +50,17 @@ export default function Meal({ meal }: MealProps) {
 
   return (
     <ThemedView style={styles.container}>
+      <Modal
+        visible={scannerVisible}
+        animationType="slide"
+        presentationStyle="fullScreen"
+      >
+        <Scanner />
+        <Button
+          title="Close scanner"
+          onPress={() => setScannerVisible(false)}
+        />
+      </Modal>
       {meal.map((mealDetail, index) => (
         <Fragment key={mealDetail.id}>
           <ThemedCard style={styles.card}>

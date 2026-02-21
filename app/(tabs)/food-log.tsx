@@ -2,7 +2,6 @@ import CaloriesCounter from "@/components/food-log/calories-counter";
 import FoodCalendar from "@/components/food-log/food-calendar";
 import Meal from "@/components/food-log/meal";
 import { ThemedView } from "@/components/ui/themed-view";
-import Scanner from "@/shared/components/scanner";
 import { ScrollView, StyleSheet } from "react-native";
 
 export default function FoodDiary() {
@@ -20,12 +19,11 @@ export default function FoodDiary() {
     <ThemedView style={styles.container}>
       <ScrollView style={styles.scrollView}>
         <ThemedView style={styles.content}>
-          <FoodCalendar></FoodCalendar>
-          <Meal meal={meals}></Meal>
-          <Scanner></Scanner>
+          <FoodCalendar />
+          <Meal meal={meals} />
         </ThemedView>
       </ScrollView>
-      <CaloriesCounter></CaloriesCounter>
+      <CaloriesCounter />
     </ThemedView>
   );
 }
