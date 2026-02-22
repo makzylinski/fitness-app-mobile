@@ -1,7 +1,8 @@
+import { useMeal } from "@/hooks/use-meal";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import Scanner from "@/shared/components/scanner";
 import { Ionicons } from "@expo/vector-icons";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { Button, Modal, Pressable, StyleSheet } from "react-native";
 import ThemedCard from "../ui/themed-card";
 import { ThemedText } from "../ui/themed-text";
@@ -16,15 +17,17 @@ type MealProps = {
 };
 
 export default function Meal({ meal }: MealProps) {
-  const [openMealIndexes, setOpenMealIndexes] = useState<number[]>([]);
-
+  const {
+    onOpenScanner,
+    onAddMeal,
+    scannerVisible,
+    setScannerVisible,
+    openMealIndexes,
+    setOpenMealIndexes,
+  } = useMeal();
   const backgroundColor = useThemeColor("inputBackground");
   const lighterColorFont = useThemeColor("inputLabel");
   const primaryColor = useThemeColor("primaryColor");
-
-  const onOpenScanner = () => setScannerVisible(true);
-  const onAddMeal = () => console.log("on Add Meal");
-  const [scannerVisible, setScannerVisible] = useState(false);
 
   const testMealDetail = {
     product: {
