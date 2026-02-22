@@ -5,7 +5,7 @@ import { Text } from "react-native";
 export default function Scanner() {
   const [permission, requestPermission] = useCameraPermissions();
   const [scanned, setScanned] = useState(false);
-  const [type, setType] = useState<any>();
+  const [scanType, setType] = useState<any>();
   const [data, setData] = useState<any>();
 
   if (!permission) return null;
@@ -18,17 +18,14 @@ export default function Scanner() {
   return (
     <>
       <CameraView
-        style={{ height: 300, width: "100%" }}
-        barcodeScannerSettings={{
-          barcodeTypes: ["ean13", "ean8", "qr", "upc_a"],
-        }}
+        style={{ height: 300, width: "100%", transform: [{ scaleX: -1 }] }}
         onBarcodeScanned={({ data, type }) => {
           console.log(type, data);
-          setType(type);
+          setType(scanType);
           setData(data);
         }}
       />
-      Type: {type}
+      Type: {scanType}
       Data: {data}
     </>
   );
