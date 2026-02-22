@@ -1,8 +1,14 @@
+
 import { CameraView, useCameraPermissions } from "expo-camera";
 import { useState } from "react";
 import { Text } from "react-native";
 
-export default function Scanner() {
+type ScannerProps = {
+  onScan?: (type: any, data: any) => void;
+};
+
+
+export default function Scanner({ onScan }: ScannerProps) {
   const [permission, requestPermission] = useCameraPermissions();
   const [scanned, setScanned] = useState(false);
   const [scanType, setType] = useState<any>();
@@ -23,6 +29,9 @@ export default function Scanner() {
           console.log(type, data);
           setType(type);
           setData(data);
+          if (onScan) {
+            onScan(type, data);
+          }
         }}
       />
       Type: {scanType}

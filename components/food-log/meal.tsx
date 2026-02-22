@@ -2,8 +2,8 @@ import { useMeal } from "@/hooks/use-meal";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import Scanner from "@/shared/components/scanner";
 import { Ionicons } from "@expo/vector-icons";
-import { Fragment } from "react";
-import { Button, Modal, Pressable, StyleSheet } from "react-native";
+import { Fragment, useState } from "react";
+import { Button, Modal, Pressable, StyleSheet, Text } from "react-native";
 import ThemedCard from "../ui/themed-card";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
@@ -51,6 +51,16 @@ export default function Meal({ meal }: MealProps) {
     }
   };
 
+  const [lastScan, setLastScan] = useState<{
+    type: any;
+    data: any;
+  } | null>(null);
+
+  const handleScan = (type: any, data: any) => {
+    setLastScan({ type, data });
+    setScannerVisible(false);
+  };
+
   return (
     <ThemedView style={styles.container}>
       <Modal
@@ -58,12 +68,19 @@ export default function Meal({ meal }: MealProps) {
         animationType="slide"
         presentationStyle="fullScreen"
       >
-        <Scanner />
+        <Scanner onScan={handleScan} />
+        <Text>Scan:</Text>
+        {lastScan && (
+          <ThemedText>
+            Scan: {lastScan.type} - {lastScan.data}
+          </ThemedText>
+        )}
         <Button
           title="Close scanner"
           onPress={() => setScannerVisible(false)}
         />
       </Modal>
+
       {meal.map((mealDetail, index) => (
         <Fragment key={mealDetail.id}>
           <ThemedCard style={styles.card}>
