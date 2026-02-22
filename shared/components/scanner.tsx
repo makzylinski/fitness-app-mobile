@@ -18,9 +18,9 @@ export default function Scanner() {
   return (
     <>
       <CameraView
-        style={{ transform: [{ scaleX: -1 }] }}
+        style={{ height: 300, width: "100%", transform: [{ scaleX: -1 }] }}
         onBarcodeScanned={({ data, type }) => {
-          console.log("Barcode scanned:", type, data);
+          console.log(type, data);
           setType(type);
           setData(data);
         }}
