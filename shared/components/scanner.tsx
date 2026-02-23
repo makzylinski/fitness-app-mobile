@@ -21,7 +21,7 @@ export default function Scanner({ onScan }: ScannerProps) {
   return (
     <>
       <CameraView
-        style={{ height: 300, width: "100%", transform: [{ scaleX: -1 }] }}
+        style={{ height: 300, width: "100%" }}
         onBarcodeScanned={({ data, type }) => {
           console.log(type, data);
           setType(type);

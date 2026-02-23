@@ -65,7 +65,11 @@ export default function Meal({ meal }: MealProps) {
           onPress={() => setScannerVisible(false)}
         />
       </Modal>
-
+      {lastScan && (
+        <ThemedText>
+          Scan: {lastScan.type} - {lastScan.data}
+        </ThemedText>
+      )}
       {meal.map((mealDetail, index) => (
         <Fragment key={mealDetail.id}>
           <ThemedCard style={styles.card}>
