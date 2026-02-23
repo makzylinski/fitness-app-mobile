@@ -17,8 +17,7 @@ export const useMeal = () => {
     setScannerVisible(false);
   };
 
-  const onFetchScannedProduct = async (data: any) => {
-    // TODO: number or string
+  const onFetchScannedProduct = async (data: string) => {
     try {
       const response = await fetchProductByBarcode(data);
       console.log(response);
