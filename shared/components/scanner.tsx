@@ -1,4 +1,3 @@
-
 import { CameraView, useCameraPermissions } from "expo-camera";
 import { useState } from "react";
 import { Text } from "react-native";
@@ -7,10 +6,8 @@ type ScannerProps = {
   onScan?: (type: any, data: any) => void;
 };
 
-
 export default function Scanner({ onScan }: ScannerProps) {
   const [permission, requestPermission] = useCameraPermissions();
-  const [scanned, setScanned] = useState(false);
   const [scanType, setType] = useState<any>();
   const [data, setData] = useState<any>();
 
@@ -24,7 +21,7 @@ export default function Scanner({ onScan }: ScannerProps) {
   return (
     <>
       <CameraView
-        style={{ height: 300, width: "100%", transform: [{ scaleX: -1 }] }}
+        style={{ height: 300, width: "100%" }}
         onBarcodeScanned={({ data, type }) => {
           console.log(type, data);
           setType(type);
