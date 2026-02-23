@@ -1,3 +1,4 @@
+import { fetchProductByBarcode } from "@/api/productService";
 import { useState } from "react";
 
 export const useMeal = () => {
@@ -12,7 +13,18 @@ export const useMeal = () => {
 
   const handleScan = (type: any, data: any) => {
     setLastScan({ type, data });
+    onFetchScannedProduct(data);
     setScannerVisible(false);
+  };
+
+  const onFetchScannedProduct = async (data: any) => {
+    // TODO: number or string
+    try {
+      const response = await fetchProductByBarcode(data);
+      console.log(response);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const toggleMeal = (index: number) => {
