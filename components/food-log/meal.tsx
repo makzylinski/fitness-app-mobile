@@ -2,7 +2,7 @@ import { useMeal } from "@/hooks/use-meal";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import Scanner from "@/shared/components/scanner";
 import { Ionicons } from "@expo/vector-icons";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { Button, Modal, Pressable, StyleSheet, Text } from "react-native";
 import ThemedCard from "../ui/themed-card";
 import { ThemedText } from "../ui/themed-text";
@@ -23,8 +23,11 @@ export default function Meal({ meal }: MealProps) {
     scannerVisible,
     setScannerVisible,
     openMealIndexes,
-    setOpenMealIndexes,
+    lastScan,
+    handleScan,
+    toggleMeal,
   } = useMeal();
+
   const backgroundColor = useThemeColor("inputBackground");
   const lighterColorFont = useThemeColor("inputLabel");
   const primaryColor = useThemeColor("primaryColor");
@@ -41,24 +44,6 @@ export default function Meal({ meal }: MealProps) {
         fat: 50,
       },
     },
-  };
-
-  const toggleMeal = (index: number) => {
-    if (openMealIndexes.includes(index)) {
-      setOpenMealIndexes(openMealIndexes.filter((i) => i !== index));
-    } else {
-      setOpenMealIndexes([...openMealIndexes, index]);
-    }
-  };
-
-  const [lastScan, setLastScan] = useState<{
-    type: any;
-    data: any;
-  } | null>(null);
-
-  const handleScan = (type: any, data: any) => {
-    setLastScan({ type, data });
-    setScannerVisible(false);
   };
 
   return (
