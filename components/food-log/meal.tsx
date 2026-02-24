@@ -2,7 +2,7 @@ import { useMeal } from "@/hooks/use-meal";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import Scanner from "@/shared/components/scanner";
 import { Ionicons } from "@expo/vector-icons";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { Button, Modal, Pressable, StyleSheet, Text } from "react-native";
 import ThemedCard from "../ui/themed-card";
 import { ThemedText } from "../ui/themed-text";
@@ -26,12 +26,16 @@ export default function Meal({ meal }: MealProps) {
     lastScan,
     handleScan,
     toggleMeal,
+    onFetchScannedProduct,
   } = useMeal();
 
   const backgroundColor = useThemeColor("inputBackground");
   const lighterColorFont = useThemeColor("inputLabel");
   const primaryColor = useThemeColor("primaryColor");
 
+  useEffect(() => {
+    onFetchScannedProduct("5900820027834");
+  }, []);
   const testMealDetail = {
     product: {
       id: 1,

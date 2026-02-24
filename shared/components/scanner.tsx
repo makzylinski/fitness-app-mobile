@@ -31,8 +31,10 @@ export default function Scanner({ onScan }: ScannerProps) {
           }
         }}
       />
-      Type: {scanType}
-      Data: {data}
+      <Text>
+        Type: {scanType}
+        Data: {data}
+      </Text>
     </>
   );
 }
