@@ -16,8 +16,6 @@ export default function Dashboard() {
       } else {
         setIsAuthenticated(false);
       }
-
-      console.log(token);
     };
 
     bootstrap();
