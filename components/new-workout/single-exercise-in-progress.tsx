@@ -30,6 +30,7 @@ export default function SingleExerciseInProgress({
   setExercises,
   exerciseIndex,
 }: SingleExerciseInProgressProps) {
+
   const textColor = useThemeColor("text");
   const lighterColorFont = useThemeColor("inputLabel");
   const lightFontColor = useThemeColor("inputBorder");
