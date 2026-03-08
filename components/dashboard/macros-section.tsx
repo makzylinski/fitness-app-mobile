@@ -1,3 +1,4 @@
+import { useMacrosSection } from "@/hooks/use-macros-section";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import ProgressBar from "@/shared/components/progress-bar";
 import { StyleSheet } from "react-native";
@@ -14,10 +15,10 @@ type MacrosProps = {
 export default function MacrosSection(props: MacrosProps) {
   const backgroundColor = useThemeColor("inputBackground");
   const color = useThemeColor("inputLabel");
-
-  const calculatePercentage = (): number =>
-    (props.actualValue / props.maxValue) * 100;
-
+  const { calculatePercentage } = useMacrosSection(
+    props.actualValue,
+    props.maxValue,
+  );
   return (
     <ThemedView style={styles.container}>
       <ThemedView style={[{ backgroundColor }, styles.macroWrapper]}>
