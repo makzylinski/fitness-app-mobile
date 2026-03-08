@@ -1,18 +1,8 @@
 import { useThemeColor } from "@/hooks/use-theme-color";
+import { Exercise } from "@/shared/types/exercise.model";
 import { StyleSheet } from "react-native";
 import { ThemedText } from "../ui/themed-text";
 import { ThemedView } from "../ui/themed-view";
-
-export type Exercise = {
-  id: number;
-  name: string;
-  exercises: {
-    weight: number;
-    weightUnit: string;
-    reps: number;
-    isPR?: boolean;
-  }[];
-};
 
 type ExerciseRowProps = {
   item: Exercise;
